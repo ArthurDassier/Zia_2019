@@ -1,0 +1,9 @@
+[requires]
+spdlog/1.4.2@bincrafters/stable
+jsonformoderncpp/3.7.3@vthiery/stable
+
+[build_requires]
+fmt/6.0.0@bincrafters/stable
+
+[generators]
+cmake
