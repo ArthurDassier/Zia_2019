@@ -1,0 +1,11 @@
+before_install:
+- openssl aes-256-cbc -K $encrypted_323c28a06ad0_key -iv $encrypted_323c28a06ad0_iv
+  -in deploy_rsa.enc -out ~/.ssh/deploy_rsa -d
+- chmod 400 ~/.ssh/deploy_rsa
+- chmod +x push.sh
+jobs:
+  include:
+  - stage: Push
+    if: "(NOT type IN (pull_request)) AND (branch = master)"
+    script:
+    - "./push.sh"
