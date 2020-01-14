@@ -8,7 +8,6 @@ add_executable(foo
     ./srcs/test.cpp
     # ${NLOHMANN_JSON_INCLUDE_DIRS}
 )
-# target_link_libraries(foo nlohmann_json::nlohmann_json)
 
 target_link_libraries(foo nlohmann_json)
 set_target_properties(foo 
