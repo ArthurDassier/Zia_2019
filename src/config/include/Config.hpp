@@ -7,14 +7,41 @@
 
 #pragma once
 
+#include <atomic>
+#include <filesystem>
+#include <future>
+#include <iostream>
 #include <string>
 
-class Config {
-	public:
-		Config();
-		~Config();
+#include "FileWatcher.hpp"
+#include "SharedMemory.hpp"
 
-		void loadConfig(const std::string &);
+class Config
+{
+public:
+	Config(const std::filesystem::directory_entry &file);
+	~Config() = default;
 
-	private:
+	void loadConfig(const std::filesystem::path &);
+
+	void update();
+
+	void setName(const std::string &);
+	std::string getName() const noexcept;
+
+	void setPath(const std::filesystem::path &);
+	std::filesystem::path getPath() const noexcept;
+
+	std::filesystem::file_time_type getTimestamp() const noexcept;
+
+private:
+	std::string _name;
+	std::filesystem::path _path;
+	std::filesystem::file_time_type _timestamp;
+	FileWatcher _fw;
+	bool _reload;
+	bool _running;
+
+	key_t key;
+	int shmid;
 };

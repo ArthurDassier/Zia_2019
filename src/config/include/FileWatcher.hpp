@@ -11,18 +11,31 @@
 #include <ctime>
 #include <filesystem>
 #include <functional>
+#include <future>
 #include <iostream>
 #include <string>
-// #include <sys/stat.h>
 #include <thread>
 
+#include "SharedMemory.hpp"
+
+enum class FileStatus
+{
+    created,
+    modified,
+    erased,
+    none
+};
 class FileWatcher {
 	public:
+        FileWatcher();
         FileWatcher(const std::string &,
-            const std::chrono::duration<int, std::milli> delay);
+                    const std::chrono::duration<int, std::milli> delay);
         ~FileWatcher();
 
         void start();
+            // const std::string &,
+            // const std::chrono::duration<int, std::milli> delay,
+            // const std::function<void(FileStatus)> &);
 
         time_t getTimeStamp() const noexcept;
 
@@ -33,4 +46,7 @@ class FileWatcher {
         // time_t              _timestamp;
         std::filesystem::file_time_type         _timestamp;
         std::chrono::duration<int, std::milli>  _delay;
+
+        key_t key;
+        int shmid;
 };

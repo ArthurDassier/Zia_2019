@@ -22,5 +22,8 @@
 *.app
 zia
 
+# Valgrind file
+vgcore.*
+
 # Build folder
 build/

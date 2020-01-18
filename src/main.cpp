@@ -5,10 +5,18 @@
 ** main
 */
 
-#include "FileWatcher.hpp"
+#include "ConfigManager.hpp"
 
 int main(void)
 {
-    FileWatcher fw("./config/config.json", std::chrono::milliseconds(5000));
-    fw.start();
+    ConfigManager cm("./config");
+
+    // std::cout << cm.getConfig("config")->getPath() << std::endl;
+    // FileWatcher fw("./config", std::chrono::milliseconds(5000));
+    // fw.start();
+    while (1)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+        cm.manage();
+    }
 }

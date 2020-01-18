@@ -7,17 +7,24 @@
 
 #pragma once
 
+#include <cstdlib>
+#include <memory>
 #include <unordered_map>
 
 #include "Config.hpp"
 
 class ConfigManager {
 	public:
-		ConfigManager();
+		ConfigManager(const std::string &);
 		~ConfigManager();
 
-		Config getConfig(const std::string &) const;
+		void 	manage();
+
+		void	setConfigPath(const std::string &);
+		std::shared_ptr<Config>	getConfig(const std::string &);
+
+		void 	setConfigDelay(const std::chrono::duration<int, std::milli>);
 
 	private:
-		std::unordered_map<std::string, Config> _configs;
+		std::unordered_map<std::string, Config*> _configs;
 };
