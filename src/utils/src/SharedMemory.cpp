@@ -21,7 +21,7 @@ char *SharedMemory::get_data(key_t key, size_t data_size, size_t process) const
 {
     char *data = nullptr;
 
-    data = get_data_by_id(shm_id_gen(key, data_size, process));
+    data = get_data_by_id(id_gen(key, data_size, process));
     return data;
 }
 
@@ -51,7 +51,7 @@ key_t SharedMemory::key_gen(std::string pathname, int proj_id)
     return ftok(pathname.c_str(), proj_id);
 }
 
-int SharedMemory::shm_id_gen(key_t key, size_t data_size, size_t process)
+int SharedMemory::id_gen(key_t key, size_t data_size, size_t process)
 {
     int shmId = 0;
 

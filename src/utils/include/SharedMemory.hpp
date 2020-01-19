@@ -28,5 +28,5 @@ class SharedMemory {
         static void destroy(int, int);
 
         static key_t key_gen(std::string, int);
-        static int shm_id_gen(key_t, size_t, size_t);
+        static int id_gen(key_t, size_t, size_t);
 };

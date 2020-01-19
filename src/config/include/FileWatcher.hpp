@@ -8,6 +8,7 @@
 #pragma once
 
 #include <chrono>
+#include <cstring>
 #include <ctime>
 #include <filesystem>
 #include <functional>
@@ -18,35 +19,47 @@
 
 #include "SharedMemory.hpp"
 
-enum class FileStatus
-{
-    created,
-    modified,
-    erased,
-    none
-};
-class FileWatcher {
-	public:
-        FileWatcher();
-        FileWatcher(const std::string &,
-                    const std::chrono::duration<int, std::milli> delay);
-        ~FileWatcher();
+namespace cfg {
+    enum class FileStatus
+    {
+        created,
+        modified,
+        erased,
+        none
+    };
 
-        void start();
-            // const std::string &,
-            // const std::chrono::duration<int, std::milli> delay,
-            // const std::function<void(FileStatus)> &);
+    static std::ostream& operator<<(std::ostream& os, FileStatus& fs)
+    {
+        switch (fs)
+        {
+            case FileStatus::created:   return os << "created";
+            case FileStatus::modified:  return os << "modified";
+            case FileStatus::erased:    return os << "erased";
+            default:                    return os << "none";
+        };
+    }
 
-        time_t getTimeStamp() const noexcept;
+    static FileStatus operator<<(FileStatus& s, const char *fs)
+    {
+        if (std::strcmp(fs, "created") == 0)    return s = FileStatus::created;
+        if (std::strcmp(fs, "modified") == 0)   return s = FileStatus::modified;
+        if (std::strcmp(fs, "erased") == 0)     return s = FileStatus::erased;
+        return s = FileStatus::none;
+    }
 
-    private:
-        bool                                    _running;
-        // const std::string   _file_to_watch;
-        std::filesystem::path                   _file_to_watch;
-        // time_t              _timestamp;
-        std::filesystem::file_time_type         _timestamp;
-        std::chrono::duration<int, std::milli>  _delay;
+    class FileWatcher {
+        public:
+            FileWatcher(const std::string &,
+                        const std::chrono::duration<int, std::milli> delay);
+            ~FileWatcher() = default;
 
-        key_t key;
-        int shmid;
-};
+            void start();
+
+        private:
+            key_t _key;
+            bool _running;
+            std::filesystem::path _file;
+            std::filesystem::file_time_type _timestamp;
+            std::chrono::duration<int, std::milli> _delay;
+    };
+}; // namespace cfg

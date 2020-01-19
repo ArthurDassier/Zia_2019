@@ -16,32 +16,33 @@
 #include "FileWatcher.hpp"
 #include "SharedMemory.hpp"
 
-class Config
-{
-public:
-	Config(const std::filesystem::directory_entry &file);
-	~Config() = default;
+namespace cfg {
+	class Config {
+		public:
+			Config(const std::filesystem::directory_entry &file);
+			~Config() = default;
 
-	void loadConfig(const std::filesystem::path &);
+			void loadConfig(const std::filesystem::path &);
 
-	void update();
+			void update();
 
-	void setName(const std::string &);
-	std::string getName() const noexcept;
+			void setName(const std::string &);
+			std::string getName() const noexcept;
 
-	void setPath(const std::filesystem::path &);
-	std::filesystem::path getPath() const noexcept;
+			void setPath(const std::filesystem::path &);
+			std::filesystem::path getPath() const noexcept;
 
-	std::filesystem::file_time_type getTimestamp() const noexcept;
+			std::filesystem::file_time_type getTimestamp() const noexcept;
 
-private:
-	std::string _name;
-	std::filesystem::path _path;
-	std::filesystem::file_time_type _timestamp;
-	FileWatcher _fw;
-	bool _reload;
-	bool _running;
+		private:
+			std::string _name;
+			std::filesystem::path _path;
+			std::filesystem::file_time_type _timestamp;
+			FileWatcher _fw;
+			bool _reload;
+			bool _running;
 
-	key_t key;
-	int shmid;
-};
+			key_t _key;
+			int _shmid;
+	};
+}; // namespace cfg

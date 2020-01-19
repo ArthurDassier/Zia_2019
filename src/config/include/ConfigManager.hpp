@@ -13,18 +13,18 @@
 
 #include "Config.hpp"
 
-class ConfigManager {
-	public:
-		ConfigManager(const std::string &);
-		~ConfigManager();
+namespace cfg {
+	class ConfigManager {
+		public:
+			ConfigManager(const std::string &);
+			~ConfigManager();
 
-		void 	manage();
+			void 	manage();
 
-		void	setConfigPath(const std::string &);
-		std::shared_ptr<Config>	getConfig(const std::string &);
+			void	setConfigPath(const std::string &);
+			Config	*getConfig(const std::string &);
 
-		void 	setConfigDelay(const std::chrono::duration<int, std::milli>);
-
-	private:
-		std::unordered_map<std::string, Config*> _configs;
-};
+		private:
+			std::unordered_map<std::string, Config*> _configs;
+	};
+}; // namespace cfg

@@ -9,14 +9,13 @@
 
 int main(void)
 {
-    ConfigManager cm("./config");
+    cfg::ConfigManager cm("./config");
 
-    // std::cout << cm.getConfig("config")->getPath() << std::endl;
-    // FileWatcher fw("./config", std::chrono::milliseconds(5000));
-    // fw.start();
-    while (1)
-    {
-        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-        cm.manage();
+    std::string cmd;
+    cm.manage();
+
+    while (1) {
+        std::getline(std::cin, cmd);
+        std::cout << "===== " << cm.getConfig("config")->getName() << std::endl;
     }
 }
