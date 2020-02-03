@@ -1,30 +1,32 @@
+#include <fstream>
+#include <iomanip>
 #include <iostream>
+#include <string>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
 int main() {
+
+    std::string line;
+    std::ifstream myfile("config/config.json");
     json j;
 
-    // add a number that is stored as double (note the implicit conversion of j to an object)
-    j["pi"] = 3.141;
+    myfile >> j;
 
-    // add a Boolean that is stored as bool
-    j["happy"] = true;
+    auto j2 = j["web_services"];
+    for (auto const &it : j2)
+        std::cout << it << std::endl;
 
-    // add a string that is stored as std::string
-    j["name"] = "Niels";
+    // std::ofstream o("pretty.json");
+    // o << std::setw(4) << j << std::endl;
 
-    // add another null object by passing nullptr
-    j["nothing"] = nullptr;
-
-    // add an object inside the object
+    // j["pi"] = 3.141;
+    // j["happy"] = true;
+    // j["name"] = "Niels";
+    // j["nothing"] = nullptr;
     // j["answer"]["everything"] = 42;
-
-    // add an array that is stored as std::vector (using an initializer list)
     // j["list"] = {1, 0, 2};
-
-    // add another object (using an initializer list of pairs)
     // j["object"] = {{"currency", "USD"}, {"value", 42.99}};
 
     for (auto const &it : j)

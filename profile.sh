@@ -1,1 +1,1 @@
-source CONFIG_PATH="./config"
+export CONFIG_PATH="./config"

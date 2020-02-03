@@ -8,6 +8,10 @@ if (spdlog_FOUND)
     link_directories(${spdlog_LIBRARY_DIRS})
 endif(spdlog_FOUND)
 
+find_package(nlohmann_json REQUIRED)
+
+# include_directories(${NLOHMANN_JSON_INCLUDE_DIRS})
+
 add_library(${PROJECT_NAME}
     STATIC
     src/Config.cpp
@@ -27,6 +31,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     ${CONAN_LIB}
+    nlohmann_json::nlohmann_json
     stdc++fs
     spdlog::spdlog
     utils
