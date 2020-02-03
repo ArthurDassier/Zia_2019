@@ -22,6 +22,10 @@ cfg::Config::Config(const std::filesystem::directory_entry &file):
 void cfg::Config::loadConfig(const std::filesystem::path &config_path)
 {
     std::cout << "====LOAD CONFIG====" << std::endl;
+
+    std::ifstream file(config_path);
+
+    file.close();
 }
 
 void cfg::Config::update()
