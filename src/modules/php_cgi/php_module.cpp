@@ -29,15 +29,16 @@ int main(int argc, char **argv, char **env)
         exit(EXIT_FAILURE);
     }
 
-    if (pid == 0) {    // Le fils
+    if (pid == 0) {                             // Le fils
         const char *bin = "/usr/bin/php-cgi";
-        // const char *argv[] = {bin, NULL};
-        close(pipefd[0]);   // Ferme l'extrémité de lecture inutilisée
+        // const char *argv[] = {bin, NULL};    // commande pour lancer l'interpréteur
+        close(pipefd[0]);                       // Ferme l'extrémité de lecture inutilisée
         if (dup2(pipefd[1], 1) == -1) {
             std::cout << "dup2 a echoue" << std::endl;
             exit(84);
         }
 
+        //-f ou rien c un fichier, -r il faut exec la ligne direct
         int rc = execve(
             bin,
             const_cast<char * const *>(argv),
