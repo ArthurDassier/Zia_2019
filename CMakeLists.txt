@@ -15,18 +15,29 @@ conan_basic_setup()
 # message("Environment variable CONFIG_PATH: $ENV{CONFIG_PATH}")
 
 add_subdirectory(src)
-# add_subdirectory(tests)
 
-add_executable(${PROJECT_NAME}
-    src/main.cpp
+get_filename_component(ZiaSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+
+include(lib/openZia/openZia/openZia.cmake)
+
+set(MainSourceDir ${ZiaSourcesDir}/src)
+
+set(ZiaSources
+    ${MainSourceDir}/main.cpp
 )
 
-target_link_libraries(${PROJECT_NAME}
+add_executable(zia ${ZiaSources})
+
+target_link_libraries(zia
+    ${openZiaLibs}
     config
+    # server
     utils
 )
 
-set_target_properties(${PROJECT_NAME}
+target_include_directories(zia PRIVATE ${openZiaIncludes})
+
+set_target_properties(zia
     PROPERTIES LINKER_LANGUAGE CXX
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
