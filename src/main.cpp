@@ -5,7 +5,7 @@
 ** main
 */
 
-#include "ConfigManager.hpp"
+#include "config/ConfigManager.hpp"
 
 int main(void)
 {
