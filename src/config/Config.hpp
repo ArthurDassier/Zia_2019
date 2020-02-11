@@ -26,6 +26,7 @@ namespace cfg {
 			Config(const std::filesystem::directory_entry &file);
 			~Config() = default;
 
+			// Virtual function to inherit
 			void loadConfig(const std::filesystem::path &);
 
 			void update();
