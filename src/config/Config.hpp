@@ -15,12 +15,18 @@
 #include "FileWatcher.hpp"
 #include "SharedMemory.hpp"
 
+#include <nlohmann/json.hpp>
+
 namespace cfg {
+
+	using json = nlohmann::json;
+
 	class Config {
 		public:
 			Config(const std::filesystem::directory_entry &file);
 			~Config() = default;
 
+			// Virtual function to inherit
 			void loadConfig(const std::filesystem::path &);
 
 			void update();

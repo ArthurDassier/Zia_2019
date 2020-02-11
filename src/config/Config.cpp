@@ -21,11 +21,15 @@ cfg::Config::Config(const std::filesystem::directory_entry &file):
 
 void cfg::Config::loadConfig(const std::filesystem::path &config_path)
 {
-    std::cout << "====LOAD CONFIG====" << std::endl;
-
     std::ifstream file(config_path);
+    json j;
+    file >> j;
 
+    std::string s = j.dump();
+    std::cout << s << std::endl;
     file.close();
+
+    // Load each attributes...
 }
 
 void cfg::Config::update()
@@ -38,12 +42,10 @@ void cfg::Config::update()
         char *str   = shrd_mm.get_data_by_id(_shmid);
 
         std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-        // std::cout << _path << " update: " << str << std::endl;
         if (std::strcmp(str, "modified\n") == 0)
             loadConfig(_path);
         else if (std::strcmp(str, "erased\n") == 0)
             std::cout << "ERASED!!!" << std::endl;
-        // setName(str);
         shrd_mm.detach_from(str);
         SharedMemory::destroy(_shmid, IPC_RMID);
     }
