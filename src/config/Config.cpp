@@ -24,7 +24,11 @@ void cfg::Config::loadConfig(const std::filesystem::path &config_path)
     std::cout << "====LOAD CONFIG====" << std::endl;
 
     std::ifstream file(config_path);
+    json j;
+    file >> j;
 
+    std::string s = j.dump();
+    std::cout << s << std::endl;
     file.close();
 }
 

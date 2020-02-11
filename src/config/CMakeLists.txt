@@ -4,7 +4,6 @@
 #     link_directories(${spdlog_LIBRARY_DIRS})
 # endif(spdlog_FOUND)
 
-# find_package(nlohmann_json REQUIRED)
 
 # # include_directories(${NLOHMANN_JSON_INCLUDE_DIRS})
 
@@ -31,10 +30,28 @@ set(ConfigSources
     ${ConfigSourcesDir}/FileWatcher.cpp
 )
 
-# Create config library
-add_library(${PROJECT_NAME} ${ConfigSources})
-target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS} stdc++fs utils)
-target_include_directories(${PROJECT_NAME} PUBLIC ${ConfigIncludes})
-target_compile_options(${PROJECT_NAME} PRIVATE -fPIC)
+find_package(nlohmann_json 3.7.3 REQUIRED)
 
-message("Generation of ${PROJECT_NAME} done.")
+# Create config library
+if(nlohmann_json_FOUND)
+    add_library(${PROJECT_NAME} ${ConfigSources})
+
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        ${CMAKE_DL_LIBS}
+        ${CONAN_LIBS}
+        nlohmann_json::nlohmann_json
+        stdc++fs
+        utils
+    )
+    target_include_directories(${PROJECT_NAME} PUBLIC
+        ${ConfigIncludes}
+        ${NLOHMANN_JSON_INCLUDE_DIRS}
+    )
+    target_compile_options(${PROJECT_NAME} PRIVATE -fPIC)
+
+    include_directories()
+
+    message("Generation of ${PROJECT_NAME} done.")
+else()
+    message("Cannot find nlohmann_json")
+endif()
