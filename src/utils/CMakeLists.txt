@@ -1,26 +1,19 @@
 project(utils) # Create project "utils"
 
-message("Create project ${PROJECT_NAME}")
+message("Generating project ${PROJECT_NAME}...")
 
-add_library(${PROJECT_NAME}
-    STATIC
-    src/SharedMemory.cpp
+get_filename_component(UtilsSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+
+set(UtilsIncludes ${UtilsSourcesDir})
+
+set(UtilsSources
+    ${UtilsSourcesDir}/SharedMemory.cpp
 )
 
-include_directories(
-    ${CMAKE_INCLUDE_PATH}
-    ./include
-)
+# Create utils library
+add_library(${PROJECT_NAME} ${UtilsSources})
+target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS} pthread stdc++fs)
+target_include_directories(${PROJECT_NAME} PUBLIC ${UtilsIncludes})
+target_compile_options(${PROJECT_NAME} PRIVATE -fPIC)
 
-target_include_directories(${PROJECT_NAME} INTERFACE
-    ./include
-)
-
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    ${CONAN_LIB}
-)
-
-set_target_properties(${PROJECT_NAME}
-    PROPERTIES LINKER_LANGUAGE CXX
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}"
-)
+message("Generation of ${PROJECT_NAME} done.")
