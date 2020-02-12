@@ -3,8 +3,14 @@ project(zia)                            # Create project "zia"
 set(CMAKE_CXX_STANDARD 17)              # Enable c++17 standard
 add_definitions("-fPIC")
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+#------------------------------------------------------------------------------#
+#                                 CONAN BOOST                                  #
+#------------------------------------------------------------------------------#
+
+# include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+# conan_basic_setup()
+
+#-------------------------------------------------------------------------------
 
 # execute_process(
 #     COMMAND source profile.sh
@@ -18,8 +24,6 @@ add_subdirectory(src)
 
 get_filename_component(ZiaSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 
-include(lib/openZia/openZia/openZia.cmake)
-
 set(MainSourceDir ${ZiaSourcesDir}/src)
 
 set(ZiaSources
@@ -29,13 +33,10 @@ set(ZiaSources
 add_executable(zia ${ZiaSources})
 
 target_link_libraries(zia
-    ${openZiaLibs}
     config
     # server
     utils
 )
-
-target_include_directories(zia PRIVATE ${openZiaIncludes})
 
 set_target_properties(zia
     PROPERTIES LINKER_LANGUAGE CXX
