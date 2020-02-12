@@ -13,6 +13,8 @@
 
 #include <boost/asio.hpp>
 #include <string>
+#include <openZia/IModule.hpp>
+#include <openZia/Pipeline.hpp>
 #include "connection.hpp"
 #include "connection_manager.hpp"
 #include "request_handler.hpp"
@@ -59,6 +61,36 @@ private:
 
   /// The handler for all incoming requests.
   request_handler request_handler_;
+
+  // Pipeline loads module
+  oZ::Pipeline _pipeline;
+
+
+  // Callback when server accept a new client
+	void onClientConnected(const oZ::FileDescriptor fd, const oZ::Endpoint endpoint, bool useEncryption) {
+		_pipeline.onConnection(fd, endpoint, useEncryption);
+	}
+
+	// Callback when server receive disconnection
+	void onClientDisconnected(const oZ::FileDescriptor fd, const oZ::Endpoint endpoint) {
+		_pipeline.onDisconnection(fd, endpoint);
+	}
+
+	// Callback when server receives a message
+	void onPacketReceived(const oZ::FileDescriptor fd, oZ::ByteArray &&buffer, const oZ::Endpoint endpoint) {
+		oZ::Context context(oZ::Packet(std::move(buffer), endpoint, fd));
+		_pipeline.runPipeline(context);
+		sendResponseToClient(context);
+	}
+
+	// Send the HTTP response to the client
+	void sendResponseToClient(const oZ::Context &context) {
+		/* You may use the following methods:
+			context.hasError() // Fast error checking
+			context.getEndpoint() // Get the endpoint of target client
+			context.getResponse() // Get the response result of the pipeline
+		*/
+	}
 };
 
 } // namespace server
