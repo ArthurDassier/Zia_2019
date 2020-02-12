@@ -1,6 +1,8 @@
 [requires]
 spdlog/1.4.2@bincrafters/stable
 jsonformoderncpp/3.7.3@vthiery/stable
+boost/1.71.0@conan/stable
+OpenSSL/1.0.2s@conan/stable
 
 [build_requires]
 fmt/6.0.0@bincrafters/stable

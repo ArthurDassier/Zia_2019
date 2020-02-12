@@ -12,8 +12,16 @@ set(ServerSources
 
 # Create server library
 add_executable(${PROJECT_NAME} ${ServerSources})
-target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS} pthread stdc++fs)
-target_include_directories(${PROJECT_NAME} PUBLIC ${ServerIncludes})
+target_link_libraries(${PROJECT_NAME}
+    ${CMAKE_DL_LIBS}
+    ${openZiaLibs}
+    pthread
+    stdc++fs
+)
+target_include_directories(${PROJECT_NAME} PUBLIC
+    ${openZiaIncludes}
+    ${ServerIncludes}
+)
 target_compile_options(${PROJECT_NAME} PRIVATE -fPIC)
 
 message("Generation of ${PROJECT_NAME} done.")
