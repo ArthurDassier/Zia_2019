@@ -13,6 +13,7 @@
 
 #include <boost/asio.hpp>
 #include <string>
+#include <openZia/IModule.hpp>
 #include <openZia/Pipeline.hpp>
 #include "connection.hpp"
 #include "connection_manager.hpp"
@@ -62,16 +63,16 @@ private:
   request_handler request_handler_;
 
   // Pipeline loads module
-  Pipeline _pipeline;
+  oZ::Pipeline _pipeline;
 
 
   // Callback when server accept a new client
-	void onClientConnected(const oZ::FileDescriptor fd, const oZ::Endpoit endpoint, bool useEncryption) {
+	void onClientConnected(const oZ::FileDescriptor fd, const oZ::Endpoint endpoint, bool useEncryption) {
 		_pipeline.onConnection(fd, endpoint, useEncryption);
 	}
 
 	// Callback when server receive disconnection
-	void onClientDisconnected(const oZ::FileDescriptor fd, const oZ::Endpoit endpoint) {
+	void onClientDisconnected(const oZ::FileDescriptor fd, const oZ::Endpoint endpoint) {
 		_pipeline.onDisconnection(fd, endpoint);
 	}
 
@@ -83,7 +84,7 @@ private:
 	}
 
 	// Send the HTTP response to the client
-	void sendResponseToClient(const Context &context) {
+	void sendResponseToClient(const oZ::Context &context) {
 		/* You may use the following methods:
 			context.hasError() // Fast error checking
 			context.getEndpoint() // Get the endpoint of target client

@@ -18,8 +18,6 @@ add_subdirectory(src)
 
 get_filename_component(ZiaSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 
-include(lib/openZia/openZia/openZia.cmake)
-
 set(MainSourceDir ${ZiaSourcesDir}/src)
 
 set(ZiaSources
@@ -29,13 +27,10 @@ set(ZiaSources
 add_executable(zia ${ZiaSources})
 
 target_link_libraries(zia
-    ${openZiaLibs}
     config
     # server
     utils
 )
-
-target_include_directories(zia PRIVATE ${openZiaIncludes})
 
 set_target_properties(zia
     PROPERTIES LINKER_LANGUAGE CXX
