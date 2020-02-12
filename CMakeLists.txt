@@ -3,8 +3,14 @@ project(zia)                            # Create project "zia"
 set(CMAKE_CXX_STANDARD 17)              # Enable c++17 standard
 add_definitions("-fPIC")
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+#------------------------------------------------------------------------------#
+#                                 CONAN BOOST                                  #
+#------------------------------------------------------------------------------#
+
+# include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+# conan_basic_setup()
+
+#-------------------------------------------------------------------------------
 
 # execute_process(
 #     COMMAND source profile.sh
