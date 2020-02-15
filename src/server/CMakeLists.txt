@@ -30,10 +30,10 @@ set(ServerSources
     ${ServerSourcesDir}/connection_manager.cpp
     ${ServerSourcesDir}/connection.cpp
     ${ServerSourcesDir}/main.cpp
-    ${ServerSourcesDir}/mime_types.cpp
-    ${ServerSourcesDir}/reply.cpp
-    ${ServerSourcesDir}/request_handler.cpp
-    ${ServerSourcesDir}/request_parser.cpp
+    # ${ServerSourcesDir}/mime_types.cpp
+    # ${ServerSourcesDir}/reply.cpp
+    # ${ServerSourcesDir}/request_handler.cpp
+    # ${ServerSourcesDir}/request_parser.cpp
     ${ServerSourcesDir}/server.cpp
 )
 

@@ -17,7 +17,6 @@
 #include <openZia/Pipeline.hpp>
 #include "connection.hpp"
 #include "connection_manager.hpp"
-#include "request_handler.hpp"
 
 namespace http {
 namespace server {
@@ -58,9 +57,6 @@ private:
 
   /// The next socket to be accepted.
   boost::asio::ip::tcp::socket socket_;
-
-  /// The handler for all incoming requests.
-  request_handler request_handler_;
 
   // Pipeline loads module
   oZ::Pipeline _pipeline;

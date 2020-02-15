@@ -12,18 +12,16 @@
 #include <utility>
 #include <vector>
 #include "connection_manager.hpp"
-#include "request_handler.hpp"
+// #include "request_handler.hpp"
 #include <iostream>
 
 namespace http {
 namespace server {
 
 connection::connection(boost::asio::ip::tcp::socket socket,
-    connection_manager& manager, request_handler& handler,
-    oZ::Pipeline &pipeline):
+    connection_manager& manager, oZ::Pipeline &pipeline):
     socket_(std::move(socket)),
     connection_manager_(manager),
-    request_handler_(handler),
     _pipeline(pipeline)
 {
 }

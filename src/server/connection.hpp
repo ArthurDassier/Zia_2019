@@ -14,11 +14,7 @@
 #include <array>
 #include <memory>
 #include <boost/asio.hpp>
-#include "reply.hpp"
-#include "request.hpp"
-#include "request_handler.hpp"
-#include "request_parser.hpp"
-#include "openZia/Pipeline.hpp"
+#include <openZia/Pipeline.hpp>
 
 namespace http {
 namespace server {
@@ -35,8 +31,7 @@ public:
 
   /// Construct a connection with the given socket.
   explicit connection(boost::asio::ip::tcp::socket socket,
-      connection_manager& manager, request_handler& handler,
-      oZ::Pipeline &);
+      connection_manager& manager, oZ::Pipeline &);
 
   /// Start the first asynchronous operation for the connection.
   void start();
@@ -59,20 +54,8 @@ private:
   /// The manager for this connection.
   connection_manager& connection_manager_;
 
-  /// The handler used to process the incoming request.
-  request_handler& request_handler_;
-
   /// Buffer for incoming data.
   std::array<char, 8192> buffer_;
-
-  /// The incoming request.
-  request request_;
-
-  /// The parser for the incoming request.
-  request_parser request_parser_;
-
-  /// The reply to be sent back to the client.
-  reply reply_;
 
   oZ::Pipeline &_pipeline;
 };
