@@ -75,7 +75,6 @@ void connection::runPipeline(void)
 
 void connection::do_write(oZ::Context &&context)
 {
-  auto self(shared_from_this());
 
   std::string response(
         "HTTP/" +
@@ -89,6 +88,7 @@ void connection::do_write(oZ::Context &&context)
         "\n"
     );
 
+  auto self(shared_from_this());
   boost::asio::async_write(socket_, boost::asio::buffer(response),
       [this, self](boost::system::error_code ec, std::size_t)
       {

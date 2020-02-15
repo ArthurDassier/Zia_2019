@@ -41,6 +41,7 @@ set(ServerSources
     ${ServerSourcesDir}/request_handler.cpp
     ${ServerSourcesDir}/request_parser.cpp
     ${ServerSourcesDir}/server.cpp
+    ${ServerSourcesDir}/ParserModule.cpp
 )
 
 message("ZiaIncludes: ${openZiaIncludes}")

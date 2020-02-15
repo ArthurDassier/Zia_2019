@@ -22,7 +22,8 @@ server::server(const std::string& address, const std::string& port,
     acceptor_(io_service_),
     connection_manager_(),
     socket_(io_service_),
-    request_handler_(doc_root)
+    request_handler_(doc_root),
+    _pipeline("src/server", "src/server")
 {
   // Register to handle the signals that indicate when the server should exit.
   // It is safe to register for the same signal multiple times in a program,
@@ -42,7 +43,7 @@ server::server(const std::string& address, const std::string& port,
   acceptor_.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
   acceptor_.bind(endpoint);
   acceptor_.listen();
-
+  _pipeline.loadModules();
   do_accept();
 }
 
@@ -70,7 +71,7 @@ void server::do_accept()
         if (!ec)
         {
           connection_manager_.start(std::make_shared<connection>(
-              std::move(socket_), connection_manager_, request_handler_));
+              std::move(socket_), connection_manager_, request_handler_, _pipeline));
         }
 
         do_accept();
