@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.14.4)  # CMake version check
 project(zia)                            # Create project "zia"
 set(CMAKE_CXX_STANDARD 17)              # Enable c++17 standard
 add_definitions("-fPIC")
+add_definitions("-g3")
 
 set(LIB_PATH "./lib")
 

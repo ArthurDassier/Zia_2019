@@ -23,7 +23,7 @@ server::server(const std::string& address, const std::string& port,
     connection_manager_(),
     socket_(io_service_),
     request_handler_(doc_root),
-    _pipeline("src/server/modules", "src/server")
+    _pipeline("build/server/modules", "src/modules/config")
 {
   // Register to handle the signals that indicate when the server should exit.
   // It is safe to register for the same signal multiple times in a program,
