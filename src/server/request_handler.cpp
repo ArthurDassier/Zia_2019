@@ -15,6 +15,7 @@
 #include "mime_types.hpp"
 #include "reply.hpp"
 #include "request.hpp"
+#include <iostream>
 
 namespace http {
 namespace server {
@@ -76,6 +77,11 @@ void request_handler::handle_request(const request& req, reply& rep)
   rep.headers[0].value = std::to_string(rep.content.size());
   rep.headers[1].name = "Content-Type";
   rep.headers[1].value = mime_types::extension_to_type(extension);
+  
+  for (auto &it : rep.headers) {
+    std::cout << it.name << "|" << it.value << std::endl;
+  }
+  std::cout << rep.content << std::endl;
 }
 
 bool request_handler::url_decode(const std::string& in, std::string& out)

@@ -27,3 +27,5 @@ vgcore.*
 
 # Build folder
 build/
+
+server

@@ -18,6 +18,7 @@
 #include "request.hpp"
 #include "request_handler.hpp"
 #include "request_parser.hpp"
+#include "openZia/Pipeline.hpp"
 
 namespace http {
 namespace server {
@@ -34,7 +35,8 @@ public:
 
   /// Construct a connection with the given socket.
   explicit connection(boost::asio::ip::tcp::socket socket,
-      connection_manager& manager, request_handler& handler);
+      connection_manager& manager, request_handler& handler,
+      oZ::Pipeline &);
 
   /// Start the first asynchronous operation for the connection.
   void start();
@@ -47,7 +49,9 @@ private:
   void do_read();
 
   /// Perform an asynchronous write operation.
-  void do_write();
+  void do_write(oZ::Context &&);
+
+  void runPipeline();
 
   /// Socket for the connection.
   boost::asio::ip::tcp::socket socket_;
@@ -69,6 +73,8 @@ private:
 
   /// The reply to be sent back to the client.
   reply reply_;
+
+  oZ::Pipeline &_pipeline;
 };
 
 typedef std::shared_ptr<connection> connection_ptr;

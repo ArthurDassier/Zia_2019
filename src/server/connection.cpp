@@ -13,15 +13,18 @@
 #include <vector>
 #include "connection_manager.hpp"
 #include "request_handler.hpp"
+#include <iostream>
 
 namespace http {
 namespace server {
 
 connection::connection(boost::asio::ip::tcp::socket socket,
-    connection_manager& manager, request_handler& handler)
-  : socket_(std::move(socket)),
+    connection_manager& manager, request_handler& handler,
+    oZ::Pipeline &pipeline):
+    socket_(std::move(socket)),
     connection_manager_(manager),
-    request_handler_(handler)
+    request_handler_(handler),
+    _pipeline(pipeline)
 {
 }
 
@@ -43,24 +46,7 @@ void connection::do_read()
       {
         if (!ec)
         {
-          request_parser::result_type result;
-          std::tie(result, std::ignore) = request_parser_.parse(
-              request_, buffer_.data(), buffer_.data() + bytes_transferred);
-
-          if (result == request_parser::good)
-          {
-            request_handler_.handle_request(request_, reply_);
-            do_write();
-          }
-          else if (result == request_parser::bad)
-          {
-            reply_ = reply::stock_reply(reply::bad_request);
-            do_write();
-          }
-          else
-          {
-            do_read();
-          }
+          runPipeline();
         }
         else if (ec != boost::asio::error::operation_aborted)
         {
@@ -69,10 +55,41 @@ void connection::do_read()
       });
 }
 
-void connection::do_write()
+void connection::runPipeline(void)
+{
+    std::string str(buffer_.data());
+
+    oZ::ByteArray arr(str.size());
+
+    std::transform(str.begin(), str.end(), arr.begin(),
+    [](char c)
+    {
+      return static_cast<char>(c);
+    });
+
+    oZ::Packet packet(std::move(arr), oZ::Endpoint(socket_.remote_endpoint().address().to_string(), socket_.remote_endpoint().port()));
+    oZ::Context context(std::move(packet));
+    _pipeline.runPipeline(context);
+    do_write(std::move(context));
+}
+
+void connection::do_write(oZ::Context &&context)
 {
   auto self(shared_from_this());
-  boost::asio::async_write(socket_, reply_.to_buffers(),
+
+  std::string response(
+        "HTTP/" +
+        std::to_string(context.getResponse().getVersion().majorVersion) +
+        "." +
+        std::to_string(context.getResponse().getVersion().minorVersion) +
+        " " +
+        std::to_string(static_cast<int>(context.getResponse().getCode())) +
+        " " +
+        context.getResponse().getReason() +
+        "\n"
+    );
+
+  boost::asio::async_write(socket_, boost::asio::buffer(response),
       [this, self](boost::system::error_code ec, std::size_t)
       {
         if (!ec)
