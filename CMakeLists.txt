@@ -3,6 +3,10 @@ project(zia)                            # Create project "zia"
 set(CMAKE_CXX_STANDARD 17)              # Enable c++17 standard
 add_definitions("-fPIC")
 
+set(LIB_PATH "./lib")
+
+include(${LIB_PATH}/openZia/openZia/openZia.cmake)
+
 #------------------------------------------------------------------------------#
 #                                 CONAN BOOST                                  #
 #------------------------------------------------------------------------------#
@@ -34,7 +38,7 @@ add_executable(zia ${ZiaSources})
 
 target_link_libraries(zia
     config
-    # server
+    parser
     utils
 )
 

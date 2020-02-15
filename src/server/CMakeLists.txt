@@ -1,14 +1,6 @@
 project(server)  # Create project "server"
 
-set(LIB_NAME ${PROJECT_NAME})
-
-set(LIB_PATH "../../lib")
-
 message("Generating project ${PROJECT_NAME}...")
-
-add_subdirectory(modules)
-
-include(${LIB_PATH}/openZia/openZia/openZia.cmake)
 
 get_filename_component(ServerSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 
@@ -48,22 +40,22 @@ set(ServerSources
 message("ZiaIncludes: ${openZiaIncludes}")
 
 # Create server library
-add_executable(${LIB_NAME} ${ServerSources})
-target_link_libraries(${LIB_NAME}
+add_executable(${PROJECT_NAME} ${ServerSources})
+target_link_libraries(${PROJECT_NAME}
     ${CMAKE_DL_LIBS}
     ${openZiaLibs}
     pthread
     stdc++fs
     ${USED_LIBS}
 )
-target_include_directories(${LIB_NAME} PRIVATE
+target_include_directories(${PROJECT_NAME} PRIVATE
     ${Boost_INCLUDE_DIR}
     ${openZiaIncludes}
     ${ServerIncludes}
 )
-target_compile_options(${LIB_NAME} PRIVATE -fPIC)
+target_compile_options(${PROJECT_NAME} PRIVATE -fPIC)
 
-message("Generation of ${LIB_NAME} done.")
+message("Generation of ${PROJECT_NAME} done.")
 
 set_target_properties(server
     PROPERTIES LINKER_LANGUAGE CXX
