@@ -6,6 +6,8 @@ set(LIB_PATH "../../lib")
 
 message("Generating project ${PROJECT_NAME}...")
 
+add_subdirectory(modules)
+
 include(${LIB_PATH}/openZia/openZia/openZia.cmake)
 
 get_filename_component(ServerSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
@@ -41,7 +43,6 @@ set(ServerSources
     ${ServerSourcesDir}/request_handler.cpp
     ${ServerSourcesDir}/request_parser.cpp
     ${ServerSourcesDir}/server.cpp
-    ${ServerSourcesDir}/ParserModule.cpp
 )
 
 message("ZiaIncludes: ${openZiaIncludes}")
