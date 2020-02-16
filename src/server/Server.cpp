@@ -1,23 +1,79 @@
-#include <httplib.h>
+/*
+** EPITECH PROJECT, 2020
+** CPP_zia_2019
+** File description:
+** Server
+*/
 
-int main(void)
+#include <iostream>
+#include "Server.hpp"
+#include "Log.hpp"
+#include <boost/asio.hpp>
+#include <vector>
+#include <iterator>
+
+Zia::Server::Server(const std::string &ip, int port,
+std::string &&modules, std::string &&configs)
+:
+    _pipeline(std::move(modules), std::move(configs)),
+    _socket(_io_service),
+    _acceptor(_io_service),
+    _signals(_io_service),
+    _ip(ip),
+    _port(port)
 {
-    using namespace httplib;
+    _signals.add(SIGINT);
+    _signals.add(SIGTERM);
+#if defined(SIGQUIT)
+    _signals.add(SIGQUIT);
+#endif // defined(SIGQUIT)
 
-    Server svr;
+    ManagingSignals();
 
-    svr.Get("/hi", [](const Request &req, Response &res) {
-        res.set_content("Hello World!", "text/plain");
+    boost::asio::ip::tcp::resolver resolver(_io_service);
+    boost::asio::ip::tcp::endpoint endpoint = *resolver.resolve({ip, std::to_string(port)});
+    _acceptor.open(endpoint.protocol());
+    _acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+    _acceptor.bind(endpoint);
+    _acceptor.listen();
+
+    _pipeline.loadModules();
+
+    WaitingClient();
+
+    Log::info("Server Started\n> IP\t" + _ip + "\n> Port\t" + std::to_string(_port));
+}
+
+void Zia::Server::run()
+{
+    _io_service.run();
+}
+
+void Zia::Server::close()
+{
+    _connectionManager.eraseAll();
+    Log::info("Server closed");
+}
+
+void Zia::Server::WaitingClient()
+{
+    _acceptor.async_accept(_socket, [this](boost::system::error_code error)
+    {
+        if (!_acceptor.is_open())
+            return;
+        if (!error) {
+            _connectionManager.addClient(std::make_shared<Connection>(
+                std::move(_socket), _connectionManager, _pipeline
+            ));
+        }
+        WaitingClient();
     });
+}
 
-    svr.Get(R"(/numbers/(\d+))", [&](const Request &req, Response &res) {
-        auto numbers = req.matches[1];
-        res.set_content(numbers, "text/plain");
+void Zia::Server::ManagingSignals()
+{
+    _signals.async_wait([this](boost::system::error_code, int)
+    {
+        _acceptor.close();
     });
-
-    svr.Get("/stop", [&](const Request &req, Response &res) {
-        svr.stop();
-    });
-
-    svr.listen("localhost", 1234);
 }
