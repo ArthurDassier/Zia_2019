@@ -27,14 +27,19 @@ set(USED_LIBS
 set(ServerIncludes ${ServerSourcesDir})
 
 set(ServerSources
-    ${ServerSourcesDir}/connection_manager.cpp
-    ${ServerSourcesDir}/connection.cpp
-    ${ServerSourcesDir}/main.cpp
+    ${ServerSourcesDir}/Connection.cpp
+    ${ServerSourcesDir}/ConnectionManager.cpp
+    ${ServerSourcesDir}/Log.cpp
+    ${ServerSourcesDir}/Main.cpp
+    ${ServerSourcesDir}/Server.cpp
+    # ${ServerSourcesDir}/connection_manager.cpp
+    # ${ServerSourcesDir}/connection.cpp
+    # ${ServerSourcesDir}/main.cpp
     # ${ServerSourcesDir}/mime_types.cpp
     # ${ServerSourcesDir}/reply.cpp
     # ${ServerSourcesDir}/request_handler.cpp
     # ${ServerSourcesDir}/request_parser.cpp
-    ${ServerSourcesDir}/server.cpp
+    # ${ServerSourcesDir}/server.cpp
 )
 
 message("ZiaIncludes: ${openZiaIncludes}")

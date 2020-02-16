@@ -1,49 +1,87 @@
-cmake_minimum_required(VERSION 3.14.4)  # CMake version check
-project(zia)                            # Create project "zia"
-set(CMAKE_CXX_STANDARD 17)              # Enable c++17 standard
-add_definitions("-fPIC")
-add_definitions("-g3")
+# cmake_minimum_required(VERSION 3.14.4)  # CMake version check
+# set(EXECUTABLE_NAME "zia")
+# project(${EXECUTABLE_NAME})             # Create project "zia"
+# set(CMAKE_CXX_STANDARD 17)              # Enable c++17 standard
+# add_definitions("-fPIC")
+# add_definitions("-g3")
 
-set(LIB_PATH "./lib")
+# # set(LIB_PATH "./lib")
 
-include(${LIB_PATH}/openZia/openZia/openZia.cmake)
+# include(lib/openZia_old/openZia/openZia.cmake)
+# include(src/modules/parser/ParserModule.cmake)
 
-#------------------------------------------------------------------------------#
-#                                 CONAN BOOST                                  #
-#------------------------------------------------------------------------------#
+# #------------------------------------------------------------------------------#
+# #                                 CONAN BOOST                                  #
+# #------------------------------------------------------------------------------#
 
-# include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-# conan_basic_setup()
+# # include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+# # conan_basic_setup()
+
+# #-------------------------------------------------------------------------------
+
+# # execute_process(
+# #     COMMAND source profile.sh
+# # )
+
+# # set(ENV{CONFIG_PATH} "./config")     # Add config path as environment variable
+
+# # message("Environment variable CONFIG_PATH: $ENV{CONFIG_PATH}")
+
+# add_subdirectory(src)
+
+# get_filename_component(ZiaSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+
+# set(MainSourceDir ${ZiaSourcesDir}/src)
+
+# set(ZiaSources
+#     ${MainSourceDir}/main.cpp
+# )
+
+# add_executable(${EXECUTABLE_NAME} ${ZiaSources})
+
+# target_link_libraries(${EXECUTABLE_NAME}
+#     config
+#     # parser
+#     utils
+# )
+
+# set_target_properties(${EXECUTABLE_NAME}
+#     PROPERTIES LINKER_LANGUAGE CXX
+#     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
+# )
 
 #-------------------------------------------------------------------------------
 
-# execute_process(
-#     COMMAND source profile.sh
-# )
+cmake_minimum_required(VERSION 3.11)
+set(CMAKE_CXX_STANDARD 14)
 
-# set(ENV{CONFIG_PATH} "./config")     # Add config path as environment variable
+set(EXECUTABLE_NAME "zia")
 
-# message("Environment variable CONFIG_PATH: $ENV{CONFIG_PATH}")
+project(${EXECUTABLE_NAME})
 
-add_subdirectory(src)
+add_definitions(-std=c++11 -fPIC -g3)
 
-get_filename_component(ZiaSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+SET(CMAKE_CXX_FLAGS  "-lpthread -lboost_system")
 
-set(MainSourceDir ${ZiaSourcesDir}/src)
+set(SOURCES "./Sources")
 
-set(ZiaSources
-    ${MainSourceDir}/main.cpp
+include_directories("${SOURCES}")
+include(lib/openZia_old/openZia/openZia.cmake)
+include(Sources/Modules/ParserHTTP/ParserHTTP.cmake)
+
+set(SRC
+    ${SOURCES}/Main.cpp
+    ${SOURCES}/Server.cpp
+    ${SOURCES}/Log.cpp
+    ${SOURCES}/Connection.cpp
+    ${SOURCES}/ConnectionManager.cpp
 )
 
-add_executable(zia ${ZiaSources})
+add_executable(${EXECUTABLE_NAME} ${SRC})
+target_link_libraries(${EXECUTABLE_NAME} ${openZiaLibs})
+target_include_directories(${EXECUTABLE_NAME} PRIVATE ${openZiaIncludes})
 
-target_link_libraries(zia
-    config
-    parser
-    utils
-)
-
-set_target_properties(zia
+set_target_properties(${EXECUTABLE_NAME}
     PROPERTIES LINKER_LANGUAGE CXX
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
