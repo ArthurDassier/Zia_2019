@@ -9,7 +9,7 @@
 
 #include <thread>
 #include <boost/asio.hpp>
-#include "openZia/Pipeline.hpp"
+#include <openZia/Pipeline.hpp>
 #include "ConnectionManager.hpp"
 
 namespace Zia
@@ -30,8 +30,8 @@ public:
     using socket = boost::asio::ip::tcp::socket;
 
     Server(const std::string &ip = DefaultIP, int port = DefaultPort,
-        std::string &&modules = "Modules",
-        std::string &&configs = "Modules/Configs");
+        std::string &&modules = "lib/modules",
+        std::string &&configs = "lib/modules/Configs");
 
     /**
      * @brief Run Server

@@ -10,20 +10,21 @@
 #include <iostream>
 #include "ParserModule.hpp"
 
-extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<ParserModule>(); }
+extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<Parser>(); }
 
-void ParserModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
+void Parser::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
-    std::cout << "TEST 1" << std::endl;
+    std::cout << "=> onRegisterCallbacks" << std::endl;
     pipeline.registerCallback(
         oZ::State::Parse,
         oZ::Priority::ASAP,
-        this, &ParserModule::Launch
+        this, &Parser::Launch
     );
 }
 
-bool ParserModule::Launch(oZ::Context &context)
+bool Parser::Launch(oZ::Context &context)
 {
+    std::cout << "=> Launch" << std::endl;
     std::string data(
         context.getPacket().getByteArray().begin(),
         context.getPacket().getByteArray().end());
@@ -31,11 +32,11 @@ bool ParserModule::Launch(oZ::Context &context)
     /* Method */
     std::string temp(data);
     std::string method(temp.substr(0, temp.find(" ")));
-    std::cout << "LA BITE A GRIVEAUX" << std::endl;
-    if (std::find(  ParserModuleHTTP::methods.begin(),
-                    ParserModuleHTTP::methods.end(),
-                    method) != ParserModuleHTTP::methods.end())
-        context.getRequest().setMethod(ParserModuleHTTP::methods_enums[method]);
+
+    if (std::find(  ParserModule::methods.begin(),
+                    ParserModule::methods.end(),
+                    method) != ParserModule::methods.end())
+        context.getRequest().setMethod(ParserModule::methods_enums[method]);
     else
         return false;
 
