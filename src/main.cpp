@@ -5,17 +5,25 @@
 ** main
 */
 
-#include "config/ConfigManager.hpp"
+#include <iostream>
+#include <exception>
+#include <server/Server.hpp>
 
-int main(void)
+int main(int argc, char *argv[])
 {
-    cfg::ConfigManager cm("./config");
+    std::string ip;
+    int port;
 
-    std::string cmd;
-    cm.manage();
+    try {
+        ip = (argc >= 2) ? argv[1] : Zia::DefaultIP;
+        port = (argc >= 3) ? std::stoi(argv[2]) : Zia::DefaultPort;
 
-    while (1) {
-        std::getline(std::cin, cmd);
-        std::cout << "===== " << cm.getConfig("config")->getName() << std::endl;
+        Zia::Server server(ip, port);
+        server.run();
+        server.close();
+    } catch (const std::exception &e) {
+        std::cerr << "An error has occured: " << e.what() << std::endl;
+        return 84;
     }
+    return 0;
 }

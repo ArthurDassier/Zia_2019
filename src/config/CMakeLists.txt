@@ -19,7 +19,6 @@ project(config) # Create project "config"
 
 message("Generating project ${PROJECT_NAME}...")
 
-# Retreive where is located 'config.cmake'
 get_filename_component(ConfigSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 
 set(ConfigIncludes ${ConfigSourcesDir})

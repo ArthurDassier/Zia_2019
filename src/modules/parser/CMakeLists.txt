@@ -1,32 +1,20 @@
-project(parser)
+project(parserModule)
 
 message("Generating project ${PROJECT_NAME}...")
 
-# Retreive where is located 'config.cmake'
-get_filename_component(ParserSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
+get_filename_component(ParserModuleSourcesDir ${CMAKE_CURRENT_LIST_FILE}  PATH)
 
-set(ParserIncludes ${ParserSourcesDir})
-
-set(ParserSources
-    ${ParserSourcesDir}/ParserModule.cpp
+set(ParserModuleSources
+	${ParserModuleSourcesDir}/ParserModule.cpp
+	${ParserModuleSourcesDir}/ParserModule.hpp
 )
 
-# Create parser library
-add_library(${PROJECT_NAME} SHARED ${ParserSources})
+# Create parserModule library
+add_library(${PROJECT_NAME} SHARED ${ParserModuleSources})
 target_link_libraries(${PROJECT_NAME} ${openZiaLibs})
-target_include_directories(${PROJECT_NAME} PRIVATE
-    ${ParserIncludes}
-    ${openZiaIncludes}
-)
+target_include_directories(${PROJECT_NAME} PRIVATE ${openZiaIncludes})
 
+# Copy the library into the lib modules directory
 set_target_properties(${PROJECT_NAME} PROPERTIES
-	LIBRARY_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR}/server/modules
-)
-
-# set(LIB_PATH "${PROJECT_SOURCE_DIR")
-
-install(TARGETS ${PROJECT_NAME} EXPORT ParserModule
-    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR}
+	LIBRARY_OUTPUT_DIRECTORY  ${CMAKE_SOURCE_DIR}/lib/modules
 )

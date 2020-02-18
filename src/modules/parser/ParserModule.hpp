@@ -11,7 +11,7 @@
 #include <openZia/Pipeline.hpp>
 #include <map>
 
-namespace ParserModuleHTTP
+namespace ParserModule
 {
     const std::vector<std::string> methods = {
         "GET",
@@ -36,9 +36,9 @@ namespace ParserModuleHTTP
     };
 }
 
-class ParserModule : public oZ::IModule {
+class Parser : public oZ::IModule {
 public:
-    ParserModule() = default;
+    Parser() = default;
 
     virtual const char *getName(void) const { return "TestModule"; }
 
