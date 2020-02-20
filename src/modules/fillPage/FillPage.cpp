@@ -31,10 +31,15 @@ bool Fill::takeContent(oZ::Context &context)
     std::string path = context.getRequest().getURI();
     std::string targetedFile;
 
-    if (path == "/" || path == "/test") {
+    // if (path == "/" || path == "/test") {
+    //     context.getResponse().getHeader().get("Content-Type") = "text/html";
+    //     targetedFile = "index.html";
+    // }
+        if (FillModule::routes_enums[path] != "") {
         context.getResponse().getHeader().get("Content-Type") = "text/html";
-        targetedFile = "index.html";
+        targetedFile = HTML_FILES_POSI + FillModule::routes_enums[path];
     }
+
     std::ifstream is(targetedFile.c_str(), std::ios::in | std::ios::binary);
     if (!is) {
         context.getResponse().getReason() = "Not found";

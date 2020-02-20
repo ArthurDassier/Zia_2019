@@ -11,6 +11,16 @@
 #include <openZia/Pipeline.hpp>
 #include <map>
 
+#define HTML_FILES_POSI "src/HTML/"
+
+namespace FillModule
+{
+    std::map<std::string, std::string> routes_enums = {
+        {"/",      "index.html"},
+        {"/test",  "index.html"}
+    };
+}
+
 class Fill : public oZ::IModule {
 public:
     Fill() = default;
