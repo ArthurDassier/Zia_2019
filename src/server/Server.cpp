@@ -18,6 +18,7 @@ std::string &&modules, std::string &&configs)
     _pipeline(std::move(modules), std::move(configs)),
     _socket(_io_service),
     _acceptor(_io_service),
+    _acceptor2(_io_service),
     _signals(_io_service),
     _ip(ip),
     _port(port)
@@ -36,6 +37,12 @@ std::string &&modules, std::string &&configs)
     _acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
     _acceptor.bind(endpoint);
     _acceptor.listen();
+
+    boost::asio::ip::tcp::endpoint endpoint2 = *resolver.resolve({ip, "443"});
+    _acceptor2.open(endpoint2.protocol());
+    _acceptor2.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+    _acceptor2.bind(endpoint2);
+    _acceptor2.listen();
 
     _pipeline.loadModules();
 
@@ -58,6 +65,17 @@ void Zia::Server::close()
 void Zia::Server::WaitingClient()
 {
     _acceptor.async_accept(_socket, [this](boost::system::error_code error)
+    {
+        if (!_acceptor.is_open())
+            return;
+        if (!error) {
+            _connectionManager.addClient(std::make_shared<Connection>(
+                std::move(_socket), _connectionManager, _pipeline
+            ));
+        }
+        WaitingClient();
+    });
+    _acceptor2.async_accept(_socket, [this](boost::system::error_code error)
     {
         if (!_acceptor.is_open())
             return;

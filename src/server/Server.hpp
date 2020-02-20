@@ -69,6 +69,7 @@ private:
 
     io_service _io_service;
     acceptor _acceptor;
+    acceptor _acceptor2;
     socket _socket;
     boost::asio::signal_set _signals;
 
