@@ -29,9 +29,10 @@ set(ServerSources
 
 # Create parserModule library
 add_library(${PROJECT_NAME} ${ServerSources})
-target_link_libraries(${PROJECT_NAME} ${openZiaLibs})
+target_link_libraries(${PROJECT_NAME} ${openZiaLibs} config)
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${Boost_INCLUDE_DIR}
     ${openZiaIncludes}
     ${ServerIncludes}
+    ../config/
 )

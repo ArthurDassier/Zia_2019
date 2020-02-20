@@ -13,17 +13,20 @@
 #include <string>
 
 #include "FileWatcher.hpp"
-#include "SharedMemory.hpp"
-
 #include <nlohmann/json.hpp>
 
-namespace cfg {
+namespace cfg
+{
+	class Config;
 
+	using ConfigPtr = std::shared_ptr<Config>;
+	
 	using json = nlohmann::json;
 
-	class Config {
+	class Config
+	{
 		public:
-			Config(const std::filesystem::directory_entry &file);
+			Config(const std::filesystem::directory_entry &, const std::string &);
 			~Config() = default;
 
 			// Virtual function to inherit
@@ -32,7 +35,7 @@ namespace cfg {
 			void update();
 
 			void setName(const std::string &);
-			std::string getName() const noexcept;
+			const std::string getName() const noexcept;
 
 			void setPath(const std::filesystem::path &);
 			std::filesystem::path getPath() const noexcept;

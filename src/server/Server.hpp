@@ -10,6 +10,7 @@
 #include <thread>
 #include <boost/asio.hpp>
 #include <openZia/Pipeline.hpp>
+#include <config/ConfigManager.hpp>
 #include "ConnectionManager.hpp"
 
 namespace Zia
@@ -31,7 +32,7 @@ public:
 
     Server(const std::string &ip = DefaultIP, int port = DefaultPort,
         std::string &&modules = "lib/modules",
-        std::string &&configs = "lib/modules/Configs");
+        std::string &&configs = "config/modules");
 
     /**
      * @brief Run Server
@@ -65,6 +66,7 @@ private:
 
     std::vector<std::thread> _threads;
 
+    cfg::ConfigManager _configManager;
     ConnectionManager _connectionManager;
 
     io_service _io_service;

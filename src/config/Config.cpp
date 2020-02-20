@@ -7,7 +7,9 @@
 
 #include "Config.hpp"
 
-cfg::Config::Config(const std::filesystem::directory_entry &file):
+cfg::Config::Config(const std::filesystem::directory_entry &file,
+    const std::string &name):
+    _name(name),
     _path(file.path()),
     _timestamp(file.last_write_time()),
     _fw(file.path(), std::chrono::milliseconds(5000))
@@ -26,6 +28,7 @@ void cfg::Config::loadConfig(const std::filesystem::path &config_path)
     file >> j;
 
     std::string s = j.dump();
+    std::cout << _name << ":" << std::endl;
     std::cout << s << std::endl;
     file.close();
 
@@ -56,7 +59,7 @@ void cfg::Config::setName(const std::string &name)
     _name = name;
 }
 
-std::string cfg::Config::getName() const noexcept
+const std::string cfg::Config::getName() const noexcept
 {
     return _name;
 }

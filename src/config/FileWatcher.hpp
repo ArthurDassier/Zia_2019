@@ -17,7 +17,7 @@
 #include <string>
 #include <thread>
 
-#include "SharedMemory.hpp"
+#include <utils/SharedMemory.hpp>
 
 namespace cfg {
     enum class FileStatus

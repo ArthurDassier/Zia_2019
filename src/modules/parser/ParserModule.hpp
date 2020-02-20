@@ -40,7 +40,7 @@ class Parser : public oZ::IModule {
 public:
     Parser() = default;
 
-    virtual const char *getName(void) const { return "TestModule"; }
+    virtual const char *getName(void) const { return "ParserModule"; }
 
     virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 

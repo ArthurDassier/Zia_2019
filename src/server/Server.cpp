@@ -16,6 +16,7 @@ Zia::Server::Server(const std::string &ip, int port,
 std::string &&modules, std::string &&configs)
 :
     _pipeline(std::move(modules), std::move(configs)),
+    _configManager("./config"),
     _socket(_io_service),
     _acceptor(_io_service),
     _signals(_io_service),
@@ -38,6 +39,13 @@ std::string &&modules, std::string &&configs)
     _acceptor.listen();
 
     _pipeline.loadModules();
+
+    _configManager.manage();
+    // _pipeline.addModule()
+
+    std::cout << "Number of modules loaded: " << _pipeline.getModules().size() << std::endl;
+    for (auto &it : _pipeline.getModules())
+        std::cout << "Name: " << it->getName() << std::endl;
 
     WaitingClient();
 
