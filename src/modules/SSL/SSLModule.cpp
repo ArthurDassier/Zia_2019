@@ -33,10 +33,10 @@ void SSLModule::InitSSLModule(int client)
 
 SSLModule::~SSLModule()
 {
-    SSL_shutdown(_ssl);
-    SSL_free(_ssl);
-    SSL_CTX_free(_ctx);
-    EVP_cleanup();
+    // SSL_shutdown(_ssl);
+    // SSL_free(_ssl);
+    // SSL_CTX_free(_ctx);
+    // EVP_cleanup();
 }
 
 
@@ -44,29 +44,30 @@ bool SSLModule::WriteSSL(oZ::Context &context)
 {
     std::cout << "Je suis le module SSL" << std::endl;
 
-    int client = context.getPacket().getFileDescriptor();
-    InitSSLModule(client);
-    std::string response(
-        "HTTPS/"
-        + std::to_string(context.getResponse().getVersion().majorVersion)
-        + "."
-        + std::to_string(context.getResponse().getVersion().minorVersion) 
-        + " "
-        + std::to_string(static_cast<int>(context.getResponse().getCode())) 
-        + " " 
-        + context.getResponse().getReason() + "\n"
-        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
-        + "Content-Type: text/html" //+ context.getResponse().getHeader().get("Content-Type") + "\n\n"
-        + context.getResponse().getBody()
-    );
+    // int client = context.getPacket().getFileDescriptor();
+    // InitSSLModule(client);
+    // std::string response(
+    //     "HTTPS/"
+    //     + std::to_string(context.getResponse().getVersion().majorVersion)
+    //     + "."
+    //     + std::to_string(context.getResponse().getVersion().minorVersion) 
+    //     + " "
+    //     + std::to_string(static_cast<int>(context.getResponse().getCode())) 
+    //     + " " 
+    //     + context.getResponse().getReason() + "\n"
+    //     + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
+    //     + "Content-Type: text/html" //+ context.getResponse().getHeader().get("Content-Type") + "\n\n"
+    //     + context.getResponse().getBody()
+    // );
 
-    if (SSL_accept(_ssl) <= 0) {
-        ERR_print_errors_fp(stderr);
-        return false;
-    } else {
-        SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
-        return true;
-    }
+    // if (SSL_accept(_ssl) <= 0) {
+    //     ERR_print_errors_fp(stderr);
+    //     return false;
+    // } else {
+    //     SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
+    //     return true;
+    // }
+    return true;
 }
 
 void SSLModule::configure_context(SSL_CTX *ctx)
