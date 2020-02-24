@@ -46,7 +46,7 @@ bool SSLModule::WriteSSL(oZ::Context &context)
     std::cout << "Je suis le module SSL" << std::endl;
 
     std::string response(
-        "HTTP/"
+        "HTTPS/"
         + std::to_string(context.getResponse().getVersion().majorVersion)
         + "."
         + std::to_string(context.getResponse().getVersion().minorVersion) 
