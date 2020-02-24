@@ -143,7 +143,6 @@ bool SSLModule::WriteSSL(oZ::Context &context)
     struct sockaddr_in addr;
     uint len = sizeof(addr);
     SSL *ssl;
-    const char reply[] = "test\n";
 
     int client = accept(sock, (struct sockaddr*)&addr, &len);
     if (client < 0) {
