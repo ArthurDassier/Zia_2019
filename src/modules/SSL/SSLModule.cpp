@@ -7,7 +7,7 @@
 
 #include "SSLModule.hpp"
 
-extern "C" oZ::ModulePtr CreateModule(int client) { return std::make_shared<SSLModule>(client); }
+extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<SSLModule>(client); }
 
 void SSLModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
