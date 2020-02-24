@@ -23,9 +23,11 @@
 class SSLModule : public oZ::IModule {
     public:
 
-        SSLModule(int);
+        SSLModule() = default;
         ~SSLModule();
-        
+
+        void InitSSLModule(int client);
+
         virtual const char *getName(void) const { return "TestModule"; }
 
         virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);

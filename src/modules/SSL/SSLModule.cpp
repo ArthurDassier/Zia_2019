@@ -19,9 +19,9 @@ void SSLModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
     );
 }
 
-SSLModule::SSLModule(int client):
-    _client(client)
+void SSLModule::InitSSLModule(int client)
 {
+    _client = client;
     SSL_load_error_strings();	
     OpenSSL_add_ssl_algorithms();
     _ctx = this->create_context();
