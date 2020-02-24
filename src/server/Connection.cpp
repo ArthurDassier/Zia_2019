@@ -29,16 +29,17 @@ void Zia::Connection::start(void)
 
 void Zia::Connection::read(void)
 {
-    auto self(shared_from_this());
-    _socket.async_read_some(boost::asio::buffer(_buffer),
-    [this, self](boost::system::error_code error, std::size_t bytes)
-    {
-        if (error && error != boost::asio::error::operation_aborted) {
-            _connectionManager.eraseClient(shared_from_this());
-            return;
-        }
-        runPipeline();
-    });
+    // auto self(shared_from_this());
+    // _socket.async_read_some(boost::asio::buffer(_buffer),
+    // [this, self](boost::system::error_code error, std::size_t bytes)
+    // {
+    //     if (error && error != boost::asio::error::operation_aborted) {
+    //         _connectionManager.eraseClient(shared_from_this());
+    //         return;
+    //     }
+    //     runPipeline();
+    // });
+    runPipeline();
 }
 
 void Zia::Connection::runPipeline(void)
@@ -57,10 +58,8 @@ void Zia::Connection::runPipeline(void)
     oZ::Context context(std::move(packet));
     SSLModule SSL;
 
-    int fd = _socket.native_handle();
-    SSL.InitSSLModule(fd);
     _pipeline.runPipeline(context);
-    send(std::move(context));
+    //send(std::move(context));
 }
 
 void Zia::Connection::send(oZ::Context &&context)
