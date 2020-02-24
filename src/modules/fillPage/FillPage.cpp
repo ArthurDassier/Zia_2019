@@ -15,7 +15,7 @@ extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<Fill>(); }
 
 void Fill::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
-    std::cout << "=> onRegisterCallbacks" << std::endl;
+    std::cout << "=> FillPage" << std::endl;
     pipeline.registerCallback(
         oZ::State::Interpret,
         oZ::Priority::ASAP,

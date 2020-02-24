@@ -11,8 +11,9 @@ extern "C" oZ::ModulePtr CreateModule(int client) { return std::make_shared<SSLM
 
 void SSLModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
+    std::cout << "=> SSLcallback" << std::endl;
     pipeline.registerCallback(
-        oZ::State::Parse,
+        oZ::State::AfterInterpret,
         oZ::Priority::ASAP,
         this, &SSLModule::WriteSSL
     );
@@ -41,6 +42,8 @@ SSLModule::~SSLModule()
 
 bool SSLModule::WriteSSL(oZ::Context &context)
 {
+    std::cout << "Je suis le module SSL" << std::endl;
+
     std::string response(
         "HTTP/"
         + std::to_string(context.getResponse().getVersion().majorVersion)
