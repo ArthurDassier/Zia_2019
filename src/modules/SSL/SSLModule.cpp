@@ -25,7 +25,6 @@ void SSLModule::InitSSLModule(int client)
     SSL_load_error_strings();	
     OpenSSL_add_ssl_algorithms();
     _ctx = this->create_context();
-
     this->configure_context(_ctx);
     _ssl = SSL_new(_ctx);
 
@@ -45,6 +44,8 @@ bool SSLModule::WriteSSL(oZ::Context &context)
 {
     std::cout << "Je suis le module SSL" << std::endl;
 
+    int client = context.getPacket().getFileDescriptor();
+    InitSSLModule(client);
     std::string response(
         "HTTPS/"
         + std::to_string(context.getResponse().getVersion().majorVersion)
@@ -55,7 +56,7 @@ bool SSLModule::WriteSSL(oZ::Context &context)
         + " " 
         + context.getResponse().getReason() + "\n"
         + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
-        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\n\n"
+        + "Content-Type: text/html" //+ context.getResponse().getHeader().get("Content-Type") + "\n\n"
         + context.getResponse().getBody()
     );
 
