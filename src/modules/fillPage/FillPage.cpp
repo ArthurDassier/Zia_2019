@@ -43,7 +43,7 @@ bool Fill::takeContent(oZ::Context &context)
         return true;
     }
     context.getResponse().getReason() = "Ok";
-    context.getResponse().setCode(oZ::HTTP::Code::Found);
+    context.getResponse().setCode(oZ::HTTP::Code::OK);
 
     char buf[512];
     std::string content;
