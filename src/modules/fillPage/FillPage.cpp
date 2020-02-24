@@ -11,7 +11,7 @@
 #include <iostream>
 #include "FillPage.hpp"
 
-extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<Fill>(); }
+OPEN_ZIA_MAKE_ENTRY_POINT(Fill)
 
 void Fill::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
@@ -32,7 +32,7 @@ bool Fill::takeContent(oZ::Context &context)
     std::string targetedFile;
 
     if (FillModule::routes_enums[path] != "") {
-        context.getResponse().getHeader().get("Content-Type") = "text/html";
+        context.getResponse().getHeader().set("Content-Type", "text/html");
         targetedFile = HTML_FILES_POSI + FillModule::routes_enums[path];
     }
 
@@ -50,7 +50,7 @@ bool Fill::takeContent(oZ::Context &context)
     while (is.read(buf, sizeof(buf)).gcount() > 0)
         content.append(buf, is.gcount());
     context.getResponse().getBody() = content;
-    context.getResponse().getHeader().get("Content-Length") = std::to_string(content.size());
+    context.getResponse().getHeader().set("Content-Length", std::to_string(content.size()));
     return true;
 }
 

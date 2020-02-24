@@ -10,7 +10,7 @@
 #include <iostream>
 #include "ParserModule.hpp"
 
-extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<Parser>(); }
+OPEN_ZIA_MAKE_ENTRY_POINT(Parser)
 
 void Parser::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
@@ -57,7 +57,7 @@ bool Parser::Launch(oZ::Context &context)
     v.majorVersion = std::stoi(version.substr(0, version.find(".")));
     version.substr(1);
     v.minorVersion = std::stoi(version);
-    context.getRequest().setVersion(v);
+    context.getResponse().setVersion(v);
 
     /* Header */
     std::string line;

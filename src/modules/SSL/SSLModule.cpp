@@ -7,7 +7,7 @@
 
 #include "SSLModule.hpp"
 
-extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<SSLModule>(); }
+OPEN_ZIA_MAKE_ENTRY_POINT(SSLModule)
 
 void SSLModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
