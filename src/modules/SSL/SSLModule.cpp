@@ -155,6 +155,8 @@ bool SSLModule::WriteSSL(oZ::Context &context)
         return false;
     } else {
         SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
+        close(client);
+        close(sock);
         return true;
     }
     return true;
