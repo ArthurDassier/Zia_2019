@@ -17,6 +17,7 @@ namespace Zia
     class Server;
 
     const int DefaultPort = 80;
+    const int DefaultPortHTTPS = 443;
     const std::string DefaultIP = "127.0.0.1";
 }
 
@@ -69,6 +70,7 @@ private:
 
     io_service _io_service;
     acceptor _acceptor;
+    acceptor _acceptorHTTPS;
     socket _socket;
     boost::asio::signal_set _signals;
 
