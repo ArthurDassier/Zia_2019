@@ -31,7 +31,11 @@ class SSLModule : public oZ::IModule {
         virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 
     private:
+
         bool WriteSSL(oZ::Context &context);
+
+        void configure_context(SSL_CTX *);
+        SSL_CTX *create_context(void);
 
         int _client;
         SSL_CTX *_ctx;
