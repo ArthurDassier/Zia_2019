@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.11)    # CMake version check
 set(CMAKE_CXX_STANDARD 14)              # Enable c++14 standard
-set(CMAKE_CXX_FLAGS "-lboost_system -lpthread")
+set(CMAKE_CXX_FLAGS "-lboost_system -pthread -lpthread")
 set(EXECUTABLE_NAME "zia")
 
 add_definitions(-std=c++11 -fPIC -g3)
@@ -24,7 +24,8 @@ project(${EXECUTABLE_NAME})             # Create project "zia"
 
 #-------------------------------------------------------------------------------
 
-include(lib/openZia_old/openZia/openZia.cmake)
+# include(lib/openZia_old/openZia/openZia.cmake)
+include(lib/openZia/openZia/openZia.cmake)
 
 set(SOURCES "./src")
 
@@ -39,6 +40,7 @@ add_executable(${EXECUTABLE_NAME} ${SRC})
 target_link_libraries(${EXECUTABLE_NAME}
     ${openZiaLibs}
     server
+    boost_system
 )
 target_include_directories(${EXECUTABLE_NAME} PRIVATE ${openZiaIncludes})
 set_target_properties(${EXECUTABLE_NAME} PROPERTIES
