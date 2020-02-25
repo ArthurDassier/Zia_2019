@@ -6,6 +6,7 @@
 */
 
 #include "ConnectionManager.hpp"
+#include <iostream>
 
 void Zia::ConnectionManager::addClient(ConnectionPtr c)
 {
@@ -21,7 +22,9 @@ void Zia::ConnectionManager::eraseClient(ConnectionPtr c)
 
 void Zia::ConnectionManager::eraseAll(void)
 {
-    for (auto c : _connections)
+    for (auto c : _connections) {
         c->stop();
+        std::cout << "coucou" << std::endl;
+    }
     _connections.clear();
 }

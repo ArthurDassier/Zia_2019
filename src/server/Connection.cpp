@@ -88,12 +88,15 @@ void Zia::Connection::send(oZ::Context &&context)
             _connectionManager.eraseClient(shared_from_this());
             return;
         }
-        boost::system::error_code err;
-        _socket.shutdown(socket::shutdown_both, err);
+        read();
+        // boost::system::error_code err;
+        // _socket.shutdown(socket::shutdown_both, err);
     });
 }
 
 void Zia::Connection::stop(void)
 {
+    boost::system::error_code err;
+    _socket.shutdown(socket::shutdown_both, err);
     Log::info("Client disconnected");
 }
