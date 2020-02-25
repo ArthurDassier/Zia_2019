@@ -25,7 +25,7 @@ namespace PHPModule
 {
     std::map<std::string, std::string> routes_enums = {
         {"/",      "index.html"},
-        {"/test",  "index.html"},
+        {"/test",  "index_test.html"},
         {"/php",   "index_php.html"}
     };
 }

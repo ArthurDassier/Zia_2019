@@ -34,6 +34,7 @@ void Zia::Connection::read(void)
     [this, self](boost::system::error_code error, std::size_t bytes)
     {
         if (error && error != boost::asio::error::operation_aborted) {
+            
             _connectionManager.eraseClient(shared_from_this());
             return;
         }
@@ -47,6 +48,7 @@ void Zia::Connection::runPipeline(void)
 
     oZ::ByteArray arr(str.size());
 
+    // std::cout << "le packet recu : " << std::endl << str << std::endl;
     std::transform(str.begin(), str.end(), arr.begin(),
     [](char c)
     {
@@ -76,6 +78,8 @@ void Zia::Connection::send(oZ::Context &&context)
         + context.getResponse().getBody()
     );
 
+    std::cout << "~~packet: " << std::endl << response << std::endl;
+
     auto self(shared_from_this());
     boost::asio::async_write(_socket, boost::asio::buffer(response),
     [this, self](boost::system::error_code error, std::size_t)
@@ -84,12 +88,16 @@ void Zia::Connection::send(oZ::Context &&context)
             _connectionManager.eraseClient(shared_from_this());
             return;
         }
-        boost::system::error_code err;
-        _socket.shutdown(socket::shutdown_both, err);
+        std::cout << "jai fini de send" << std::endl;
+        read();
+        // boost::system::error_code err;
+        // _socket.shutdown(socket::shutdown_both, err);
     });
 }
 
 void Zia::Connection::stop(void)
 {
+    boost::system::error_code err;
+    _socket.shutdown(socket::shutdown_both, err);
     Log::info("Client disconnected");
 }
