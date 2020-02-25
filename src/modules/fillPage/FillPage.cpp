@@ -26,25 +26,51 @@ void Fill::onRegisterCallbacks(oZ::Pipeline &pipeline)
 bool Fill::takeContent(oZ::Context &context)
 {
     if (checkRequestType(context) == false)
-        return true;
+        return false;
 
     std::string path = context.getRequest().getURI();
     std::string targetedFile;
 
+    context.getResponse().getHeader().set("Content-Type", "text/html");
     if (FillModule::routes_enums[path] != "") {
-        context.getResponse().getHeader().set("Content-Type", "text/html");
         targetedFile = HTML_FILES_POSI + FillModule::routes_enums[path];
+    } else {
+        targetedFile = HTML_FILE_ERROR;
+        fillBody(context, targetedFile, oZ::HTTP::Code::NotFound);
+        return false;
     }
+    fillBody(context, targetedFile, oZ::HTTP::Code::OK);
+    return true;
+}
 
-    std::ifstream is(targetedFile.c_str(), std::ios::in | std::ios::binary);
-    if (!is) {
+bool Fill::checkRequestType(const oZ::Context &context)
+{
+    switch (context.getRequest().getMethod()) {
+        case oZ::HTTP::Method::Get:
+        case oZ::HTTP::Method::Post:
+            return true;
+        default:
+            return false;
+    }
+    return false;
+}
+
+bool Fill::fillBody(oZ::Context &context, const std::string &path, oZ::HTTP::Code code)
+{
+    switch (code)
+    {
+    case oZ::HTTP::Code::OK:
+        context.getResponse().getReason() = "Ok";
+        break;
+    case oZ::HTTP::Code::NotFound:
         context.getResponse().getReason() = "Not found";
-        context.getResponse().setCode(oZ::HTTP::Code::NotFound);
-        return true;
+        break;
+    default:
+        context.getResponse().getReason() = "Not found";
+        break;
     }
-    context.getResponse().getReason() = "Ok";
-    context.getResponse().setCode(oZ::HTTP::Code::OK);
-
+    context.getResponse().setCode(code);
+    std::ifstream is(path.c_str(), std::ios::in | std::ios::binary);
     char buf[512];
     std::string content;
     while (is.read(buf, sizeof(buf)).gcount() > 0)
@@ -52,9 +78,4 @@ bool Fill::takeContent(oZ::Context &context)
     context.getResponse().getBody() = content;
     context.getResponse().getHeader().set("Content-Length", std::to_string(content.size()));
     return true;
-}
-
-bool Fill::checkRequestType(const oZ::Context &context)
-{
-    return (context.getRequest().getMethod() == oZ::HTTP::Method::Get);
 }

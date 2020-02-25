@@ -47,6 +47,7 @@ void Zia::Connection::runPipeline(void)
 
     oZ::ByteArray arr(str.size());
 
+    // std::cout << "le packet recu : " << std::endl << str << std::endl;
     std::transform(str.begin(), str.end(), arr.begin(),
     [](char c)
     {

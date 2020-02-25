@@ -12,6 +12,7 @@
 #include <map>
 
 #define HTML_FILES_POSI "src/HTML/"
+#define HTML_FILE_ERROR "src/HTML/404.html"
 
 namespace FillModule
 {
@@ -33,6 +34,6 @@ class Fill : public oZ::IModule {
     private:
         bool takeContent(oZ::Context &context);
         bool checkRequestType(const oZ::Context &context);
-        // bool findType(oZ::Context &context);
+        bool fillBody(oZ::Context &context, const std::string &path, oZ::HTTP::Code code);
 
 };
