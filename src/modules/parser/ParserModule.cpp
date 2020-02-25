@@ -10,19 +10,21 @@
 #include <iostream>
 #include "ParserModule.hpp"
 
-extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<Parser>(); }
+OPEN_ZIA_MAKE_ENTRY_POINT(Parser)
 
 void Parser::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
+    std::cout << "=> onRegisterCallbacks" << std::endl;
     pipeline.registerCallback(
         oZ::State::Parse,
         oZ::Priority::ASAP,
-        this, &Parser::Launch
+        this, &Parser::parsing
     );
 }
 
-bool Parser::Launch(oZ::Context &context)
+bool Parser::parsing(oZ::Context &context)
 {
+    std::cout << "=> parsing" << std::endl;
     std::string data(
         context.getPacket().getByteArray().begin(),
         context.getPacket().getByteArray().end());
@@ -35,8 +37,10 @@ bool Parser::Launch(oZ::Context &context)
                     ParserModule::methods.end(),
                     method) != ParserModule::methods.end())
         context.getRequest().setMethod(ParserModule::methods_enums[method]);
-    else
+    else {
+        std::cout << "Method: " << method << std::endl;
         return false;
+    }
 
     temp = temp.substr(temp.find(" ") + 1);
 
@@ -55,7 +59,7 @@ bool Parser::Launch(oZ::Context &context)
     v.majorVersion = std::stoi(version.substr(0, version.find(".")));
     version.substr(1);
     v.minorVersion = std::stoi(version);
-    context.getRequest().setVersion(v);
+    context.getResponse().setVersion(v);
 
     /* Header */
     std::string line;

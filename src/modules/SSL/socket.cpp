@@ -18,18 +18,18 @@ int create_socket(int port)
 
     s = socket(AF_INET, SOCK_STREAM, 0);
     if (s < 0) {
-	perror("Unable to create socket");
-	exit(1);
+        perror("Unable to create socket");
+        exit(1);
     }
 
     if (bind(s, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
-	perror("Unable to bind");
-	exit(1);
+        perror("Unable to bind");
+        exit(1);
     }
 
     if (listen(s, 1) < 0) {
-	perror("Unable to listen");
-	exit(1);
+        perror("Unable to listen");
+        exit(1);
     }
 
     return s;

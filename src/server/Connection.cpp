@@ -12,6 +12,7 @@
 #include <utility>
 #include "Connection.hpp"
 #include "Log.hpp"
+#include <modules/SSL/SSLModule.hpp>
 
 Zia::Connection::Connection(socket sock, ConnectionManager &c, oZ::Pipeline &pipeline)
 :
@@ -54,6 +55,10 @@ void Zia::Connection::runPipeline(void)
 
     oZ::Packet packet(std::move(arr), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()));
     oZ::Context context(std::move(packet));
+    SSLModule SSL;
+
+    int fd = _socket.native_handle();
+    SSL.InitSSLModule(fd);
     _pipeline.runPipeline(context);
     send(std::move(context));
 }
@@ -61,15 +66,17 @@ void Zia::Connection::runPipeline(void)
 void Zia::Connection::send(oZ::Context &&context)
 {
     std::string response(
-        "HTTP/" +
-        std::to_string(context.getResponse().getVersion().majorVersion) +
-        "." +
-        std::to_string(context.getResponse().getVersion().minorVersion) +
-        " " +
-        std::to_string(static_cast<int>(context.getResponse().getCode())) +
-        " " +
-        context.getResponse().getReason() +
-        "\n"
+        "HTTP/"
+        + std::to_string(context.getResponse().getVersion().majorVersion)
+        + "."
+        + std::to_string(context.getResponse().getVersion().minorVersion) 
+        + " "
+        + std::to_string(static_cast<int>(context.getResponse().getCode())) 
+        + " " 
+        + context.getResponse().getReason() + "\n"
+        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
+        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\n\n"
+        + context.getResponse().getBody()
     );
 
     auto self(shared_from_this());

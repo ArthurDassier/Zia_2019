@@ -2,26 +2,18 @@
 ** EPITECH PROJECT, 2020
 ** CPP_zia_2019
 ** File description:
-** PHP
+** FillPage
 */
 
 #pragma once
 
 #include <openZia/IModule.hpp>
 #include <openZia/Pipeline.hpp>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/wait.h>
-#include <sys/types.h>
-#include <iostream>
-#include <fstream>
 #include <map>
 
 #define HTML_FILES_POSI "src/HTML/"
 
-namespace PHPModule
+namespace FillModule
 {
     std::map<std::string, std::string> routes_enums = {
         {"/",      "index.html"},
@@ -30,17 +22,17 @@ namespace PHPModule
     };
 }
 
-class PHP_CGI : public oZ::IModule 
-{
+class Fill : public oZ::IModule {
     public:
-        PHP_CGI() = default;
+        Fill() = default;
 
-        virtual const char *getName(void) const { return "PHPModule"; }
+        virtual const char *getName(void) const { return "FillPageModule"; }
 
         virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 
     private:
-        bool execPHP(oZ::Context &context);
-        bool findPHP(const oZ::Context &context);
+        bool takeContent(oZ::Context &context);
+        bool checkRequestType(const oZ::Context &context);
+        // bool findType(oZ::Context &context);
 
 };
