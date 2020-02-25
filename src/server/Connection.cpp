@@ -34,6 +34,7 @@ void Zia::Connection::read(void)
     [this, self](boost::system::error_code error, std::size_t bytes)
     {
         if (error && error != boost::asio::error::operation_aborted) {
+            
             _connectionManager.eraseClient(shared_from_this());
             return;
         }
