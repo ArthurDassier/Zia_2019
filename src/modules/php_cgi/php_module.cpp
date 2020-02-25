@@ -30,11 +30,6 @@ bool PHP_CGI::execPHP(oZ::Context &context)
         std::cout << "PHPModule: error in pipe" << std::endl;
         return true;
     }
-    pid = fork();
-    if (pid == -1) {
-        std::cout << "PHPModule: error in fork" << std::endl;
-        return true;
-    }
 
     char tmpPath[] = "/tmp/tmpPhpExec.XXXXXX";
     int fd;
@@ -43,6 +38,11 @@ bool PHP_CGI::execPHP(oZ::Context &context)
         return true;
     }
     write(fd, context.getResponse().getBody().c_str(), context.getResponse().getBody().size());
+    pid = fork();
+    if (pid == -1) {
+        std::cout << "PHPModule: error in fork" << std::endl;
+        return true;
+    }
 
     char *tmpArgv[] = { (char *)"/usr/bin/php-cgi", (char *)tmpPath, NULL };
     if (pid == 0) {
@@ -73,7 +73,9 @@ bool PHP_CGI::execPHP(oZ::Context &context)
         }
         content = content.substr(content.find("<"));
         context.getResponse().getBody() = content;
-        context.getResponse().getHeader().set("Content-Length", std::to_string(content.size()));
+        std::cout << "THUR " << content.size() << std::endl;
+        // context.getResponse().getHeader().set("Content-Length-php", std::to_string(content.size()));
+        context.getResponse().getHeader().get("Content-Length") = std::to_string(content.size());
         return true;
     }
     return true;
@@ -93,7 +95,9 @@ bool PHP_CGI::findPHP(const oZ::Context &context)
     while (is.read(buf, sizeof(buf)).gcount() > 0)
         content.append(buf, is.gcount());
     is.close();
-    if (content.find("<?php") != std::string::npos)
+    if (content.find("<?php") != std::string::npos) {
+        std::cout << "jai trouvé du php" << std::endl;
         return true;
+    }
     return false;
 }
