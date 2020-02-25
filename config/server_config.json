@@ -1,5 +1,8 @@
 {
     "modules": [
-        "ParserModule"
+        "FillPageModule",
+        "TestModule",
+        "ParserModule",
+        "PHPModule"
     ]
 }

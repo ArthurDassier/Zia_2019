@@ -18,10 +18,13 @@
 namespace cfg
 {
 	/**
-	 * @brief Simple time unit of measuring
+	 * @brief Simple time unit of measuring.
 	 */
 	using TimeSleep = std::chrono::milliseconds;
 
+	/**
+	 * @brief Class to manage the configuration files.
+	 */
 	class ConfigManager
 	{
 		public:
@@ -83,28 +86,28 @@ namespace cfg
 			/**
 			 * @brief Set watching attribute.
 			 * 
-			 * @param watching Boolean
+			 * @param watching Boolean.
 			 */
 			void watching(const bool &watching);
 
 			/**
 			 * @brief Get watching attribute.
 			 * 
-			 * @return Watching attribute as a boolean
+			 * @return Watching attribute as a boolean.
 			 */
 			[[nodiscard]] const bool isWatching() const noexcept;
 
 			/**
 			 * @brief Load all configuration file from a given path.
 			 * 
-			 * @param path Path where to load the configuration files
+			 * @param path Path where to load the configuration files.
 			 */
 			void loadConfigDir(const std::string &path);
 
 			/**
 			 * @brief Callback called when a file has been modified.
 			 * 
-			 * @param handler Callback function
+			 * @param handler Callback function.
 			 */
 			void onConfigChange(CallbackHandler &&handler);
 
@@ -118,37 +121,37 @@ namespace cfg
 			/**
 			 * @brief Set the configuration path.
 			 * 
-			 * @param path Path where the configuration files are
+			 * @param path Path where the configuration files are.
 			 */
 			void setConfigPath(const std::string &path);
 
 			/**
 			 * @brief Get the configuration path.
 			 * 
-			 * @return The configuration path as a std::string
+			 * @return The configuration path as a std::string.
 			 */
 			[[nodiscard]] const std::string getConfigPath() const noexcept;
 
 			/**
 			 * @brief Set the time to sleep between each watch loop.
 			 * 
-			 * @param timeSleep Time to sleep in milliseconds
+			 * @param timeSleep Time to sleep in milliseconds.
 			 */
 			void setTimeToSleep(const TimeSleep &timeSleep);
 
 			/**
 			 * @brief Get the time to sleep between each watch loop.
 			 * 
-			 * @return The time to sleep as a TimeSleep
+			 * @return The time to sleep as a TimeSleep.
 			 */
 			[[nodiscard]] const TimeSleep getTimeToSleep() const noexcept;
 
 			/**
 			 * @brief Get Config object from the loaded configs.
 			 * 
-			 * @param configName Name of the Config object wanted
+			 * @param configName Name of the Config object wanted.
 			 * 
-			 * @return Wanted ConfigPtr
+			 * @return Wanted ConfigPtr.
 			 */
 			[[nodiscard]] ConfigPtr getConfig(const std::string &configName) const;
 
@@ -168,7 +171,7 @@ namespace cfg
 			/**
 			 * @brief Generate a configuration name from a given file.
 			 * 
-			 * @return Name of the configuration as a std::string
+			 * @return Name of the configuration as a std::string.
 			 */
 			[[nodiscard]] const std::string getConfigName(const FileDescriptor &file) const;
 	};

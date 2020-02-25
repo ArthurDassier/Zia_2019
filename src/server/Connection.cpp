@@ -55,10 +55,8 @@ void Zia::Connection::runPipeline(void)
 
     oZ::Packet packet(std::move(arr), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()));
     oZ::Context context(std::move(packet));
-    SSLModule SSL;
 
     int fd = _socket.native_handle();
-    SSL.InitSSLModule(fd);
     _pipeline.runPipeline(context);
     send(std::move(context));
 }

@@ -31,13 +31,12 @@ set(ServerSources
 add_library(${PROJECT_NAME} ${ServerSources})
 target_link_libraries(${PROJECT_NAME}
     ${openZiaLibs}
-    config
-    SSLModule
+    ${ConfigLibs}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${Boost_INCLUDE_DIR}
     ${openZiaIncludes}
     ${ServerIncludes}
-    ../config/
+    ${ConfigIncludes}
 )
