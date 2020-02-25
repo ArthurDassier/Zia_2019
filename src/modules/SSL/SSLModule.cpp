@@ -71,25 +71,26 @@ void SSLModule::InitSSLModule(int client)
 
 bool SSLModule::WriteSSL(oZ::Context &context)
 {
-    // std::cout << "HasCrypt : " << context.getPacket().hasEncryption() << std::endl;
-    // if ((context.getPacket().hasEncryption()))
-    //     return true;
-    // std::cout << "Je suis le module SSL2" << std::endl;
-    // int client = context.getPacket().getFileDescriptor();
-    // std::cout << "FD: " << context.getPacket().getFileDescriptor() << std::endl;
-    // InitSSLModule(client);
-    // std::string response(
-    //     "HTTP/1.1 302 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
-    // );
-    // int ret;
-    // if ((ret = SSL_accept(_ssl)) <= 0) {
-    //     std::cout << "SSL ERROR: " << SSL_get_error(_ssl, ret) << std::endl;
-    //     perror("");
-    //     ERR_print_errors_fp(stdout);
-    //     return false;
-    // } else {
-    //     SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
-    //     return true;
-    // }
+    if (!(context.getPacket().hasEncryption())) {
+        std::cout << "NOT HTTPS" << std::endl;
+        return true;
+    }
+    int client = context.getPacket().getFileDescriptor();
+    int ret = 0;
+
+    std::cout << "IS HTTPS" << std::endl;
+    InitSSLModule(client);
+    std::string response(
+        "HTTP/1.1 302 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
+    );
+    if ((ret = SSL_accept(_ssl)) <= 0) {
+        std::cout << "SSL ERROR: " << SSL_get_error(_ssl, ret) << std::endl;
+        perror("");
+        ERR_print_errors_fp(stdout);
+        return false;
+    } else {
+        SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
+        return true;
+    }
 }
 
