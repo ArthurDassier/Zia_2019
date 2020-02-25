@@ -14,7 +14,6 @@ extern "C" oZ::ModulePtr CreateModule(void) { return std::make_shared<Parser>();
 
 void Parser::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
-    std::cout << "=> onRegisterCallbacks" << std::endl;
     pipeline.registerCallback(
         oZ::State::Parse,
         oZ::Priority::ASAP,
@@ -24,7 +23,6 @@ void Parser::onRegisterCallbacks(oZ::Pipeline &pipeline)
 
 bool Parser::Launch(oZ::Context &context)
 {
-    std::cout << "=> Launch" << std::endl;
     std::string data(
         context.getPacket().getByteArray().begin(),
         context.getPacket().getByteArray().end());

@@ -40,8 +40,11 @@ std::string &&modules, std::string &&configs)
 
     _pipeline.loadModules();
 
+    _configManager.onConfigChange([this]() {
+        _pipeline.loadModules();
+    });
+
     _configManager.manage();
-    // _pipeline.addModule()
 
     std::cout << "Number of modules loaded: " << _pipeline.getModules().size() << std::endl;
     for (auto &it : _pipeline.getModules())
@@ -65,16 +68,17 @@ void Zia::Server::close()
 
 void Zia::Server::WaitingClient()
 {
-    _acceptor.async_accept(_socket, [this](boost::system::error_code error)
-    {
+    _acceptor.async_accept(_socket, [this](boost::system::error_code error) {
         if (!_acceptor.is_open())
             return;
-        if (!error) {
+        if (!error)
+        {
             _connectionManager.addClient(std::make_shared<Connection>(
                 std::move(_socket), _connectionManager, _pipeline
             ));
         }
         WaitingClient();
+        std::cout << _configManager.getConfig("config")->getName() << ": " << _configManager.getConfig("config")->getPath() << std::endl;
     });
 }
 

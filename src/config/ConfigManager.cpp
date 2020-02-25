@@ -7,60 +7,131 @@
 
 #include "ConfigManager.hpp"
 
-cfg::ConfigManager::ConfigManager(const std::string &path):
-    _path(path)
+using namespace cfg;
+
+ConfigManager::ConfigManager(const std::string &path):
+    _path(path),
+    _timeSleep(5000),
+    _onChangeCallback([]() {}),
+    _onErasedCallback([]() {}),
+    _thread(nullptr),
+    _watching(false)
 {
-    // std::cout << "Config path: " << std::getenv("CONFIG_PATH") << std::endl;
-    loadConfigDir();
+    loadConfigDir(_path);
 }
 
-void cfg::ConfigManager::manage()
+ConfigManager::ConfigManager():
+    _path(std::getenv("CONFIG_PATH")),
+    _timeSleep(5000),
+    _onChangeCallback([]() {}),
+    _onErasedCallback([]() {}),
+    _thread(nullptr),
+    _watching(false)
 {
-    for (auto &config : _configs) {
-        config.second = ThreadPtr(new std::thread(&Config::update, config.first));
-        config.second->detach();
+    loadConfigDir(_path);
+}
+
+void ConfigManager::manage()
+{
+    watching(true);
+    _thread = ThreadPtr(new std::thread(&ConfigManager::watch, this));
+    _thread->detach();
+}
+
+void ConfigManager::stop()
+{
+    watching(false);
+    _thread->join();
+}
+
+void ConfigManager::watch()
+{
+    while (isWatching()) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+        FileStatus status = FileStatus::none;
+
+        for (auto &it : _configs)
+            if (!std::filesystem::exists(it->getPath())) {
+                status = FileStatus::erased;
+                it->update(status);
+                _onErasedCallback();
+            }
+
+        for (const auto &file : std::filesystem::recursive_directory_iterator(_path)) {
+            auto current_timestamp = std::filesystem::last_write_time(file);
+            std::string name = getConfigName(file);
+            ConfigPtr config = getConfig(name);
+            if (_paths[name] != current_timestamp) {
+                _paths[name] = current_timestamp;
+                config->setTimestamp(current_timestamp);
+                std::cout << "Config file '" << name << "' has been modified" << std::endl;
+                status = FileStatus::modified;
+                config->update(status);
+                _onChangeCallback();
+            }
+        }
     }
 }
 
-void cfg::ConfigManager::stop()
+void ConfigManager::watching(const bool &watching)
 {
-    for (auto &config : _configs) {
-        config.second->join();
-    }
+    _watching = watching;
 }
 
-void cfg::ConfigManager::loadConfigDir()
+const bool ConfigManager::isWatching() const noexcept
 {
-    for (const auto &file : std::filesystem::recursive_directory_iterator(_path)) {
+    return _watching;
+}
+
+void ConfigManager::loadConfigDir(const std::string &path)
+{
+    for (const auto &file : std::filesystem::recursive_directory_iterator(path)) {
         std::string name = getConfigName(file);
         ConfigPtr config = ConfigPtr(new Config(file, name));
-        _configs.emplace_back(std::pair(std::move(config), nullptr));
+        _configs.push_back(std::move(config));
+        _paths[name] = std::filesystem::last_write_time(file);
     }
 }
 
-void cfg::ConfigManager::setConfigPath(const std::string &path)
+void ConfigManager::setConfigPath(const std::string &path)
 {
     _path = path;
 }
 
-const std::string cfg::ConfigManager::getConfigPath() const noexcept
+const std::string ConfigManager::getConfigPath() const noexcept
 {
     return _path;
 }
 
-cfg::ConfigPtr cfg::ConfigManager::getConfig(const std::string &config_name) const
+void ConfigManager::setTimeToSleep(const TimeSleep &timeSleep)
+{
+    _timeSleep = timeSleep;
+}
+
+const TimeSleep ConfigManager::getTimeToSleep() const noexcept
+{
+    return _timeSleep;
+}
+
+void ConfigManager::onConfigChange(CallbackHandler &&handler)
+{
+    _onChangeCallback = std::move(handler);
+}
+
+void ConfigManager::onConfigErased(CallbackHandler &&handler)
+{
+    _onErasedCallback = std::move(handler);
+}
+
+ConfigPtr ConfigManager::getConfig(const std::string &config_name) const
 {
     for (const auto &config : _configs)
-        if (!config.first->getName().compare(config_name))
-            return config.first;
-    // auto config = _configs.find(config_name);
-    
-    // if (config != _configs.end())
-    //     return config->second.first;
+        if (!config->getName().compare(config_name))
+            return config;
     return nullptr;
 }
 
-const std::string cfg::ConfigManager::getConfigName(const FileDescriptor &file) const
+const std::string ConfigManager::getConfigName(const FileDescriptor &file) const
 {
     std::string filename = std::filesystem::path(
         file.path().string()).filename();

@@ -19,7 +19,8 @@
 
 #include <utils/SharedMemory.hpp>
 
-namespace cfg {
+namespace cfg
+{
     enum class FileStatus
     {
         created,
@@ -41,15 +42,15 @@ namespace cfg {
 
     static FileStatus operator<<(FileStatus& s, const char *fs)
     {
-        if (std::strcmp(fs, "created") == 0)    return s = FileStatus::created;
-        if (std::strcmp(fs, "modified") == 0)   return s = FileStatus::modified;
-        if (std::strcmp(fs, "erased") == 0)     return s = FileStatus::erased;
+        if (std::strcmp(fs, "created\n") == 0)  return s = FileStatus::created;
+        if (std::strcmp(fs, "modified\n") == 0) return s = FileStatus::modified;
+        if (std::strcmp(fs, "erased\n") == 0)   return s = FileStatus::erased;
         return s = FileStatus::none;
     }
 
     class FileWatcher {
         public:
-            FileWatcher(const std::string &,
+            FileWatcher(const std::string &path,
                         const std::chrono::duration<int, std::milli> delay);
             ~FileWatcher() = default;
 
