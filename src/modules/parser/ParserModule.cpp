@@ -18,13 +18,13 @@ void Parser::onRegisterCallbacks(oZ::Pipeline &pipeline)
     pipeline.registerCallback(
         oZ::State::Parse,
         oZ::Priority::ASAP,
-        this, &Parser::Launch
+        this, &Parser::parsing
     );
 }
 
-bool Parser::Launch(oZ::Context &context)
+bool Parser::parsing(oZ::Context &context)
 {
-    std::cout << "=> Launch" << std::endl;
+    std::cout << "=> parsing" << std::endl;
     std::string data(
         context.getPacket().getByteArray().begin(),
         context.getPacket().getByteArray().end());
@@ -37,8 +37,10 @@ bool Parser::Launch(oZ::Context &context)
                     ParserModule::methods.end(),
                     method) != ParserModule::methods.end())
         context.getRequest().setMethod(ParserModule::methods_enums[method]);
-    else
+    else {
+        std::cout << "Method: " << method << std::endl;
         return false;
+    }
 
     temp = temp.substr(temp.find(" ") + 1);
 

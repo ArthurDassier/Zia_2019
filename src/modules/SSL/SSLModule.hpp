@@ -36,10 +36,10 @@ class SSLModule : public oZ::IModule {
 
         bool WriteSSL(oZ::Context &context);
 
-        void configure_context(SSL_CTX *);
-        SSL_CTX *create_context(void);
+        void configure_context(void);
+        void create_context(void);
 
-        int _client;
-        SSL_CTX *_ctx;
-        SSL *_ssl;
+        int _client = 0;
+        SSL_CTX *_ctx = nullptr;
+        SSL *_ssl = nullptr;
 };

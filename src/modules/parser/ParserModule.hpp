@@ -45,6 +45,6 @@ public:
     virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 
 private:
-    bool Launch(oZ::Context &context);
+    bool parsing(oZ::Context &context);
 
 };
