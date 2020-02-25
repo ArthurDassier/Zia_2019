@@ -14,36 +14,41 @@
 #include "Log.hpp"
 #include <modules/SSL/SSLModule.hpp>
 
-Zia::Connection::Connection(socket sock, ConnectionManager &c, oZ::Pipeline &pipeline)
+Zia::Connection::Connection(socket sock, ConnectionManager &c, oZ::Pipeline &pipeline, bool crypt)
 :
     _socket(std::move(sock)),
     _connectionManager(c),
-    _pipeline(pipeline)
-{}
+    _pipeline(pipeline),
+    _crypt(crypt)
+{
+    std::cout << "CONSTRUCTOR " << _crypt << std::endl;
+}
 
 void Zia::Connection::start(void)
 {
     Log::info("New client\n> IP\t" + _socket.remote_endpoint().address().to_string());
     // std::cout << "==> Socket : " << _socket.native_handle() << std::endl;
-    _pipeline.onConnection(_socket.native_handle(), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()), false);
+    _pipeline.onConnection(_socket.native_handle(), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()), _crypt);
     // std::cout <<
     read();
 }
 
 void Zia::Connection::read(void)
 {
-    // auto self(shared_from_this());
-    // _socket.async_read_some(boost::asio::buffer(_buffer),
-    // [this, self](boost::system::error_code error, std::size_t bytes)
-    // {
-    //     if (error && error != boost::asio::error::operation_aborted) {
-            
-    //         _connectionManager.eraseClient(shared_from_this());
-    //         return;
-    //     }
-    //     runPipeline();
-    // });
-    runPipeline();
+    if (!_crypt) {
+        auto self(shared_from_this());
+        _socket.async_read_some(boost::asio::buffer(_buffer),
+        [this, self](boost::system::error_code error, std::size_t bytes)
+        {
+            if (error && error != boost::asio::error::operation_aborted) {
+                _connectionManager.eraseClient(shared_from_this());
+                return;
+            }
+            runPipeline();
+        });
+    } else {
+        runPipeline();
+    }
 }
 
 void Zia::Connection::runPipeline(void)
