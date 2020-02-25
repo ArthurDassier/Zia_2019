@@ -24,6 +24,9 @@ Zia::Connection::Connection(socket sock, ConnectionManager &c, oZ::Pipeline &pip
 void Zia::Connection::start(void)
 {
     Log::info("New client\n> IP\t" + _socket.remote_endpoint().address().to_string());
+    // std::cout << "==> Socket : " << _socket.native_handle() << std::endl;
+    _pipeline.onConnection(_socket.native_handle(), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()), false);
+    // std::cout <<
     read();
 }
 
@@ -55,9 +58,12 @@ void Zia::Connection::runPipeline(void)
       return static_cast<char>(c);
     });
 
-    oZ::Packet packet(std::move(arr), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()));
+    oZ::Packet packet(std::move(arr), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()), _socket.native_handle());
+    // oZ::Context context(oZ::Packet(std::move(buffer), endpoint, fd));
     oZ::Context context(std::move(packet));
-
+    
+    std::cout << "==> Socket : " << context.getPacket().getFileDescriptor() << std::endl;
+    
     _pipeline.runPipeline(context);
     //send(std::move(context));
 }
