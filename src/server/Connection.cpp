@@ -32,17 +32,18 @@ void Zia::Connection::start(void)
 
 void Zia::Connection::read(void)
 {
-    auto self(shared_from_this());
-    _socket.async_read_some(boost::asio::buffer(_buffer),
-    [this, self](boost::system::error_code error, std::size_t bytes)
-    {
-        if (error && error != boost::asio::error::operation_aborted) {
+    // auto self(shared_from_this());
+    // _socket.async_read_some(boost::asio::buffer(_buffer),
+    // [this, self](boost::system::error_code error, std::size_t bytes)
+    // {
+    //     if (error && error != boost::asio::error::operation_aborted) {
             
-            _connectionManager.eraseClient(shared_from_this());
-            return;
-        }
-        runPipeline();
-    });
+    //         _connectionManager.eraseClient(shared_from_this());
+    //         return;
+    //     }
+    //     runPipeline();
+    // });
+    runPipeline();
 }
 
 void Zia::Connection::runPipeline(void)

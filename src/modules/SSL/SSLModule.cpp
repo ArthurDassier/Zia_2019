@@ -66,7 +66,7 @@ void SSLModule::InitSSLModule(int client)
     this->create_context();
     this->configure_context();
     _ssl = SSL_new(_ctx);
-    std::cout << SSL_set_fd(_ssl, _client) << "........" << std::endl;
+    SSL_set_fd(_ssl, _client);
 }
 
 bool SSLModule::WriteSSL(oZ::Context &context)
@@ -74,21 +74,19 @@ bool SSLModule::WriteSSL(oZ::Context &context)
     std::cout << "Je suis le module SSL2" << std::endl;
 
     int client = context.getPacket().getFileDescriptor();
-    std::cout << context.getPacket().getFileDescriptor() << std::endl;
+    std::cout << "FD: " << context.getPacket().getFileDescriptor() << std::endl;
     InitSSLModule(client);
     std::string response(
         "HTTP/1.1 302 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
     );
     int ret;
     if ((ret = SSL_accept(_ssl)) <= 0) {
-        std::cout << SSL_get_error(_ssl, ret) << std::endl;
-        std::cout << SSL_ERROR_WANT_ASYNC_JOB << std::endl;
+        std::cout << "SSL ERROR: " << SSL_get_error(_ssl, ret) << std::endl;
         perror("");
         ERR_print_errors_fp(stdout);
         return false;
     } else {
         SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
-        std::cout << response << std::endl;
         return true;
     }
 }
