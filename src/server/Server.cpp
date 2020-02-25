@@ -69,7 +69,6 @@ void Zia::Server::WaitingClient()
         if (!_acceptor.is_open())
             return;
         if (!error) {
-            std::cout << "waiting client" << std::endl;
             _connectionManager.addClient(std::make_shared<Connection>(
                 std::move(_socket), _connectionManager, _pipeline
             ));
