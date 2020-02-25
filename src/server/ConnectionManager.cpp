@@ -6,6 +6,7 @@
 */
 
 #include "ConnectionManager.hpp"
+#include <iostream>
 
 void Zia::ConnectionManager::addClient(ConnectionPtr c)
 {

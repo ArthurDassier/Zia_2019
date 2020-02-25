@@ -77,7 +77,7 @@ void Zia::Server::WaitingClient()
     });
     _acceptorHTTPS.async_accept(_socket, [this](boost::system::error_code error)
     {
-        if (!_acceptor.is_open())
+        if (!_acceptorHTTPS.is_open())
             return;
         if (!error) {
             _connectionManager.addClient(std::make_shared<Connection>(
