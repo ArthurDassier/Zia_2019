@@ -9,6 +9,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 #include "FillPage.hpp"
 
 OPEN_ZIA_MAKE_ENTRY_POINT(Fill)
@@ -31,15 +32,20 @@ bool Fill::takeContent(oZ::Context &context)
     std::string path = context.getRequest().getURI();
     std::string targetedFile;
 
-    //permets de prendre plus que le text/html ->faire le parser apres le .
-    context.getResponse().getHeader().set("Content-Type", "text/html");
+    // context.getResponse().getHeader().set("Content-Type", "text/html");
     if (FillModule::routes_enums[path] != "") {
         targetedFile = HTML_FILES_POSI + FillModule::routes_enums[path];
     } else {
         targetedFile = HTML_FILE_ERROR;
+        std::string type = std::filesystem::path(targetedFile).extension();
+        type.erase(0, 1);
+        context.getResponse().getHeader().set("Content-Type", FillModule::formats[type]);
         fillBody(context, targetedFile, oZ::HTTP::Code::NotFound);
         return false;
     }
+    std::string type = std::filesystem::path(targetedFile).extension();
+    type.erase(0, 1);
+    context.getResponse().getHeader().set("Content-Type", FillModule::formats[type]);
     fillBody(context, targetedFile, oZ::HTTP::Code::OK);
     return true;
 }
