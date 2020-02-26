@@ -81,7 +81,7 @@ bool SSLModule::WriteSSL(oZ::Context &context)
     std::cout << "IS HTTPS" << std::endl;
     InitSSLModule(client);
     std::string response(
-        "HTTP/1.1 302 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
+        "HTTP/1.1 200 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
     );
     if ((ret = SSL_accept(_ssl)) <= 0) {
         std::cout << "SSL ERROR: " << SSL_get_error(_ssl, ret) << std::endl;
