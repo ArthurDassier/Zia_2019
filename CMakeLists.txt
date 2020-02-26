@@ -24,7 +24,6 @@ project(${EXECUTABLE_NAME})             # Create project "zia"
 
 #-------------------------------------------------------------------------------
 
-# include(lib/openZia_old/openZia/openZia.cmake)
 include(lib/openZia/openZia/openZia.cmake)
 
 set(SOURCES "./src")

@@ -28,7 +28,7 @@ class SSLModule : public oZ::IModule {
 
         void InitSSLModule(int client);
 
-        virtual const char *getName(void) const { return "TestModule"; }
+        virtual const char *getName(void) const { return "SSLModule"; }
 
         virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 
