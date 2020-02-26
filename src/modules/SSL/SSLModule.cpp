@@ -106,6 +106,8 @@ bool SSLModule::WriteSSL(oZ::Context &context)
     int ret = 0;
 
     std::cout << "IS HTTPS" << std::endl;
+    if (context.getRequest().getURI() == "")
+        exit(0);
     std::string response(
         "HTTP/"
         + std::to_string(context.getResponse().getVersion().majorVersion)
@@ -119,18 +121,8 @@ bool SSLModule::WriteSSL(oZ::Context &context)
         + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\n\n"
         + context.getResponse().getBody()
     );
-    // std::string response(
-    //     "HTTP/1.1 200 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
-    // );
-    // if ((ret = SSL_accept(_sslMap[client])) <= 0) {
-    //     std::cout << "SSL ERROR: " << SSL_get_error(_sslMap[client], ret) << std::endl;
-    //     perror("");
-    //     ERR_print_errors_fp(stdout);
-    //     return false;
-    // } else {
-        SSL_write(_sslMap[client], response.c_str(), strlen(response.c_str()));
-        return true;
-    // }
+    SSL_write(_sslMap[client], response.c_str(), strlen(response.c_str()));
+    return true;
 }
 
 bool SSLModule::ReadSSL(oZ::Context &context)
@@ -150,8 +142,11 @@ bool SSLModule::ReadSSL(oZ::Context &context)
         char buff[readSize + 1] = {0};
         std::size_t recv = SSL_read(ssl, buff, readSize);
 
-        if (SSL_get_error(ssl, recv) == SSL_ERROR_WANT_READ)
+        if (SSL_get_error(ssl, recv) == SSL_ERROR_WANT_READ) {
+            std::cout << "#####ALED PTN DE MERDE" << std::endl;
+            return false;
             break;
+        }
 
         if (recv <= 0)
             break;
@@ -160,6 +155,7 @@ bool SSLModule::ReadSSL(oZ::Context &context)
         try {
             content.append(buff, recv);
         } catch (const std::exception &e) {
+            std::cout << "ModuleSSL : error read" << std::endl;
             break;
 
         }
@@ -180,6 +176,7 @@ bool SSLModule::ReadSSL(oZ::Context &context)
     });
 
     context.getPacket().getByteArray() = arr;
+    
     std::cout << "~~~~~" << content << std::endl;
 
     return true;
