@@ -26,18 +26,26 @@ class SSLModule : public oZ::IModule {
         SSLModule() = default;
         ~SSLModule();
 
-        void InitSSLModule(int client);
-
         virtual const char *getName(void) const { return "TestModule"; }
 
         virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 
+        virtual void onLoadConfigurationFile(const std::string &);
+
+        virtual void onConnection(const oZ::FileDescriptor fd, const oZ::Endpoint endpoint, const bool useEncryption);
+        virtual void onDisconnection(const oZ::FileDescriptor fd, const oZ::Endpoint endpoint);
+
     private:
 
         bool WriteSSL(oZ::Context &context);
+        bool AcceptSSL(oZ::Context &context);
 
         void configure_context(void);
         void create_context(void);
+
+        void Init(void);
+
+        std::map<int, SSL*> _sslMap;
 
         int _client = 0;
         SSL_CTX *_ctx = nullptr;
