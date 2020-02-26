@@ -77,8 +77,8 @@ void Zia::Connection::send(oZ::Context &&context)
         + std::to_string(static_cast<int>(context.getResponse().getCode())) 
         + " " 
         + context.getResponse().getReason() + "\n"
-        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
-        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\n\n"
+        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\r\n"
+        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\r\n\n"
         + context.getResponse().getBody()
     );
 

@@ -32,6 +32,7 @@ bool Fill::takeContent(oZ::Context &context)
     std::string targetedFile;
 
     //permets de prendre plus que le text/html ->faire le parser apres le .
+    //Faut split pour si jamais ?
     context.getResponse().getHeader().set("Content-Type", "text/html");
     if (FillModule::routes_enums[path] != "") {
         targetedFile = HTML_FILES_POSI + FillModule::routes_enums[path];
