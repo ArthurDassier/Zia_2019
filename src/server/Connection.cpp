@@ -91,8 +91,6 @@ void Zia::Connection::send(oZ::Context &&context)
         + context.getResponse().getBody()
     );
 
-    // std::cout << "~~packet: " << std::endl << response << std::endl;
-
     auto self(shared_from_this());
     boost::asio::async_write(_socket, boost::asio::buffer(response),
     [this, self](boost::system::error_code error, std::size_t)
