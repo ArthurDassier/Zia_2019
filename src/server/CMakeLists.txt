@@ -24,10 +24,12 @@ set(ServerSources
 	${ServerSourcesDir}/Connection.cpp
     ${ServerSourcesDir}/ConnectionManager.cpp
     ${ServerSourcesDir}/Log.cpp
+    ${ServerSourcesDir}/Module.cpp
     ${ServerSourcesDir}/Server.cpp
+    ${ServerSourcesDir}/ServerConfig.cpp
 )
 
-# Create parserModule library
+# Create server library
 add_library(${PROJECT_NAME} ${ServerSources})
 target_link_libraries(${PROJECT_NAME}
     ${openZiaLibs}

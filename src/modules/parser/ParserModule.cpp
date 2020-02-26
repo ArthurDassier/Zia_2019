@@ -14,7 +14,7 @@ OPEN_ZIA_MAKE_ENTRY_POINT(Parser)
 
 void Parser::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
-    std::cout << "=> onRegisterCallbacks" << std::endl;
+    std::cout << "=> Parser" << std::endl;
     pipeline.registerCallback(
         oZ::State::Parse,
         oZ::Priority::ASAP,

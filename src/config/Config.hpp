@@ -91,7 +91,7 @@ namespace cfg
 			/**
 			 * @brief Destroy the Config object.
 			 */
-			~Config() = default;
+			virtual ~Config() = default;
 
 			/**
 			 * @brief Load configuration from a given file.
@@ -120,6 +120,11 @@ namespace cfg
 			[[nodiscard]] const std::string getName() const noexcept;
 
 			/**
+			 * @brief Get the configuration's file descriptor.
+			 */
+			[[nodiscard]] const FileDescriptor getFileDescriptor() const noexcept;
+
+			/**
 			 * @brief Set the configuration's file path.
 			 * 
 			 * @param path Path to set.
@@ -145,6 +150,7 @@ namespace cfg
 
 		private:
 			std::string _name;
+			FileDescriptor _fd;
 			std::filesystem::path _path;
 			Timestamp _timestamp;
 	};

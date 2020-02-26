@@ -11,6 +11,7 @@ using namespace cfg;
 
 Config::Config(const FileDescriptor &file, const std::string &name):
     _name(name),
+    _fd(file),
     _path(file.path()),
     _timestamp(file.last_write_time())
 {
@@ -54,6 +55,11 @@ void Config::setName(const std::string &name)
 const std::string Config::getName() const noexcept
 {
     return _name;
+}
+
+const FileDescriptor Config::getFileDescriptor() const noexcept
+{
+    return _fd;
 }
 
 void Config::setPath(const std::filesystem::path &path)
