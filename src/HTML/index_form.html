@@ -12,9 +12,9 @@
     
     ?>
     <?php
-    $first = $_POST['first_nb'];
-    echo "le result";
-    echo $first;
+    $first = $_GET['first_nb'];
+    echo PHP_EOL . "le result est ";
+    echo $first + $_GET['second_nb'];
     ?>
   </body>
 </html>

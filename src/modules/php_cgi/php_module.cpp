@@ -25,26 +25,14 @@ const char **PHP_CGI::makeEnvironment(const oZ::Context &context)
 {
     std::map<std::string, std::string> env;
     // Faire l'env pour que l'on foute la query string dedans
-    // env["PATH"] = std::getenv("PATH");
-    // env["REMOTE_ADDR"] = context.getPacket().getEndpoint().getAddress();
-    // env["REMOTE_PORT"] = context.getPacket().getEndpoint().getPort();
-    // env["REDIRECT_STATUS"] = 200;
-    // env["CONTENT_LENGTH"] = 6;
-    // env["PATHEXT"] = ".FRR";
-    // if (context.getRequest().getMethod() == oZ::HTTP::Method::Get) {
-    //     env["REQUEST_METHOD"] = "GET";
-    // } else if (context.getRequest().getMethod() == oZ::HTTP::Method::Post) {
-    // env["REQUEST_METHOD"] = "POST";
-    // }
-    // env["GATEWAY_INTERFACE"] = "CGI/1.1";
-    // env["REQUEST_URI"] = context.getRequest().getURI();
-    std::cout << "TATA" << std::endl;
     try
     {
-        env["SCRIPT_FILENAME"] = 
+        // env["REQUEST_METHOD"] = "POST";
+        env["CONTENT_LENGTH"] = context.getRequest().getHeader().get("bodyPost").size();
+        env["SCRIPT_FILENAME"] = "";
+        // env["GATEWAY_INTERFACE"] = "CGI/1.1";
+            // env["REQUEST_METHOD"] = "GET";
         env["QUERY_STRING"] = context.getRequest().getHeader().get("bodyPost").c_str();
-        // std::cout << "QUERY_STRING=" << env["QUERY_STRING"] << std::endl;
-        // std::cout << "Envrionment has been sent : " << env["QUERY_STRING"] << std::endl;
     }
     catch (const std::exception &e)
     {
