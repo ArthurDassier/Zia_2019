@@ -71,6 +71,8 @@ void Zia::Connection::runPipeline(void)
     _pipeline.runPipeline(context);
     if (!_crypt)
         send(std::move(context));
+    else
+        read();
 }
 
 void Zia::Connection::send(oZ::Context &&context)
