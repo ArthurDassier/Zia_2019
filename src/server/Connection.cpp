@@ -45,7 +45,7 @@ void Zia::Connection::read(void)
             runPipeline();
         });
     } else {
-        runPipeline();
+       runPipeline();
     }
 }
 
