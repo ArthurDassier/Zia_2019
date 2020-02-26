@@ -99,7 +99,7 @@ void SSLModule::create_context(void)
 bool SSLModule::WriteSSL(oZ::Context &context)
 {
     if (!(context.getPacket().hasEncryption())) {
-        std::cout << "NOT HTTPS" << std::endl;
+        // std::cout << "NOT HTTPS" << std::endl;
         return true;
     }
     int client = context.getPacket().getFileDescriptor();
@@ -128,6 +128,11 @@ bool SSLModule::WriteSSL(oZ::Context &context)
 bool SSLModule::ReadSSL(oZ::Context &context)
 {
 
+    if (!(context.getPacket().hasEncryption())) {
+        std::cout << "NOT HTTPS" << std::endl;
+        return true;
+    }
+
     const std::size_t readSize = 1024;
     std::size_t len = 0;
     std::string content;
@@ -143,9 +148,9 @@ bool SSLModule::ReadSSL(oZ::Context &context)
         std::size_t recv = SSL_read(ssl, buff, readSize);
 
         if (SSL_get_error(ssl, recv) == SSL_ERROR_WANT_READ) {
-            std::cout << "#####ALED PTN DE MERDE" << std::endl;
-            return false;
-            break;
+            std::cout << std::endl << "SSL: closing the ssl" << std::endl;
+            exit (0);
+//            return false;
         }
 
         if (recv <= 0)
@@ -177,7 +182,7 @@ bool SSLModule::ReadSSL(oZ::Context &context)
 
     context.getPacket().getByteArray() = arr;
     
-    std::cout << "~~~~~" << content << std::endl;
+    // std::cout << "~~~~~" << content << std::endl;
 
     return true;
 }

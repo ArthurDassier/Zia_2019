@@ -25,5 +25,5 @@ void Zia::ConnectionManager::eraseAll(void)
     for (auto c : _connections)
         c->stop();
     _connections.clear();
-    std::cout << "coucou" << std::endl;
+    // std::cout << "destruction" << std::endl;
 }
