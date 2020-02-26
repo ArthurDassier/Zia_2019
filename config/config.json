@@ -1,8 +1,4 @@
 {
-    "web_services": {
-        "address": "127.0.0.1",
-        "port": 8080
-    },
     "env_variables": [
         {
             "MODULES_PATH": "~/lib/modules/"

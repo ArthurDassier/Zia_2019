@@ -60,6 +60,10 @@ namespace Zia
              */
             void updateEnabledModulesList();
 
+            [[nodiscard]] const std::string getAddress() const noexcept;
+
+            [[nodiscard]] const int getPort() const noexcept;
+
             /**
              * @brief Get list of enabled modules.
              * 
@@ -78,6 +82,12 @@ namespace Zia
             const std::string getModuleName(const FileDescriptor &file) const;
 
         private:
+            std::string _address;
+            int _port;
             EnabledList _enabledModules;
+
+            void loadModules(const json &object);
+
+            void loadWebServices(const json &object);
     };
 }; // namespace Zia

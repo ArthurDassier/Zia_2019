@@ -10,7 +10,9 @@
 using namespace Zia;
 
 ServerConfig::ServerConfig(const FileDescriptor &file, const std::string &name):
-    Config(file, name)
+    Config(file, name),
+    _address("localhost"),
+    _port(80)
 {
 }
 
@@ -22,20 +24,11 @@ void ServerConfig::loadConfig(const std::filesystem::path &path)
     file >> j;
     file.close();
     _enabledModules.clear();
+    
     // Load each attributes...
-    try
-    {
-        std::string modules_path(std::getenv("MODULES_PATH"));
-        for (auto &[key, value] : j["modules"].items()) {
-            std::stringstream ss;
-            ss << modules_path << std::string(value["module"]);
-
-            std::filesystem::directory_entry de;
-            std::filesystem::path config_path(ss.str());
-            de.assign(config_path);
-            auto module = std::shared_ptr<Module>(new Module(de));
-            _enabledModules.emplace(std::move(module));
-        }
+    try {
+        loadWebServices(j["web_services"]);
+        loadModules(j["modules"]);
     } catch(const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
@@ -60,6 +53,16 @@ void ServerConfig::updateEnabledModulesList()
     }
 }
 
+const std::string ServerConfig::getAddress() const noexcept
+{
+    return _address;
+}
+
+const int ServerConfig::getPort() const noexcept
+{
+    return _port;
+}
+
 const EnabledList ServerConfig::getEnabledModulesList() const noexcept
 {
     return _enabledModules;
@@ -80,4 +83,25 @@ const std::string ServerConfig::getModuleName(const FileDescriptor &file) const
     std::size_t last_index = filename.find_last_of(".");
     const std::string name = filename.substr(0, last_index);
     return name;
+}
+
+void ServerConfig::loadModules(const json &object)
+{
+    std::string modules_path(std::getenv("MODULES_PATH"));
+    for (auto &[key, value] : object.items()) {
+        std::stringstream ss;
+        ss << modules_path << std::string(value["module"]);
+
+        std::filesystem::directory_entry de;
+        std::filesystem::path config_path(ss.str());
+        de.assign(config_path);
+        auto module = std::shared_ptr<Module>(new Module(de));
+        _enabledModules.emplace(std::move(module));
+    }
+}
+
+void ServerConfig::loadWebServices(const json &object)
+{
+    for (auto &[key, value] : object.items())
+        std::cout << "j[" << key << "] => " << value << std::endl;
 }
