@@ -12,10 +12,13 @@
 #include <vector>
 #include <iterator>
 
-Zia::Server::Server(const std::string &ip, int port,
+using namespace Zia;
+
+Server::Server(const std::string &ip, int port,
 std::string &&modules, std::string &&configs)
 :
     _pipeline(std::move(modules), std::move(configs)),
+    _configManager("./config"),
     _socket(_io_service),
     _acceptor(_io_service),
     _acceptorHTTPS(_io_service),
@@ -44,36 +47,53 @@ std::string &&modules, std::string &&configs)
     _acceptorHTTPS.bind(endpoint2);
     _acceptorHTTPS.listen();
 
-    _pipeline.loadModules();
+    std::filesystem::directory_entry de;
+    std::filesystem::path config_path("config/server_config.json");
+    de.assign(config_path);
+
+    auto config = _configManager.getConfig("server_config");
+    _serverConfig = ConfigPtr(new ServerConfig(config->getFileDescriptor(), config->getName()));
+    _serverConfig->loadConfig(_serverConfig->getPath());
+
+    addEnabledModules(_serverConfig->getEnabledModulesList());
+
+    _configManager.onConfigChange([this]() {
+        _serverConfig->loadConfig(_serverConfig->getPath());
+        addEnabledModules(_serverConfig->getEnabledModulesList());
+    });
+    _configManager.manage();
+
+    std::cout << "Number of modules loaded: " << _pipeline.getModules().size() << std::endl;
 
     WaitingClient();
 
     Log::info("Server Started\n> IP\t" + _ip + "\n> Port\t" + std::to_string(_port));
 }
 
-void Zia::Server::run()
+void Server::run()
 {
     _io_service.run();
 }
 
-void Zia::Server::close()
+void Server::close()
 {
     _connectionManager.eraseAll();
     Log::info("Server closed");
 }
 
-void Zia::Server::WaitingClient()
+void Server::WaitingClient()
 {
-    _acceptor.async_accept(_socket, [this](boost::system::error_code error)
-    {
+    _acceptor.async_accept(_socket, [this](boost::system::error_code error) {
         if (!_acceptor.is_open())
             return;
-        if (!error) {
+        if (!error)
+        {
             _connectionManager.addClient(std::make_shared<Connection>(
                 std::move(_socket), _connectionManager, _pipeline
             ));
         }
         WaitingClient();
+        std::cout << _configManager.getConfig("config")->getName() << ": " << _configManager.getConfig("config")->getPath() << std::endl;
     });
     _acceptorHTTPS.async_accept(_socket, [this](boost::system::error_code error)
     {
@@ -88,7 +108,7 @@ void Zia::Server::WaitingClient()
     });
 }
 
-void Zia::Server::ManagingSignals()
+void Server::ManagingSignals()
 {
     _signals.async_wait([this](boost::system::error_code, int)
     {
@@ -96,4 +116,13 @@ void Zia::Server::ManagingSignals()
         _acceptor.close();
         _acceptorHTTPS.close();
     });
+}
+
+void Server::addEnabledModules(const EnabledList &modulesList)
+{
+    for (auto &module : modulesList) {
+        std::filesystem::copy(module->getPath(), std::getenv("TMP_MODULES_PATH"),
+            std::filesystem::copy_options::skip_existing);
+    }
+    _pipeline.loadModules();
 }

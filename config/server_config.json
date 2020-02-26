@@ -1,0 +1,20 @@
+{
+    "modules": [
+        {
+            "name": "FillPageModule",
+            "module": "libfillPageModule.so"
+        },
+        {
+            "name": "SSLModule",
+            "module": "libSSLModule.so"
+        },
+        {
+            "name": "ParserModule",
+            "module": "libparserModule.so"
+        },
+        {
+            "name": "PHPModule",
+            "module": "libphpModule.so"
+        }
+    ]
+}

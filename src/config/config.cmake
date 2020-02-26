@@ -1,26 +1,10 @@
-# find_package(spdlog CONFIG REQUIRED)
-# if (spdlog_FOUND)
-#     include_directories(${spdlog_INCLUDE_DIRS})
-#     link_directories(${spdlog_LIBRARY_DIRS})
-# endif(spdlog_FOUND)
-
-
-# # include_directories(${NLOHMANN_JSON_INCLUDE_DIRS})
-
-# target_link_libraries(${PROJECT_NAME} PRIVATE
-#     ${CONAN_LIB}
-#     nlohmann_json::nlohmann_json
-#     stdc++fs
-#     spdlog::spdlog
-#     utils
-# )
-
 project(config) # Create project "config"
 
 message("Generating project ${PROJECT_NAME}...")
 
 get_filename_component(ConfigSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 
+set(ConfigLibs ${PROJECT_NAME})
 set(ConfigIncludes ${ConfigSourcesDir})
 
 set(ConfigSources

@@ -3,6 +3,12 @@
         "address": "127.0.0.1",
         "port": 8080
     },
-    "test1": "lol",
-    "test2": 38
+    "env_variables": [
+        {
+            "MODULES_PATH": "~/lib/modules/"
+        },
+        {
+            "TMP_MODULES_PATH": "~/lib/tmp_modules/"
+        }
+    ]
 }

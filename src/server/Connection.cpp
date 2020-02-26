@@ -91,8 +91,11 @@ void Zia::Connection::send(oZ::Context &&context)
         + context.getResponse().getBody()
     );
 
+<<<<<<< HEAD
     // std::cout << "~~packet: " << std::endl << response << std::endl;
 
+=======
+>>>>>>> 45680fc... [ADD]: Modules loading (#18)
     auto self(shared_from_this());
     boost::asio::async_write(_socket, boost::asio::buffer(response),
     [this, self](boost::system::error_code error, std::size_t)
