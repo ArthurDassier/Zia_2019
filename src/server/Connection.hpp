@@ -26,7 +26,7 @@ public:
 
 	Connection(void) = delete;
 
-    Connection(socket sock, ConnectionManager &, oZ::Pipeline &);
+    Connection(socket sock, ConnectionManager &, oZ::Pipeline &, bool = false);
 
     void start(void);
 
@@ -41,6 +41,7 @@ private:
     socket _socket;
     ConnectionManager &_connectionManager;
     oZ::Pipeline &_pipeline;
+    bool _crypt;
 
     std::array<char, 8192> _buffer;
 };

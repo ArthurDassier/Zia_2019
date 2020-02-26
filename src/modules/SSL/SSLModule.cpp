@@ -9,6 +9,14 @@
 
 OPEN_ZIA_MAKE_ENTRY_POINT(SSLModule)
 
+SSLModule::~SSLModule()
+{
+    // SSL_shutdown(_ssl);
+    // SSL_free(_ssl);
+    // SSL_CTX_free(_ctx);
+    // EVP_cleanup();
+}
+
 void SSLModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
 {
     std::cout << "=> SSLcallback" << std::endl;
@@ -19,84 +27,70 @@ void SSLModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
     );
 }
 
-void SSLModule::InitSSLModule(int client)
+
+void SSLModule::configure_context(void)
 {
-    _client = client;
-    SSL_load_error_strings();	
-    OpenSSL_add_ssl_algorithms();
-    _ctx = this->create_context();
-    this->configure_context(_ctx);
-    _ssl = SSL_new(_ctx);
+    SSL_CTX_set_ecdh_auto(_ctx, 1);
 
-    SSL_set_fd(_ssl, _client);
-}
-
-SSLModule::~SSLModule()
-{
-    // SSL_shutdown(_ssl);
-    // SSL_free(_ssl);
-    // SSL_CTX_free(_ctx);
-    // EVP_cleanup();
-}
-
-
-bool SSLModule::WriteSSL(oZ::Context &context)
-{
-    std::cout << "Je suis le module SSL" << std::endl;
-
-    // int client = context.getPacket().getFileDescriptor();
-    // InitSSLModule(client);
-    // std::string response(
-    //     "HTTPS/"
-    //     + std::to_string(context.getResponse().getVersion().majorVersion)
-    //     + "."
-    //     + std::to_string(context.getResponse().getVersion().minorVersion) 
-    //     + " "
-    //     + std::to_string(static_cast<int>(context.getResponse().getCode())) 
-    //     + " " 
-    //     + context.getResponse().getReason() + "\n"
-    //     + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
-    //     + "Content-Type: text/html" //+ context.getResponse().getHeader().get("Content-Type") + "\n\n"
-    //     + context.getResponse().getBody()
-    // );
-
-    // if (SSL_accept(_ssl) <= 0) {
-    //     ERR_print_errors_fp(stderr);
-    //     return false;
-    // } else {
-    //     SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
-    //     return true;
-    // }
-    return true;
-}
-
-void SSLModule::configure_context(SSL_CTX *ctx)
-{
-    SSL_CTX_set_ecdh_auto(ctx, 1);
-
-    if (SSL_CTX_use_certificate_file(ctx, "./src/modules/SSL/cert.pem", SSL_FILETYPE_PEM) <= 0) {
+    if (SSL_CTX_use_certificate_file(_ctx, "./src/modules/SSL/cert.pem", SSL_FILETYPE_PEM) <= 0) {
         ERR_print_errors_fp(stderr);
         exit(EXIT_FAILURE);
     }
 
-    if (SSL_CTX_use_PrivateKey_file(ctx, "./src/modules/SSL/key.pem", SSL_FILETYPE_PEM) <= 0) {
+    if (SSL_CTX_use_PrivateKey_file(_ctx, "./src/modules/SSL/key.pem", SSL_FILETYPE_PEM) <= 0) {
         ERR_print_errors_fp(stderr);
         exit(EXIT_FAILURE);
     }
 }
 
-SSL_CTX *SSLModule::create_context(void)
+void SSLModule::create_context(void)
 {
     const SSL_METHOD *method;
-    SSL_CTX *ctx;
+    _ctx = nullptr;
 
     method = SSLv23_server_method();
 
-    ctx = SSL_CTX_new(method);
-    if (!ctx) {
+    _ctx = SSL_CTX_new(method);
+    if (!_ctx) {
         perror("Unable to create SSL context");
         ERR_print_errors_fp(stderr);
         exit(EXIT_FAILURE);
     }
-    return ctx;
 }
+
+void SSLModule::InitSSLModule(int client)
+{
+    _client = client;
+    SSL_load_error_strings();
+    OpenSSL_add_ssl_algorithms();
+    this->create_context();
+    this->configure_context();
+    _ssl = SSL_new(_ctx);
+    SSL_set_fd(_ssl, _client);
+}
+
+bool SSLModule::WriteSSL(oZ::Context &context)
+{
+    if (!(context.getPacket().hasEncryption())) {
+        std::cout << "NOT HTTPS" << std::endl;
+        return true;
+    }
+    int client = context.getPacket().getFileDescriptor();
+    int ret = 0;
+
+    std::cout << "IS HTTPS" << std::endl;
+    InitSSLModule(client);
+    std::string response(
+        "HTTP/1.1 200 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
+    );
+    if ((ret = SSL_accept(_ssl)) <= 0) {
+        std::cout << "SSL ERROR: " << SSL_get_error(_ssl, ret) << std::endl;
+        perror("");
+        ERR_print_errors_fp(stdout);
+        return false;
+    } else {
+        SSL_write(_ssl, response.c_str(), strlen(response.c_str()));
+        return true;
+    }
+}
+

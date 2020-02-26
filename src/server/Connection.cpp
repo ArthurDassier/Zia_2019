@@ -14,32 +14,39 @@
 #include "Log.hpp"
 #include <modules/SSL/SSLModule.hpp>
 
-Zia::Connection::Connection(socket sock, ConnectionManager &c, oZ::Pipeline &pipeline)
+Zia::Connection::Connection(socket sock, ConnectionManager &c, oZ::Pipeline &pipeline, bool crypt)
 :
     _socket(std::move(sock)),
     _connectionManager(c),
-    _pipeline(pipeline)
-{}
+    _pipeline(pipeline),
+    _crypt(crypt)
+{
+}
 
 void Zia::Connection::start(void)
 {
     Log::info("New client\n> IP\t" + _socket.remote_endpoint().address().to_string());
+
+    _pipeline.onConnection(_socket.native_handle(), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()), _crypt);
     read();
 }
 
 void Zia::Connection::read(void)
 {
-    auto self(shared_from_this());
-    _socket.async_read_some(boost::asio::buffer(_buffer),
-    [this, self](boost::system::error_code error, std::size_t bytes)
-    {
-        if (error && error != boost::asio::error::operation_aborted) {
-            
-            _connectionManager.eraseClient(shared_from_this());
-            return;
-        }
+    if (!_crypt) {
+        auto self(shared_from_this());
+        _socket.async_read_some(boost::asio::buffer(_buffer),
+        [this, self](boost::system::error_code error, std::size_t bytes)
+        {
+            if (error && error != boost::asio::error::operation_aborted) {
+                _connectionManager.eraseClient(shared_from_this());
+                return;
+            }
+            runPipeline();
+        });
+    } else {
         runPipeline();
-    });
+    }
 }
 
 void Zia::Connection::runPipeline(void)
@@ -55,14 +62,15 @@ void Zia::Connection::runPipeline(void)
       return static_cast<char>(c);
     });
 
-    oZ::Packet packet(std::move(arr), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()));
-    oZ::Context context(std::move(packet));
-    SSLModule SSL;
+    oZ::Packet packet(std::move(arr), oZ::Endpoint(_socket.remote_endpoint().address().to_string(), _socket.remote_endpoint().port()), _socket.native_handle());
+    // oZ::Context context(oZ::Packet(std::move(buffer), endpoint, fd));
+    packet.setEncryption(_crypt);
 
-    int fd = _socket.native_handle();
-    SSL.InitSSLModule(fd);
+    oZ::Context context(std::move(packet));
+
     _pipeline.runPipeline(context);
-    send(std::move(context));
+    if (!_crypt)
+        send(std::move(context));
 }
 
 void Zia::Connection::send(oZ::Context &&context)
