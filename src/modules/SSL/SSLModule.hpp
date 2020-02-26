@@ -38,7 +38,7 @@ class SSLModule : public oZ::IModule {
     private:
 
         bool WriteSSL(oZ::Context &context);
-        bool AcceptSSL(oZ::Context &context);
+        bool ReadSSL(oZ::Context &context);
 
         void configure_context(void);
         void create_context(void);

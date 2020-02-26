@@ -25,11 +25,11 @@ void SSLModule::onRegisterCallbacks(oZ::Pipeline &pipeline)
         oZ::Priority::ASAP,
         this, &SSLModule::WriteSSL
     );
-    // pipeline.registerCallback(
-    //     oZ::State::BeforeParse,
-    //     oZ::Priority::ASAP,
-    //     this, &SSLModule::AcceptSSL
-    // );
+    pipeline.registerCallback(
+        oZ::State::BeforeParse,
+        oZ::Priority::ASAP,
+        this, &SSLModule::ReadSSL
+    );
 }
 
 void SSLModule::onConnection(const oZ::FileDescriptor fd, const oZ::Endpoint endpoint, const bool useEncryption)
@@ -107,28 +107,80 @@ bool SSLModule::WriteSSL(oZ::Context &context)
 
     std::cout << "IS HTTPS" << std::endl;
     std::string response(
-        "HTTP/1.1 200 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
+        "HTTP/"
+        + std::to_string(context.getResponse().getVersion().majorVersion)
+        + "."
+        + std::to_string(context.getResponse().getVersion().minorVersion) 
+        + " "
+        + std::to_string(static_cast<int>(context.getResponse().getCode())) 
+        + " " 
+        + context.getResponse().getReason() + "\n"
+        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
+        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\n\n"
+        + context.getResponse().getBody()
     );
-    if ((ret = SSL_accept(_sslMap[client])) <= 0) {
-        std::cout << "SSL ERROR: " << SSL_get_error(_sslMap[client], ret) << std::endl;
-        perror("");
-        ERR_print_errors_fp(stdout);
-        return false;
-    } else {
+    // std::string response(
+    //     "HTTP/1.1 200 Ok\nContent-Length: 142\nContent-Type: text/html\n\n<!doctype html>\n<html>\n  <head>\n    <title>Titreee</title>\n  </head>\n\n  <body>\n    <p>Je suis le contenu de la page TEST</p>\n  </body>\n</html>"
+    // );
+    // if ((ret = SSL_accept(_sslMap[client])) <= 0) {
+    //     std::cout << "SSL ERROR: " << SSL_get_error(_sslMap[client], ret) << std::endl;
+    //     perror("");
+    //     ERR_print_errors_fp(stdout);
+    //     return false;
+    // } else {
         SSL_write(_sslMap[client], response.c_str(), strlen(response.c_str()));
         return true;
-    }
+    // }
 }
 
-bool SSLModule::AcceptSSL(oZ::Context &context)
+bool SSLModule::ReadSSL(oZ::Context &context)
 {
-    int ret = 0;
 
-    if ((ret = SSL_accept(_ssl)) <= 0) {
-        std::cout << "SSL ERROR: " << SSL_get_error(_ssl, ret) << std::endl;
-        perror("");
-        ERR_print_errors_fp(stdout);
+    const std::size_t readSize = 1024;
+    std::size_t len = 0;
+    std::string content;
+
+    auto *ssl = _sslMap[context.getPacket().getFileDescriptor()];
+
+    if (!ssl)
         return false;
+
+    while (true) {
+
+        char buff[readSize + 1] = {0};
+        std::size_t recv = SSL_read(ssl, buff, readSize);
+
+        if (SSL_get_error(ssl, recv) == SSL_ERROR_WANT_READ)
+            break;
+
+        if (recv <= 0)
+            break;
+        buff[recv] = 0;
+
+        try {
+            content.append(buff, recv);
+        } catch (const std::exception &e) {
+            break;
+
+        }
+        len += recv;
+        if (recv < readSize)
+            break;
     }
+
+    std::string str(content.data());
+
+    oZ::ByteArray arr(str.size());
+
+    // std::cout << "le packet recu : " << std::endl << str << std::endl;
+    std::transform(str.begin(), str.end(), arr.begin(),
+    [](char c)
+    {
+      return static_cast<char>(c);
+    });
+
+    context.getPacket().getByteArray() = arr;
+    std::cout << "~~~~~" << content << std::endl;
+
     return true;
 }
