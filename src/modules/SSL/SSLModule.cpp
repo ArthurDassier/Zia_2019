@@ -42,7 +42,7 @@ SSLModule::~SSLModule()
 
 bool SSLModule::WriteSSL(oZ::Context &context)
 {
-    std::cout << "Je suis le module SSL" << std::endl;
+    // std::cout << "Je suis le module SSL" << std::endl;
 
     // int client = context.getPacket().getFileDescriptor();
     // InitSSLModule(client);

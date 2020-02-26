@@ -73,8 +73,6 @@ bool PHP_CGI::execPHP(oZ::Context &context)
         }
         content = content.substr(content.find("<"));
         context.getResponse().getBody() = content;
-        std::cout << "THUR " << content.size() << std::endl;
-        // context.getResponse().getHeader().set("Content-Length-php", std::to_string(content.size()));
         context.getResponse().getHeader().get("Content-Length") = std::to_string(content.size());
         return true;
     }
@@ -95,9 +93,7 @@ bool PHP_CGI::findPHP(const oZ::Context &context)
     while (is.read(buf, sizeof(buf)).gcount() > 0)
         content.append(buf, is.gcount());
     is.close();
-    if (content.find("<?php") != std::string::npos) {
-        std::cout << "jai trouvé du php" << std::endl;
+    if (content.find("<?php") != std::string::npos)
         return true;
-    }
     return false;
 }

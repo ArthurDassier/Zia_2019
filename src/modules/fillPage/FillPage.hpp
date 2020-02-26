@@ -19,7 +19,8 @@ namespace FillModule
     std::map<std::string, std::string> routes_enums = {
         {"/",      "index.html"},
         {"/test",  "index_test.html"},
-        {"/php",   "index_php.html"}
+        {"/php",   "index_php.html"},
+        {"/form",  "index_form.html"}
     };
 }
 
