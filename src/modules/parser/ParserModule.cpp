@@ -70,11 +70,19 @@ bool Parser::parsing(oZ::Context &context)
     std::string line;
     std::stringstream tempstream(temp);
     std::getline(tempstream, line);
+    // std::cout << "~~le reste: " << temp << std::endl;
     while (std::getline(tempstream, line)) {
         context.getRequest().getHeader().set(
             line.substr(0, line.find(":")),
             line.substr(line.find(" ") + 1));
     }
 
+    /* Body post */
+    if (context.getRequest().getMethod() == oZ::HTTP::Method::Post) {
+        context.getRequest().getHeader().set(
+            "bodyPost",
+            line.substr(0));
+        std::cout << "~~~" << context.getRequest().getHeader().get("bodyPost") << std::endl;
+    }
     return true;
 }

@@ -44,5 +44,4 @@ class PHP_CGI : public oZ::IModule
         bool execPHP(oZ::Context &context);
         bool findPHP(const oZ::Context &context);
         const char **makeEnvironment(const oZ::Context &context);
-
 };

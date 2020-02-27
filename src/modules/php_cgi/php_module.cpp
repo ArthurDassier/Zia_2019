@@ -6,6 +6,8 @@
 */
 
 #include "php_module.hpp"
+// #include <stdlib.h>
+#include <cstdlib>
 
 OPEN_ZIA_MAKE_ENTRY_POINT(PHP_CGI)
 
@@ -71,20 +73,22 @@ bool PHP_CGI::execPHP(oZ::Context &context)
         std::cout << "PHPModule: error in mkstemp" << std::endl;
         return true;
     }
+    // std::cout << context.getResponse().getBody().c_str() << std::endl;
     write(fd, context.getResponse().getBody().c_str(), context.getResponse().getBody().size());
+
     pid = fork();
     if (pid == -1) {
         std::cout << "PHPModule: error in fork" << std::endl;
         return true;
     }
 
-    char *tmpArgv[] = { (char *)"/usr/bin/php-cgi", (char *)tmpPath, NULL };
-    const char **env = makeEnvironment(context);
+    char *tmpArgv[] = {(char *)"/usr/bin/php-cgi", (char *)tmpPath, NULL};
+    const char **env = this->makeEnvironment(context);
     if (pid == 0) {
         close(pipefd[0]);
         if (dup2(pipefd[1], 1) == -1)
             exit(84);
-        int rc = execve(tmpArgv[0], &tmpArgv[0], (char* const*)env);
+        int rc = execve(tmpArgv[0], &tmpArgv[0], const_cast<char *const *>(env));
         _exit(rc);
     } else {
         close(pipefd[1]);
@@ -108,7 +112,6 @@ bool PHP_CGI::execPHP(oZ::Context &context)
         }
         content = content.substr(content.find("<"));
         context.getResponse().getBody() = content;
-        // context.getResponse().getHeader().set("Content-Length-php", std::to_string(content.size()));
         context.getResponse().getHeader().get("Content-Length") = std::to_string(content.size());
         return true;
     }
@@ -129,9 +132,7 @@ bool PHP_CGI::findPHP(const oZ::Context &context)
     while (is.read(buf, sizeof(buf)).gcount() > 0)
         content.append(buf, is.gcount());
     is.close();
-    if (content.find("<?php") != std::string::npos) {
-        std::cout << "jai trouvé du php" << std::endl;
+    if (content.find("<?php") != std::string::npos)
         return true;
-    }
     return false;
 }

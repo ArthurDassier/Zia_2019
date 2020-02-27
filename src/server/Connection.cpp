@@ -77,6 +77,7 @@ void Zia::Connection::runPipeline(void)
 
 void Zia::Connection::send(oZ::Context &&context)
 {
+    /* mettre un try-catch pour la protection */
     std::string response(
         "HTTP/"
         + std::to_string(context.getResponse().getVersion().majorVersion)
@@ -86,8 +87,8 @@ void Zia::Connection::send(oZ::Context &&context)
         + std::to_string(static_cast<int>(context.getResponse().getCode())) 
         + " " 
         + context.getResponse().getReason() + "\n"
-        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\n"
-        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\n\n"
+        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\r\n"
+        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\r\n\n"
         + context.getResponse().getBody()
     );
 
@@ -101,6 +102,7 @@ void Zia::Connection::send(oZ::Context &&context)
             _connectionManager.eraseClient(shared_from_this());
             return;
         }
+        // std::cout << "jai fini de send" << std::endl;
         read();
         // boost::system::error_code err;
         // _socket.shutdown(socket::shutdown_both, err);
