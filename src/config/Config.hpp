@@ -16,6 +16,9 @@
 
 namespace cfg
 {
+	/**
+	 * @brief Config object to retrieve the different configuration from a json file
+	 */
 	class Config;
 
 	/**

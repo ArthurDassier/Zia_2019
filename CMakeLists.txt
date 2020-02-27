@@ -38,10 +38,14 @@ set(SRC
 add_executable(${EXECUTABLE_NAME} ${SRC})
 target_link_libraries(${EXECUTABLE_NAME}
     ${openZiaLibs}
+    utils
     server
     boost_system
 )
-target_include_directories(${EXECUTABLE_NAME} PRIVATE ${openZiaIncludes})
+target_include_directories(${EXECUTABLE_NAME} PRIVATE
+    ${openZiaIncludes}
+    ${UtilsIncludes}
+)
 set_target_properties(${EXECUTABLE_NAME} PROPERTIES
     LINKER_LANGUAGE CXX
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}

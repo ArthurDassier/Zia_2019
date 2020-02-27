@@ -1,10 +1,10 @@
 {
     "env_variables": [
         {
-            "MODULES_PATH": "~/lib/modules/"
+            "MODULES_PATH": "/lib/modules/"
         },
         {
-            "TMP_MODULES_PATH": "~/lib/tmp_modules/"
+            "TMP_MODULES_PATH": "/lib/tmp_modules/"
         }
     ]
 }

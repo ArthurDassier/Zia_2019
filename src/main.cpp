@@ -8,21 +8,15 @@
 #include <iostream>
 #include <exception>
 #include <server/Server.hpp>
+#include <utils/EnvManager.hpp>
 
 int main(int argc, char *argv[])
 {
     std::string ip;
     int port;
+    tls::EnvManager env("config/config.json");
 
-    std::string cwd = std::filesystem::current_path().string();
-    std::stringstream modules_path;
-    std::stringstream tmp_modules_path;
-
-    modules_path << cwd << std::string("/lib/modules/");
-    tmp_modules_path << cwd << std::string("/lib/tmp_modules/");
-
-    setenv("MODULES_PATH", modules_path.str().c_str(), 1);
-    setenv("TMP_MODULES_PATH", tmp_modules_path.str().c_str(), 1);
+    env.loadEnv();
 
     try {
         ip = (argc >= 2) ? argv[1] : Zia::DefaultIP;
