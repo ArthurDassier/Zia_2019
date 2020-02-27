@@ -45,7 +45,7 @@ void Zia::Connection::read(void)
             runPipeline();
         });
     } else {
-        runPipeline();
+       runPipeline();
     }
 }
 
@@ -71,6 +71,8 @@ void Zia::Connection::runPipeline(void)
     _pipeline.runPipeline(context);
     if (!_crypt)
         send(std::move(context));
+    else
+        read();
 }
 
 void Zia::Connection::send(oZ::Context &&context)
@@ -97,7 +99,6 @@ void Zia::Connection::send(oZ::Context &&context)
             _connectionManager.eraseClient(shared_from_this());
             return;
         }
-        std::cout << "jai fini de send" << std::endl;
         read();
         // boost::system::error_code err;
         // _socket.shutdown(socket::shutdown_both, err);

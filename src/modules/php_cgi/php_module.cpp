@@ -73,7 +73,6 @@ bool PHP_CGI::execPHP(oZ::Context &context)
         }
         content = content.substr(content.find("<"));
         context.getResponse().getBody() = content;
-        std::cout << "THUR " << content.size() << std::endl;
         // context.getResponse().getHeader().set("Content-Length-php", std::to_string(content.size()));
         context.getResponse().getHeader().get("Content-Length") = std::to_string(content.size());
         return true;

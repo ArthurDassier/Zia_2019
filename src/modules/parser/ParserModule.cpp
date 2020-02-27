@@ -39,7 +39,12 @@ bool Parser::parsing(oZ::Context &context)
         context.getRequest().setMethod(ParserModule::methods_enums[method]);
     else {
         std::cout << "Method: " << method << std::endl;
-        return false;
+        context.getRequest().getURI() = "error404";
+        oZ::HTTP::Version v;
+        v.majorVersion = 1;
+        v.minorVersion = 1;
+        context.getResponse().setVersion(v);
+        return true;
     }
 
     temp = temp.substr(temp.find(" ") + 1);

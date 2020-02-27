@@ -9,6 +9,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <filesystem>
 #include "FillPage.hpp"
 
 OPEN_ZIA_MAKE_ENTRY_POINT(Fill)
@@ -25,21 +26,32 @@ void Fill::onRegisterCallbacks(oZ::Pipeline &pipeline)
 
 bool Fill::takeContent(oZ::Context &context)
 {
-    if (checkRequestType(context) == false)
+    if (checkRequestType(context) == false) { //check si la methode est ok
+        std::string targetedFile = HTML_FILE_ERROR;
+        std::string type = std::filesystem::path(targetedFile).extension();
+        type.erase(0, 1);
+        context.getResponse().getHeader().set("Content-Type", FillModule::formats[type]);
+        fillBody(context, HTML_FILE_ERROR, oZ::HTTP::Code::BadRequest);
         return false;
+    }
 
     std::string path = context.getRequest().getURI();
     std::string targetedFile;
 
-    //permets de prendre plus que le text/html ->faire le parser apres le .
-    context.getResponse().getHeader().set("Content-Type", "text/html");
+    // context.getResponse().getHeader().set("Content-Type", "text/html");
     if (FillModule::routes_enums[path] != "") {
         targetedFile = HTML_FILES_POSI + FillModule::routes_enums[path];
     } else {
         targetedFile = HTML_FILE_ERROR;
+        std::string type = std::filesystem::path(targetedFile).extension();
+        type.erase(0, 1);
+        context.getResponse().getHeader().set("Content-Type", FillModule::formats[type]);
         fillBody(context, targetedFile, oZ::HTTP::Code::NotFound);
         return false;
     }
+    std::string type = std::filesystem::path(targetedFile).extension();
+    type.erase(0, 1);
+    context.getResponse().getHeader().set("Content-Type", FillModule::formats[type]);
     fillBody(context, targetedFile, oZ::HTTP::Code::OK);
     return true;
 }
@@ -65,6 +77,9 @@ bool Fill::fillBody(oZ::Context &context, const std::string &path, oZ::HTTP::Cod
         break;
     case oZ::HTTP::Code::NotFound:
         context.getResponse().getReason() = "Not found";
+        break;
+    case oZ::HTTP::Code::BadRequest:
+        context.getResponse().getReason() = "Bad Request";
         break;
     default:
         context.getResponse().getReason() = "Not found";
