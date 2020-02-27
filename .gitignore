@@ -27,3 +27,6 @@ vgcore.*
 
 # Build folder
 build/
+
+# Other
+.vscode
