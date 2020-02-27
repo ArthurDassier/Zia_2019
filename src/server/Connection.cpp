@@ -75,23 +75,50 @@ void Zia::Connection::runPipeline(void)
         read();
 }
 
+std::string Zia::Connection::buildResponse(const oZ::Context &context)
+{
+    try
+    {
+        std::string response(
+            "HTTP/"
+            + std::to_string(context.getResponse().getVersion().majorVersion)
+            + "."
+            + std::to_string(context.getResponse().getVersion().minorVersion) 
+            + " "
+            + std::to_string(static_cast<int>(context.getResponse().getCode())) 
+            + " " 
+            + context.getResponse().getReason() + "\n"
+            + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\r\n"
+            + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\r\n\n"
+            + context.getResponse().getBody()
+        );
+        return response;
+    } catch (const std::exception &e)
+    {
+        std::cerr << e.what() << " intern error" << std::endl;
+        std::string errorPage = "<!doctype html>\n<html>\n<head>\n<title>ERROR</title>\n</head>\n<body>\n<p>Internal error</p>\n</body>\n</html>";
+        std::string response(
+            "HTTP/"
+            + std::string("1")
+            + "."
+            + "1" 
+            + " "
+            + std::string("500") 
+            + " " 
+            + "Internal Server Error" + "\n"
+            + "Content-Length: " + "103" + "\r\n"
+            + "Content-Type: " + "text/html" + "\r\n\n"
+            + errorPage
+        );
+        return response;
+    }
+}
+
 void Zia::Connection::send(oZ::Context &&context)
 {
     /* mettre un try-catch pour la protection */
-    std::string response(
-        "HTTP/"
-        + std::to_string(context.getResponse().getVersion().majorVersion)
-        + "."
-        + std::to_string(context.getResponse().getVersion().minorVersion) 
-        + " "
-        + std::to_string(static_cast<int>(context.getResponse().getCode())) 
-        + " " 
-        + context.getResponse().getReason() + "\n"
-        + "Content-Length: " + context.getResponse().getHeader().get("Content-Length") + "\r\n"
-        + "Content-Type: " + context.getResponse().getHeader().get("Content-Type") + "\r\n\n"
-        + context.getResponse().getBody()
-    );
 
+    std::string response = buildResponse(context);
     // std::cout << "~~packet: " << std::endl << response << std::endl;
 
     auto self(shared_from_this());
