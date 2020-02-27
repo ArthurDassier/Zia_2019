@@ -26,13 +26,7 @@ class SSLModule : public oZ::IModule {
         SSLModule() = default;
         ~SSLModule();
 
-<<<<<<< HEAD
         virtual const char *getName(void) const { return "TestModule"; }
-=======
-        void InitSSLModule(int client);
-
-        virtual const char *getName(void) const { return "SSLModule"; }
->>>>>>> 45680fc... [ADD]: Modules loading (#18)
 
         virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 
