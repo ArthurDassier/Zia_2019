@@ -35,6 +35,7 @@ namespace FillModule
         {"/",       "index.html"},
         {"/test",   "index_test.html"},
         {"/php",    "index_php.html"},
+        {"/form",   "index_form.html"},
         {"/carlos", "carlos.gif"},
         {"/cat",    "cat_choc.jpg"},
         {"/theo",   "theoWick.jpg"},
