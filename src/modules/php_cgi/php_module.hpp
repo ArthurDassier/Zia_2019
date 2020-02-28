@@ -26,7 +26,8 @@ namespace PHPModule
     std::map<std::string, std::string> routes_enums = {
         {"/",      "index.html"},
         {"/test",  "index_test.html"},
-        {"/php",   "index_php.html"}
+        {"/php",   "index_php.html"},
+        {"/form",  "index_form.html"}
     };
 }
 
@@ -42,5 +43,5 @@ class PHP_CGI : public oZ::IModule
     private:
         bool execPHP(oZ::Context &context);
         bool findPHP(const oZ::Context &context);
-
+        const char **makeEnvironment(const oZ::Context &context);
 };

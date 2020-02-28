@@ -37,6 +37,8 @@ private:
     void read(void);
     void runPipeline(void);
     void send(oZ::Context &&);
+    std::string buildResponse(const oZ::Context &context);
+
 
     socket _socket;
     ConnectionManager &_connectionManager;
