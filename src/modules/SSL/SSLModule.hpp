@@ -45,6 +45,8 @@ class SSLModule : public oZ::IModule {
 
         void Init(void);
 
+        std::string createResponse(const oZ::Context &context);
+
         std::map<int, SSL*> _sslMap;
 
         int _client = 0;
