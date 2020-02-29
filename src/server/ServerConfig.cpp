@@ -11,24 +11,22 @@ using namespace Zia;
 
 ServerConfig::ServerConfig(const FileDescriptor &file, const std::string &name):
     Config(file, name),
-    _address("localhost"),
-    _port(80)
+    _address(DefaultIP),
+    _port(DefaultPort)
 {
+    loadConfig(file.path());
 }
 
 void ServerConfig::loadConfig(const std::filesystem::path &path)
 {
-    std::cout << "ServerConfig::loadConfig" << std::endl;
-    std::ifstream file(path);
-    json j;
-    file >> j;
-    file.close();
+    tls::JsonLoader jld(path);
     _enabledModules.clear();
-    
-    // Load each attributes...
+
     try {
-        loadWebServices(j["web_services"]);
-        loadModules(j["modules"]);
+        loadWebServices(jld.get("web_services"));
+        loadModules(jld.get("modules"));
+        _configPath = jld.get("config_path");
+        _modulesPath = jld.get("modules_path");
     } catch(const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
@@ -63,6 +61,16 @@ const int ServerConfig::getPort() const noexcept
     return _port;
 }
 
+std::string ServerConfig::getConfigPath() const noexcept
+{
+    return _configPath;
+}
+
+std::string ServerConfig::getModulesPath() const noexcept
+{
+    return _modulesPath;
+}
+
 const EnabledList ServerConfig::getEnabledModulesList() const noexcept
 {
     return _enabledModules;
@@ -87,10 +95,11 @@ const std::string ServerConfig::getModuleName(const FileDescriptor &file) const
 
 void ServerConfig::loadModules(const json &object)
 {
-    std::string modules_path(std::getenv("MODULES_PATH"));
     for (auto &[key, value] : object.items()) {
         std::stringstream ss;
-        ss << modules_path << std::string(value["module"]);
+        tls::JsonLoader jld(value);
+
+        ss << tls::EnvManager::getEnv("MODULES_PATH") << std::string(jld.get("module"));
 
         std::filesystem::directory_entry de;
         std::filesystem::path config_path(ss.str());

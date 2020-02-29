@@ -42,7 +42,7 @@ namespace tls
              * @param name Name of the variable.
              * @param value Value of the variable.
              */
-            void setEnv(const std::string &name, const std::string &value);
+            static void setEnv(const std::string &name, const std::string &value);
 
             /**
              * @brief Get an environment variable.
@@ -51,7 +51,7 @@ namespace tls
              * 
              * @return Value of the found environment variable.
              */
-            const std::string getEnv(const std::string &name) const;
+            static const std::string getEnv(const std::string &name);
 
             /**
              * @brief Set a list of environment variable from a json file.

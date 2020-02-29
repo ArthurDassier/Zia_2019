@@ -3,6 +3,8 @@
         "address": "127.0.0.1",
         "port": 8080
     },
+    "config_path": "config",
+    "modules_path": "lib/tmp_modules",
     "modules": [
         {
             "name": "FillPageModule",

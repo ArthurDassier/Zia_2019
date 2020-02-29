@@ -38,6 +38,13 @@ namespace tls
             JsonLoader(const std::filesystem::path &path);
 
             /**
+             * @brief Construct a new JsonLoader object.
+             * 
+             * @param object Json object to load.
+             */
+            JsonLoader(const json &object);
+
+            /**
              * @brief Destroy the JsonLoader object.
              */
             ~JsonLoader() = default;

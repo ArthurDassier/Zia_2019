@@ -20,6 +20,12 @@ JsonLoader::JsonLoader(const std::filesystem::path &path):
     load(path);
 }
 
+JsonLoader::JsonLoader(const json &object):
+    _json(object),
+    _hasLoaded(false)
+{
+}
+
 void JsonLoader::load(const std::filesystem::path &path)
 {
     std::ifstream file(path);
@@ -33,14 +39,14 @@ const json JsonLoader::get(const std::string &to_get) const
     json j;
 
     try {
-        j = _json[to_get];
+        j = _json.at(to_get);
     } catch (const std::exception &e) {
         std::cerr << "JsonLoader [Error]: " << e.what() << std::endl;
     }
     return j;
 }
 
-    const json JsonLoader::getJson() const noexcept
+const json JsonLoader::getJson() const noexcept
 {
     return _json;
 }

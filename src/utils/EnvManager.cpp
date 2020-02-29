@@ -28,7 +28,7 @@ void EnvManager::setEnv(const std::string &name, const std::string &value)
     setenv(name.c_str(), value.c_str(), 1);
 }
 
-const std::string EnvManager::getEnv(const std::string &name) const
+const std::string EnvManager::getEnv(const std::string &name)
 {
     auto env = std::getenv(name.c_str());
     if (!env) {

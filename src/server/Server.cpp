@@ -14,17 +14,17 @@
 
 using namespace Zia;
 
-Server::Server(const std::string &ip, int port,
-std::string &&modules, std::string &&configs)
-:
-    _pipeline(std::move(modules), std::move(configs)),
-    _configManager("./config"),
+Server::Server(const ConfigPtr &config):
+    _pipeline(std::move(config->getModulesPath()),
+        std::move(config->getConfigPath())),
+    _configManager(config->getConfigPath()),
+    _serverConfig(config),
     _socket(_io_service),
     _acceptor(_io_service),
     _acceptorHTTPS(_io_service),
     _signals(_io_service),
-    _ip(ip),
-    _port(port)
+    _ip(config->getAddress()),
+    _port(config->getPort())
 {
     _signals.add(SIGINT);
     _signals.add(SIGTERM);
@@ -35,28 +35,13 @@ std::string &&modules, std::string &&configs)
     ManagingSignals();
 
     boost::asio::ip::tcp::resolver resolver(_io_service);
-    boost::asio::ip::tcp::endpoint endpoint = *resolver.resolve({ip, std::to_string(port)});
-    _acceptor.open(endpoint.protocol());
-    _acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-    _acceptor.bind(endpoint);
-    _acceptor.listen();
+    Endpoint endpoint = *resolver.resolve({_ip, std::to_string(_port)});
+    setAcceptor(_acceptor, endpoint);
 
-    boost::asio::ip::tcp::endpoint endpoint2 = *resolver.resolve({ip, std::to_string(DefaultPortHTTPS)});
-    _acceptorHTTPS.open(endpoint2.protocol());
-    _acceptorHTTPS.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
-    _acceptorHTTPS.bind(endpoint2);
-    _acceptorHTTPS.listen();
-
-    std::filesystem::directory_entry de;
-    std::filesystem::path config_path("config/server_config.json");
-    de.assign(config_path);
-
-    auto config = _configManager.getConfig("server_config");
-    _serverConfig = ConfigPtr(new ServerConfig(config->getFileDescriptor(), config->getName()));
-    _serverConfig->loadConfig(_serverConfig->getPath());
+    Endpoint secure_endpoint = *resolver.resolve({_ip, std::to_string(DefaultPortHTTPS)});
+    setAcceptor(_acceptorHTTPS, secure_endpoint);
 
     addEnabledModules(_serverConfig->getEnabledModulesList());
-
     _configManager.onConfigChange([this]() {
         _serverConfig->loadConfig(_serverConfig->getPath());
         addEnabledModules(_serverConfig->getEnabledModulesList());
@@ -64,9 +49,7 @@ std::string &&modules, std::string &&configs)
     _configManager.manage();
 
     std::cout << "Number of modules loaded: " << _pipeline.getModules().size() << std::endl;
-
     WaitingClient();
-
     Log::info("Server Started\n> IP\t" + _ip + "\n> Port\t" + std::to_string(_port));
 }
 
@@ -116,6 +99,14 @@ void Server::ManagingSignals()
         _acceptor.close();
         _acceptorHTTPS.close();
     });
+}
+
+void Server::setAcceptor(Acceptor &acceptor, Endpoint &endpoint)
+{
+    acceptor.open(endpoint.protocol());
+    acceptor.set_option(boost::asio::ip::tcp::acceptor::reuse_address(true));
+    acceptor.bind(endpoint);
+    acceptor.listen();
 }
 
 void Server::addEnabledModules(const EnabledList &modulesList)
