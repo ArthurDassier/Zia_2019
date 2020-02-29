@@ -16,70 +16,64 @@
 
 namespace Zia
 {
-    class Server;
+    class Server: protected oZ::Pipeline
+    {
+        public:
+            using ConfigPtr = std::shared_ptr<ServerConfig>;
 
-    const int DefaultPort = 80;
-    const int DefaultPortHTTPS = 443;
-    const std::string DefaultIP = "127.0.0.1";
-}
+            using io_service = boost::asio::io_service;
 
+            using Acceptor = boost::asio::ip::tcp::acceptor;
+            
+            using Socket = boost::asio::ip::tcp::socket;
 
-class Zia::Server: protected oZ::Pipeline
-{
-public:
-    using ConfigPtr = std::shared_ptr<ServerConfig>;
-    using io_service = boost::asio::io_service;
-    using acceptor = boost::asio::ip::tcp::acceptor;
-    using socket = boost::asio::ip::tcp::socket;
+            using Endpoint = boost::asio::ip::tcp::endpoint;
 
-    Server(const std::string &ip = DefaultIP, int port = DefaultPort,
-        std::string &&modules = "lib/tmp_modules",
-        std::string &&configs = "lib/modules/Configs");
+            Server(const ConfigPtr &config);
 
-    /**
-     * @brief Run Server
-     *
-     */
-    void run();
+            /**
+             * @brief Run Server
+             *
+             */
+            void run();
 
-    /**
-     * @brief Close Server
-     *
-     */
-    void close();
+            /**
+             * @brief Close Server
+             *
+             */
+            void close();
 
-private:
+        private:
 
-    /**
-     * @brief Waiting async client method
-     *
-     */
-    void WaitingClient(void);
+            /**
+             * @brief Waiting async client method
+             *
+             */
+            void WaitingClient(void);
 
-    /**
-     * @brief Get signals of server and execute them
-     *
-     */
-    void ManagingSignals(void);
+            /**
+             * @brief Get signals of server and execute them
+             *
+             */
+            void ManagingSignals(void);
 
-    void addEnabledModules(const EnabledList &modulesList);
+            void setAcceptor(Acceptor &acceptor, Endpoint &endpoint);
 
-private:
+            void addEnabledModules(const EnabledList &modulesList);
 
-    oZ::Pipeline _pipeline;
+        private:
+            oZ::Pipeline _pipeline;
+            cfg::ConfigManager _configManager;
+            ConnectionManager _connectionManager;
+            ConfigPtr _serverConfig;
 
-    std::vector<std::thread> _threads;
+            io_service _io_service;
+            Acceptor _acceptor;
+            Acceptor _acceptorHTTPS;
+            Socket _socket;
+            boost::asio::signal_set _signals;
 
-    cfg::ConfigManager _configManager;
-    ConnectionManager _connectionManager;
-    ConfigPtr _serverConfig;
-
-    io_service _io_service;
-    acceptor _acceptor;
-    acceptor _acceptorHTTPS;
-    socket _socket;
-    boost::asio::signal_set _signals;
-
-    std::string _ip;
-    int _port;
-};
+            std::string _ip;
+            int _port;
+    };
+}; // namespace Zia

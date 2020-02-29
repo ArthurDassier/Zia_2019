@@ -7,7 +7,9 @@ get_filename_component(UtilsSourcesDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 set(UtilsIncludes ${UtilsSourcesDir})
 
 set(UtilsSources
-    ${UtilsSourcesDir}/SharedMemory.cpp
+    ${UtilsSourcesDir}/EnvManager.cpp
+    ${UtilsSourcesDir}/JsonLoader.cpp
+    # ${UtilsSourcesDir}/SharedMemory.cpp
 )
 
 # Create utils library
