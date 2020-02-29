@@ -4,4 +4,4 @@ message("Adding all source subdirectory...")
 
 include(config/config.cmake)
 add_subdirectory(modules)
-add_subdirectory(server)
+include(server/server.cmake)

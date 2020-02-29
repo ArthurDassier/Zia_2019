@@ -5,7 +5,7 @@
 ** 
 */
 
-#include "php_module.hpp"
+#include "PHPModule.hpp"
 // #include <stdlib.h>
 #include <cstdlib>
 

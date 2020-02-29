@@ -26,6 +26,10 @@ project(${EXECUTABLE_NAME})             # Create project "zia"
 
 include(lib/openZia/openZia/openZia.cmake)
 
+if(${ZIA_TESTS} AND ${ZIA_COVERAGE})
+    include(test/test.cmake)
+endif()
+
 set(SOURCES "./src")
 
 include_directories(${SOURCES})

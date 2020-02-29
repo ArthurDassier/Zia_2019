@@ -1,16 +1,18 @@
-project(parserModule)
+project(fillPageModule)
 
 message("Generating project ${PROJECT_NAME}...")
 
-get_filename_component(ParserModuleSourcesDir ${CMAKE_CURRENT_LIST_FILE}  PATH)
+get_filename_component(FillPageModuleSourcesDir ${CMAKE_CURRENT_LIST_FILE}  PATH)
 
-set(ParserModuleSources
-	${ParserModuleSourcesDir}/ParserModule.cpp
-	${ParserModuleSourcesDir}/ParserModule.hpp
+set(FillPageModuleLibs ${PROJECT_NAME})
+set(FillPageModuleIncludes ${FillPageModuleSourcesDir})
+
+set(fillPageModuleSources
+	${FillPageModuleSourcesDir}/FillPage.cpp
 )
 
 # Create parserModule library
-add_library(${PROJECT_NAME} SHARED ${ParserModuleSources})
+add_library(${PROJECT_NAME} SHARED ${fillPageModuleSources})
 target_link_libraries(${PROJECT_NAME} ${openZiaLibs})
 target_include_directories(${PROJECT_NAME} PRIVATE ${openZiaIncludes})
 
