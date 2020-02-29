@@ -5,10 +5,25 @@ get_filename_component(ZiaSourcesTestDir ${CMAKE_CURRENT_LIST_FILE} PATH)
 
 message("Compiling criterion unit-tests for zia project")
 
+set(FillModuleTestDir ${ZiaSourcesTestDir}/testFillModule/modules)
+set(ParserModuleTestDir ${ZiaSourcesTestDir}/testParserModule/modules)
+set(PHPModuleTestDir ${ZiaSourcesTestDir}/testPHPModule/modules)
+
 set(TestSources
     # ${ZiaSourcesTestDir}/{...}.cpp
-    ${ZiaSourcesTestDir}/test_boolean.cpp
+    ${ZiaSourcesTestDir}/testParserModule/parserModuleTest.cpp
 )
+
+set(TMP)
+
+configure_file(${LibModulesDir}/libfillPageModule.so ${FillModuleTestDir} COPYONLY)
+configure_file(${LibModulesDir}/libfillPageModule.so ${PHPModuleTestDir} COPYONLY)
+
+configure_file(${LibModulesDir}/libparserModule.so ${FillModuleTestDir} COPYONLY)
+configure_file(${LibModulesDir}/libparserModule.so ${ParserModuleTestDir} COPYONLY)
+configure_file(${LibModulesDir}/libparserModule.so ${PHPModuleTestDir} COPYONLY)
+
+configure_file(${LibModulesDir}/libphpModule.so ${PHPModuleTestDir} COPYONLY)
 
 # Add a foo library for testing purposes
 # set(FooSources

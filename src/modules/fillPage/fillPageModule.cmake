@@ -6,6 +6,7 @@ get_filename_component(FillPageModuleSourcesDir ${CMAKE_CURRENT_LIST_FILE}  PATH
 
 set(FillPageModuleLibs ${PROJECT_NAME})
 set(FillPageModuleIncludes ${FillPageModuleSourcesDir})
+set(FillPageModulePath ${LibModulesDir}/${PROJECT_NAME})
 
 set(fillPageModuleSources
 	${FillPageModuleSourcesDir}/FillPage.cpp
