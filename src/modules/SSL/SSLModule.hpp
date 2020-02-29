@@ -20,6 +20,9 @@
 #include <openZia/IModule.hpp>
 #include <openZia/Pipeline.hpp>
 
+/**
+ * @brief SSLModule class to manage the SSL module.
+ */
 class SSLModule : public oZ::IModule {
     public:
 

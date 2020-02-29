@@ -47,7 +47,7 @@ namespace Zia
     using EnabledList = std::set<ModulePtr>;
 
     /**
-     * @brief Class to manage configuration files of the server.
+     * @brief ServerConfig class to manage configuration files of the server.
      */
     class ServerConfig : virtual public Config
     {

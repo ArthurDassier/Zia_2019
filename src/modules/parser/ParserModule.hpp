@@ -42,6 +42,9 @@ namespace ParserModule
     };
 }
 
+/**
+ * @brief Parser class to manage the parser module.
+ */
 class Parser : public oZ::IModule {
 public:
     /**

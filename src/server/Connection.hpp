@@ -19,6 +19,9 @@ namespace Zia
     class ConnectionManager;
 }
 
+/**
+ * @brief Connection class to manage the connection.
+ */
 class Zia::Connection : public std::enable_shared_from_this<Zia::Connection>
 {
 public:
