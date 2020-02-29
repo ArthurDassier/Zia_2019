@@ -13,6 +13,7 @@ set(TestSources
     # ${ZiaSourcesTestDir}/{...}.cpp
     ${ZiaSourcesTestDir}/testParserModule/parserModuleTest.cpp
     ${ZiaSourcesTestDir}/testFillModule/fillModuleTest.cpp
+    ${ZiaSourcesTestDir}/testPHPModule/phpModuleTest.cpp
 )
 
 set(TMP)
