@@ -29,9 +29,6 @@ namespace Zia
 
             using Endpoint = boost::asio::ip::tcp::endpoint;
 
-            // Server(const std::string &ip = DefaultIP, int port = DefaultPort,
-            //     std::string &&modules = "lib/tmp_modules",
-            //     std::string &&configs = "lib/modules/Configs");
             Server(const ConfigPtr &config);
 
             /**

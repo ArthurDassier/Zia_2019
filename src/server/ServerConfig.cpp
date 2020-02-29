@@ -111,6 +111,8 @@ void ServerConfig::loadModules(const json &object)
 
 void ServerConfig::loadWebServices(const json &object)
 {
-    for (auto &[key, value] : object.items())
-        std::cout << "j[" << key << "] => " << value << std::endl;
+    tls::JsonLoader jld(object);
+
+    _address = jld.get("address");
+    _port = jld.get("port");
 }
