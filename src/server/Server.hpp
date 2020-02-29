@@ -16,6 +16,9 @@
 
 namespace Zia
 {
+    /**
+ * @brief Server class to manage the server.
+ */
     class Server: protected oZ::Pipeline
     {
         public:

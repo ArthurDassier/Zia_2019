@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_zia_1_1_connection" kind="class" language="C++" prot="public">
+    <compoundname>Zia::Connection</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Zia::Connection &gt;</basecompoundref>
+    <includes refid="_connection_8hpp" local="no">Connection.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_zia_1_1_connection_1a1b74e276e0f3aa8dbabdaed80a0936e6" prot="public" static="no">
+        <type>boost::asio::ip::tcp::socket</type>
+        <definition>using Zia::Connection::socket =  boost::asio::ip::tcp::socket</definition>
+        <argsstring></argsstring>
+        <name>socket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="28" column="1" bodyfile="src/server/Connection.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_zia_1_1_connection_1a24be5d0e53e3b8d2f5edb49f60861ebf" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_connection_1a1b74e276e0f3aa8dbabdaed80a0936e6" kindref="member">socket</ref></type>
+        <definition>socket Zia::Connection::_socket</definition>
+        <argsstring></argsstring>
+        <name>_socket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="82" column="1" bodyfile="src/server/Connection.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_connection_1a0bf80eb508104a9282cd7a7fb41a4fd1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_connection_manager" kindref="compound">ConnectionManager</ref> &amp;</type>
+        <definition>ConnectionManager&amp; Zia::Connection::_connectionManager</definition>
+        <argsstring></argsstring>
+        <name>_connectionManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="83" column="1" bodyfile="src/server/Connection.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_connection_1a8c2193d0d912ac8afcd478cbb972731f" prot="private" static="no" mutable="no">
+        <type>oZ::Pipeline &amp;</type>
+        <definition>oZ::Pipeline&amp; Zia::Connection::_pipeline</definition>
+        <argsstring></argsstring>
+        <name>_pipeline</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="84" column="1" bodyfile="src/server/Connection.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_connection_1aa572ece24b00ab40373b05e5d23db99b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Zia::Connection::_crypt</definition>
+        <argsstring></argsstring>
+        <name>_crypt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="85" column="1" bodyfile="src/server/Connection.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_connection_1a4326597f48e073d3e84dee8f60503d05" prot="private" static="no" mutable="no">
+        <type>std::array&lt; char, 8192 &gt;</type>
+        <definition>std::array&lt;char, 8192&gt; Zia::Connection::_buffer</definition>
+        <argsstring></argsstring>
+        <name>_buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="87" column="1" bodyfile="src/server/Connection.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_zia_1_1_connection_1a06a6c69bf205afa9868169a1435129c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Zia::Connection::Connection</definition>
+        <argsstring>(void)=delete</argsstring>
+        <name>Connection</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Contructor of the <ref refid="class_zia_1_1_connection" kindref="compound">Connection</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_1a61438cdd01805cd466d1382eafcb1576" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Zia::Connection::Connection</definition>
+        <argsstring>(socket sock, ConnectionManager &amp;connectionManager, oZ::Pipeline &amp;pipeline, bool encryption=false)</argsstring>
+        <name>Connection</name>
+        <param>
+          <type><ref refid="class_zia_1_1_connection_1a1b74e276e0f3aa8dbabdaed80a0936e6" kindref="member">socket</ref></type>
+          <declname>sock</declname>
+        </param>
+        <param>
+          <type><ref refid="class_zia_1_1_connection_manager" kindref="compound">ConnectionManager</ref> &amp;</type>
+          <declname>connectionManager</declname>
+        </param>
+        <param>
+          <type>oZ::Pipeline &amp;</type>
+          <declname>pipeline</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>encryption</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Contructor of the <ref refid="class_zia_1_1_connection" kindref="compound">Connection</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sock</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Socket accepted by the serveur </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>connectionManager</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="class_zia_1_1_connection" kindref="compound">Connection</ref> manager of the server </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pipeline</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="class_zia_1_1_server" kindref="compound">Server</ref>&apos;s pipeline use for modif the context </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>encryption</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bool use to know if this will be in https or not </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="43" column="1" bodyfile="src/server/Connection.cpp" bodystart="17" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_1af7bae27ea5870ef9efc6775d38012aa4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Connection::start</definition>
+        <argsstring>(void)</argsstring>
+        <name>start</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Start the connection between browser and serv (client) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="48" column="1" bodyfile="src/server/Connection.cpp" bodystart="26" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_1ac9704053c3b7f919d71255b1ce30cc63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Connection::stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>stop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stop the connection between browser and serv (client) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="53" column="1" bodyfile="src/server/Connection.cpp" bodystart="139" bodyend="144"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_zia_1_1_connection_1a271d42459c363043634670b403db6efe" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Connection::read</definition>
+        <argsstring>(void)</argsstring>
+        <name>read</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Read the resquests from the browser. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="60" column="1" bodyfile="src/server/Connection.cpp" bodystart="34" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_1a8dcb0e37c688930d74eb000a168128c0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Connection::runPipeline</definition>
+        <argsstring>(void)</argsstring>
+        <name>runPipeline</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Load and run the pipeline for modif context. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="65" column="1" bodyfile="src/server/Connection.cpp" bodystart="52" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_1a4a882f2d899d733852e757eb8b143cf2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Connection::send</definition>
+        <argsstring>(oZ::Context &amp;&amp;context)</argsstring>
+        <name>send</name>
+        <param>
+          <type>oZ::Context &amp;&amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Send the context modified by the pipeline to the browser. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Context use during the pipeline </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="72" column="1" bodyfile="src/server/Connection.cpp" bodystart="117" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_1a4b29e213541c7b1911df851294805d7b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string Zia::Connection::buildResponse</definition>
+        <argsstring>(const oZ::Context &amp;context)</argsstring>
+        <name>buildResponse</name>
+        <param>
+          <type>const oZ::Context &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Creste the response for the browser to by send. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Context use during the pipeline </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Connection.hpp" line="79" column="1" bodyfile="src/server/Connection.cpp" bodystart="78" bodyend="115"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_zia_1_1_connection" kindref="compound">Connection</ref> class to manage the connection. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>std::enable_shared_from_this&lt; Zia::Connection &gt;</label>
+      </node>
+      <node id="5">
+        <label>Zia::Connection</label>
+        <link refid="class_zia_1_1_connection"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8">
+        <label>std::enable_shared_from_this&lt; Zia::Connection &gt;</label>
+      </node>
+      <node id="7">
+        <label>Zia::Connection</label>
+        <link refid="class_zia_1_1_connection"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/server/Connection.hpp" line="26" column="1" bodyfile="src/server/Connection.hpp" bodystart="25" bodyend="88"/>
+    <listofallmembers>
+      <member refid="class_zia_1_1_connection_1a4326597f48e073d3e84dee8f60503d05" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>_buffer</name></member>
+      <member refid="class_zia_1_1_connection_1a0bf80eb508104a9282cd7a7fb41a4fd1" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>_connectionManager</name></member>
+      <member refid="class_zia_1_1_connection_1aa572ece24b00ab40373b05e5d23db99b" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>_crypt</name></member>
+      <member refid="class_zia_1_1_connection_1a8c2193d0d912ac8afcd478cbb972731f" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>_pipeline</name></member>
+      <member refid="class_zia_1_1_connection_1a24be5d0e53e3b8d2f5edb49f60861ebf" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>_socket</name></member>
+      <member refid="class_zia_1_1_connection_1a4b29e213541c7b1911df851294805d7b" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>buildResponse</name></member>
+      <member refid="class_zia_1_1_connection_1a06a6c69bf205afa9868169a1435129c1" prot="public" virt="non-virtual"><scope>Zia::Connection</scope><name>Connection</name></member>
+      <member refid="class_zia_1_1_connection_1a61438cdd01805cd466d1382eafcb1576" prot="public" virt="non-virtual"><scope>Zia::Connection</scope><name>Connection</name></member>
+      <member refid="class_zia_1_1_connection_1a271d42459c363043634670b403db6efe" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>read</name></member>
+      <member refid="class_zia_1_1_connection_1a8dcb0e37c688930d74eb000a168128c0" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>runPipeline</name></member>
+      <member refid="class_zia_1_1_connection_1a4a882f2d899d733852e757eb8b143cf2" prot="private" virt="non-virtual"><scope>Zia::Connection</scope><name>send</name></member>
+      <member refid="class_zia_1_1_connection_1a1b74e276e0f3aa8dbabdaed80a0936e6" prot="public" virt="non-virtual"><scope>Zia::Connection</scope><name>socket</name></member>
+      <member refid="class_zia_1_1_connection_1af7bae27ea5870ef9efc6775d38012aa4" prot="public" virt="non-virtual"><scope>Zia::Connection</scope><name>start</name></member>
+      <member refid="class_zia_1_1_connection_1ac9704053c3b7f919d71255b1ce30cc63" prot="public" virt="non-virtual"><scope>Zia::Connection</scope><name>stop</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

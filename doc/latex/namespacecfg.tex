@@ -1,0 +1,139 @@
+\hypertarget{namespacecfg}{}\section{cfg Namespace Reference}
+\label{namespacecfg}\index{cfg@{cfg}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classcfg_1_1_config}{Config}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classcfg_1_1_config}{Config} abstracts a configuration from a json file. \end{DoxyCompactList}\item 
+class \hyperlink{classcfg_1_1_config_manager}{Config\+Manager}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classcfg_1_1_config_manager}{Config\+Manager} class to manage the configuration files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{namespacecfg_af5f3a3fc2010c76e90bc66696485989f}{Config\+Ptr} = std\+::shared\+\_\+ptr$<$ \hyperlink{classcfg_1_1_config}{Config} $>$
+\begin{DoxyCompactList}\small\item\em \hyperlink{classcfg_1_1_config}{Config} pointer type, using shared\+\_\+ptr as backend. \end{DoxyCompactList}\item 
+using \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{File\+Descriptor} = std\+::filesystem\+::directory\+\_\+entry
+\begin{DoxyCompactList}\small\item\em File descriptor from a directory entry. \end{DoxyCompactList}\item 
+using \hyperlink{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}{Timestamp} = std\+::filesystem\+::file\+\_\+time\+\_\+type
+\begin{DoxyCompactList}\small\item\em File last modified date. \end{DoxyCompactList}\item 
+using \hyperlink{namespacecfg_a4b03b67363586260311e07e8b27bd5ac}{json} = nlohmann\+::json
+\begin{DoxyCompactList}\small\item\em Json library object. \end{DoxyCompactList}\item 
+using \hyperlink{namespacecfg_ab1a8f7060b6dfea6111c4449e81c6f8c}{Time\+Sleep} = std\+::chrono\+::milliseconds
+\begin{DoxyCompactList}\small\item\em Simple time unit of measuring. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795de}{File\+Status} \{ \hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795deae2fa538867c3830a859a5b17ab24644b}{File\+Status\+::created}, 
+\hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795dea9ae73c65f418e6f79ceb4f0e4a4b98d5}{File\+Status\+::modified}, 
+\hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795deaf4adee3fff79c6ddad5b2e45f730006a}{File\+Status\+::erased}, 
+\hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795dea334c4a4c42fdb79d7ebc3e73b517e6f8}{File\+Status\+::none}
+ \}\begin{DoxyCompactList}\small\item\em File status enumeration. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespacecfg_af5f3a3fc2010c76e90bc66696485989f}\label{namespacecfg_af5f3a3fc2010c76e90bc66696485989f}} 
+\index{cfg@{cfg}!Config\+Ptr@{Config\+Ptr}}
+\index{Config\+Ptr@{Config\+Ptr}!cfg@{cfg}}
+\subsubsection{\texorpdfstring{Config\+Ptr}{ConfigPtr}}
+{\footnotesize\ttfamily using \hyperlink{namespacecfg_af5f3a3fc2010c76e90bc66696485989f}{cfg\+::\+Config\+Ptr} = typedef std\+::shared\+\_\+ptr$<$\hyperlink{classcfg_1_1_config}{Config}$>$}
+
+
+
+\hyperlink{classcfg_1_1_config}{Config} pointer type, using shared\+\_\+ptr as backend. 
+
+
+
+Definition at line 63 of file Config.\+hpp.
+
+\mbox{\Hypertarget{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}\label{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}} 
+\index{cfg@{cfg}!File\+Descriptor@{File\+Descriptor}}
+\index{File\+Descriptor@{File\+Descriptor}!cfg@{cfg}}
+\subsubsection{\texorpdfstring{File\+Descriptor}{FileDescriptor}}
+{\footnotesize\ttfamily using \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{cfg\+::\+File\+Descriptor} = typedef std\+::filesystem\+::directory\+\_\+entry}
+
+
+
+File descriptor from a directory entry. 
+
+
+
+Definition at line 68 of file Config.\+hpp.
+
+\mbox{\Hypertarget{namespacecfg_a4b03b67363586260311e07e8b27bd5ac}\label{namespacecfg_a4b03b67363586260311e07e8b27bd5ac}} 
+\index{cfg@{cfg}!json@{json}}
+\index{json@{json}!cfg@{cfg}}
+\subsubsection{\texorpdfstring{json}{json}}
+{\footnotesize\ttfamily using \hyperlink{namespacecfg_a4b03b67363586260311e07e8b27bd5ac}{cfg\+::json} = typedef nlohmann\+::json}
+
+
+
+Json library object. 
+
+
+
+Definition at line 78 of file Config.\+hpp.
+
+\mbox{\Hypertarget{namespacecfg_ab1a8f7060b6dfea6111c4449e81c6f8c}\label{namespacecfg_ab1a8f7060b6dfea6111c4449e81c6f8c}} 
+\index{cfg@{cfg}!Time\+Sleep@{Time\+Sleep}}
+\index{Time\+Sleep@{Time\+Sleep}!cfg@{cfg}}
+\subsubsection{\texorpdfstring{Time\+Sleep}{TimeSleep}}
+{\footnotesize\ttfamily using \hyperlink{namespacecfg_ab1a8f7060b6dfea6111c4449e81c6f8c}{cfg\+::\+Time\+Sleep} = typedef std\+::chrono\+::milliseconds}
+
+
+
+Simple time unit of measuring. 
+
+
+
+Definition at line 23 of file Config\+Manager.\+hpp.
+
+\mbox{\Hypertarget{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}\label{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}} 
+\index{cfg@{cfg}!Timestamp@{Timestamp}}
+\index{Timestamp@{Timestamp}!cfg@{cfg}}
+\subsubsection{\texorpdfstring{Timestamp}{Timestamp}}
+{\footnotesize\ttfamily using \hyperlink{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}{cfg\+::\+Timestamp} = typedef std\+::filesystem\+::file\+\_\+time\+\_\+type}
+
+
+
+File last modified date. 
+
+
+
+Definition at line 73 of file Config.\+hpp.
+
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacecfg_a384f743959a9029f7e1c3d11548795de}\label{namespacecfg_a384f743959a9029f7e1c3d11548795de}} 
+\index{cfg@{cfg}!File\+Status@{File\+Status}}
+\index{File\+Status@{File\+Status}!cfg@{cfg}}
+\subsubsection{\texorpdfstring{File\+Status}{FileStatus}}
+{\footnotesize\ttfamily enum \hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795de}{cfg\+::\+File\+Status}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+File status enumeration. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{created@{created}!cfg@{cfg}}\index{cfg@{cfg}!created@{created}}}\mbox{\Hypertarget{namespacecfg_a384f743959a9029f7e1c3d11548795deae2fa538867c3830a859a5b17ab24644b}\label{namespacecfg_a384f743959a9029f7e1c3d11548795deae2fa538867c3830a859a5b17ab24644b}} 
+created&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{modified@{modified}!cfg@{cfg}}\index{cfg@{cfg}!modified@{modified}}}\mbox{\Hypertarget{namespacecfg_a384f743959a9029f7e1c3d11548795dea9ae73c65f418e6f79ceb4f0e4a4b98d5}\label{namespacecfg_a384f743959a9029f7e1c3d11548795dea9ae73c65f418e6f79ceb4f0e4a4b98d5}} 
+modified&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{erased@{erased}!cfg@{cfg}}\index{cfg@{cfg}!erased@{erased}}}\mbox{\Hypertarget{namespacecfg_a384f743959a9029f7e1c3d11548795deaf4adee3fff79c6ddad5b2e45f730006a}\label{namespacecfg_a384f743959a9029f7e1c3d11548795deaf4adee3fff79c6ddad5b2e45f730006a}} 
+erased&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{none@{none}!cfg@{cfg}}\index{cfg@{cfg}!none@{none}}}\mbox{\Hypertarget{namespacecfg_a384f743959a9029f7e1c3d11548795dea334c4a4c42fdb79d7ebc3e73b517e6f8}\label{namespacecfg_a384f743959a9029f7e1c3d11548795dea334c4a4c42fdb79d7ebc3e73b517e6f8}} 
+none&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 27 of file Config.\+hpp.
+

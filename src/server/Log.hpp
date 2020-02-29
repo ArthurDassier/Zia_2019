@@ -14,6 +14,9 @@ namespace Zia
     class Log;
 }
 
+/**
+ * @brief Log class to manage the log.
+ */
 class Zia::Log {
 public:
     static void setPathFile(const std::string &) noexcept;

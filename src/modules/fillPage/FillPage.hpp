@@ -14,6 +14,9 @@
 #define HTML_FILES_POSI "src/HTML/"
 #define HTML_FILE_ERROR "src/HTML/404.html"
 
+/**
+ * @brief Fill class to manage the Fill module.
+ */
 class Fill : public oZ::IModule {
     public:
         /**

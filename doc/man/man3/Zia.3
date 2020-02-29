@@ -1,0 +1,101 @@
+.TH "Zia" 3 "Sat Feb 29 2020" "Version 1.0" "Zia" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Zia
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBConnection\fP"
+.br
+.RI "\fBConnection\fP class to manage the connection\&. "
+.ti -1c
+.RI "class \fBConnectionManager\fP"
+.br
+.RI "\fBConnectionManager\fP class to manage the connection\&. "
+.ti -1c
+.RI "class \fBLog\fP"
+.br
+.RI "\fBLog\fP class to manage the log\&. "
+.ti -1c
+.RI "class \fBModule\fP"
+.br
+.RI "\fBModule\fP class to manage the modules\&. "
+.ti -1c
+.RI "class \fBServer\fP"
+.br
+.RI "\fBServer\fP class to manage the server\&. "
+.ti -1c
+.RI "class \fBServerConfig\fP"
+.br
+.RI "\fBServerConfig\fP class to manage configuration files of the server\&. "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "using \fBModulePtr\fP = std::shared_ptr< \fBModule\fP >"
+.br
+.RI "\fBModule\fP pointer type, using shared_ptr as backend\&. "
+.ti -1c
+.RI "using \fBEnabledList\fP = std::set< \fBModulePtr\fP >"
+.br
+.RI "Set containing ModulePtr modules\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const int \fBDefaultPort\fP = 80"
+.br
+.RI "Default HTTP port\&. "
+.ti -1c
+.RI "const int \fBDefaultPortHTTPS\fP = 443"
+.br
+.RI "Default HTTPS port\&. "
+.ti -1c
+.RI "const std::string \fBDefaultIP\fP = '127\&.0\&.0\&.1'"
+.br
+.RI "Default IP address\&. "
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "using \fBZia::EnabledList\fP = typedef std::set<\fBModulePtr\fP>"
+
+.PP
+Set containing ModulePtr modules\&. 
+.PP
+Definition at line 47 of file ServerConfig\&.hpp\&.
+.SS "using \fBZia::ModulePtr\fP = typedef std::shared_ptr<\fBModule\fP>"
+
+.PP
+\fBModule\fP pointer type, using shared_ptr as backend\&. 
+.PP
+Definition at line 42 of file ServerConfig\&.hpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const std::string Zia::DefaultIP = '127\&.0\&.0\&.1'"
+
+.PP
+Default IP address\&. 
+.PP
+Definition at line 37 of file ServerConfig\&.hpp\&.
+.SS "const int Zia::DefaultPort = 80"
+
+.PP
+Default HTTP port\&. 
+.PP
+Definition at line 27 of file ServerConfig\&.hpp\&.
+.SS "const int Zia::DefaultPortHTTPS = 443"
+
+.PP
+Default HTTPS port\&. 
+.PP
+Definition at line 32 of file ServerConfig\&.hpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Zia from the source code\&.

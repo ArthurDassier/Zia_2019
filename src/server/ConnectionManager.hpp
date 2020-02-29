@@ -18,6 +18,9 @@ namespace Zia
 
 typedef std::shared_ptr<Zia::Connection> ConnectionPtr;
 
+/**
+ * @brief ConnectionManager class to manage the connection.
+ */
 class Zia::ConnectionManager {
 public:
 

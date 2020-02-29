@@ -1,0 +1,316 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classcfg_1_1_config" kind="class" language="C++" prot="public">
+    <compoundname>cfg::Config</compoundname>
+    <derivedcompoundref refid="class_zia_1_1_server_config" prot="public" virt="virtual">Zia::ServerConfig</derivedcompoundref>
+    <includes refid="_config_8hpp" local="no">Config.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcfg_1_1_config_1a526fad6e7ffea15da9816a79412e09ee" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string cfg::Config::_name</definition>
+        <argsstring></argsstring>
+        <name>_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="155" column="1" bodyfile="src/config/Config.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_1a55d9d076bd03d92e481cae0735ebbf92" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecfg_1af0aed6e47bd26e91ad7d69467f96caaf" kindref="member">FileDescriptor</ref></type>
+        <definition>FileDescriptor cfg::Config::_fd</definition>
+        <argsstring></argsstring>
+        <name>_fd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="156" column="1" bodyfile="src/config/Config.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_1a0ef0ccfaf361fecdce5dc96db938e18b" prot="private" static="no" mutable="no">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path cfg::Config::_path</definition>
+        <argsstring></argsstring>
+        <name>_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="157" column="1" bodyfile="src/config/Config.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_1a1b4b05148f3ea2149610ac793d96d420" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecfg_1aa17d58439174a5af7fb3f37a3cdd6d0b" kindref="member">Timestamp</ref></type>
+        <definition>Timestamp cfg::Config::_timestamp</definition>
+        <argsstring></argsstring>
+        <name>_timestamp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="158" column="1" bodyfile="src/config/Config.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcfg_1_1_config_1aac0ac15a2f06b8810164441fe08fe490" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Config::Config</definition>
+        <argsstring>(const FileDescriptor &amp;file, const std::string &amp;name)</argsstring>
+        <name>Config</name>
+        <param>
+          <type>const <ref refid="namespacecfg_1af0aed6e47bd26e91ad7d69467f96caaf" kindref="member">FileDescriptor</ref> &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classcfg_1_1_config" kindref="compound">Config</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File descriptor of the associated json configuration file. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Registration name of the <ref refid="classcfg_1_1_config" kindref="compound">Config</ref> object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="92" column="1" bodyfile="src/config/Config.cpp" bodystart="12" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1a1b74ecb20fb34c56ac3257066e4c065f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual cfg::Config::~Config</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Config</name>
+        <briefdescription>
+<para>Destroy the <ref refid="classcfg_1_1_config" kindref="compound">Config</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="97" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1a8c2a84783775b02046041628d74be6e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Config::loadConfig</definition>
+        <argsstring>(const std::filesystem::path &amp;path)</argsstring>
+        <name>loadConfig</name>
+        <param>
+          <type>const std::filesystem::path &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Load configuration from a given file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to the configuration file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="105" column="1" bodyfile="src/config/Config.cpp" bodystart="20" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1a622ad4331306ae232060ef6e74fe8134" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Config::update</definition>
+        <argsstring>(const FileStatus &amp;status)</argsstring>
+        <name>update</name>
+        <param>
+          <type>const <ref refid="namespacecfg_1a384f743959a9029f7e1c3d11548795de" kindref="member">FileStatus</ref> &amp;</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="111" column="1" bodyfile="src/config/Config.cpp" bodystart="35" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1a04f2e4ad0070a73728c4bce7b7dd0c29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Config::setName</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>setName</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Set the configuration&apos;s name. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name to set. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="118" column="1" bodyfile="src/config/Config.cpp" bodystart="50" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1ac1fa619b1d5dbd0c3326ac93a4d437bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string Config::getName</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getName</name>
+        <briefdescription>
+<para>Get the configuration&apos;s name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="123" column="1" bodyfile="src/config/Config.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1a76cb1f6d83b6d06eee652c80d32e9084" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespacecfg_1af0aed6e47bd26e91ad7d69467f96caaf" kindref="member">FileDescriptor</ref></type>
+        <definition>const FileDescriptor Config::getFileDescriptor</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getFileDescriptor</name>
+        <briefdescription>
+<para>Get the configuration&apos;s file descriptor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="128" column="1" bodyfile="src/config/Config.cpp" bodystart="60" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1a4c237371c0ad09ff75d1db7d31a1f362" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Config::setPath</definition>
+        <argsstring>(const std::filesystem::path &amp;path)</argsstring>
+        <name>setPath</name>
+        <param>
+          <type>const std::filesystem::path &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Set the configuration&apos;s file path. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to set. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="135" column="1" bodyfile="src/config/Config.cpp" bodystart="65" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1aec545d9dc88130f76bfb6f2a1863b22f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path Config::getPath</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getPath</name>
+        <briefdescription>
+<para>Get the configuration&apos;s file path. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="140" column="1" bodyfile="src/config/Config.cpp" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1aae2d7dbb7d3d329f1afffef4b95de204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Config::setTimestamp</definition>
+        <argsstring>(const Timestamp &amp;timestamp)</argsstring>
+        <name>setTimestamp</name>
+        <param>
+          <type>const <ref refid="namespacecfg_1aa17d58439174a5af7fb3f37a3cdd6d0b" kindref="member">Timestamp</ref> &amp;</type>
+          <declname>timestamp</declname>
+        </param>
+        <briefdescription>
+<para>Set the configuration&apos;s timestamp. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timestamp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timestamp to set. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="147" column="1" bodyfile="src/config/Config.cpp" bodystart="75" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_1acbd974221e2b58f235b596ec3a52c44c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecfg_1aa17d58439174a5af7fb3f37a3cdd6d0b" kindref="member">Timestamp</ref></type>
+        <definition>Timestamp Config::getTimestamp</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getTimestamp</name>
+        <briefdescription>
+<para>Get the configuration&apos;s timestamp. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/Config.hpp" line="152" column="1" bodyfile="src/config/Config.cpp" bodystart="80" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classcfg_1_1_config" kindref="compound">Config</ref> abstracts a configuration from a json file. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Zia::ServerConfig</label>
+        <link refid="class_zia_1_1_server_config"/>
+        <childnode refid="0" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="0">
+        <label>cfg::Config</label>
+        <link refid="classcfg_1_1_config"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/config/Config.hpp" line="84" column="1" bodyfile="src/config/Config.hpp" bodystart="83" bodyend="159"/>
+    <listofallmembers>
+      <member refid="classcfg_1_1_config_1a55d9d076bd03d92e481cae0735ebbf92" prot="private" virt="non-virtual"><scope>cfg::Config</scope><name>_fd</name></member>
+      <member refid="classcfg_1_1_config_1a526fad6e7ffea15da9816a79412e09ee" prot="private" virt="non-virtual"><scope>cfg::Config</scope><name>_name</name></member>
+      <member refid="classcfg_1_1_config_1a0ef0ccfaf361fecdce5dc96db938e18b" prot="private" virt="non-virtual"><scope>cfg::Config</scope><name>_path</name></member>
+      <member refid="classcfg_1_1_config_1a1b4b05148f3ea2149610ac793d96d420" prot="private" virt="non-virtual"><scope>cfg::Config</scope><name>_timestamp</name></member>
+      <member refid="classcfg_1_1_config_1aac0ac15a2f06b8810164441fe08fe490" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>Config</name></member>
+      <member refid="classcfg_1_1_config_1a76cb1f6d83b6d06eee652c80d32e9084" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>getFileDescriptor</name></member>
+      <member refid="classcfg_1_1_config_1ac1fa619b1d5dbd0c3326ac93a4d437bb" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>getName</name></member>
+      <member refid="classcfg_1_1_config_1aec545d9dc88130f76bfb6f2a1863b22f" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>getPath</name></member>
+      <member refid="classcfg_1_1_config_1acbd974221e2b58f235b596ec3a52c44c" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>getTimestamp</name></member>
+      <member refid="classcfg_1_1_config_1a8c2a84783775b02046041628d74be6e7" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>loadConfig</name></member>
+      <member refid="classcfg_1_1_config_1a04f2e4ad0070a73728c4bce7b7dd0c29" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>setName</name></member>
+      <member refid="classcfg_1_1_config_1a4c237371c0ad09ff75d1db7d31a1f362" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>setPath</name></member>
+      <member refid="classcfg_1_1_config_1aae2d7dbb7d3d329f1afffef4b95de204" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>setTimestamp</name></member>
+      <member refid="classcfg_1_1_config_1a622ad4331306ae232060ef6e74fe8134" prot="public" virt="non-virtual"><scope>cfg::Config</scope><name>update</name></member>
+      <member refid="classcfg_1_1_config_1a1b74ecb20fb34c56ac3257066e4c065f" prot="public" virt="virtual"><scope>cfg::Config</scope><name>~Config</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

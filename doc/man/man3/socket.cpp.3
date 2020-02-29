@@ -1,0 +1,76 @@
+.TH "src/modules/SSL/socket.cpp" 3 "Sat Feb 29 2020" "Version 1.0" "Zia" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/modules/SSL/socket.cpp
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <arpa/inet\&.h>\fP
+.br
+\fC#include <openssl/ssl\&.h>\fP
+.br
+\fC#include <openssl/err\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBcreate_socket\fP (int port)"
+.br
+.ti -1c
+.RI "void \fBinit_openssl\fP ()"
+.br
+.ti -1c
+.RI "void \fBcleanup_openssl\fP ()"
+.br
+.ti -1c
+.RI "SSL_CTX * \fBcreate_context\fP ()"
+.br
+.ti -1c
+.RI "void \fBconfigure_context\fP (SSL_CTX *ctx)"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void cleanup_openssl ()"
+
+.PP
+Definition at line 44 of file socket\&.cpp\&.
+.SS "void configure_context (SSL_CTX * ctx)"
+
+.PP
+Definition at line 66 of file socket\&.cpp\&.
+.SS "SSL_CTX* create_context ()"
+
+.PP
+Definition at line 49 of file socket\&.cpp\&.
+.SS "int create_socket (int port)"
+
+.PP
+Definition at line 10 of file socket\&.cpp\&.
+.SS "void init_openssl ()"
+
+.PP
+Definition at line 38 of file socket\&.cpp\&.
+.SS "int main (int argc, char ** argv)"
+
+.PP
+Definition at line 82 of file socket\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Zia from the source code\&.

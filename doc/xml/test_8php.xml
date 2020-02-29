@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="test_8php" kind="file" language="PHP">
+    <compoundname>test.php</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="test_8php_1addaa188915d7eb17af6423eb2c2273c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>wow</definition>
+        <argsstring>()</argsstring>
+        <name>wow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/php_cgi/test.php" line="3" column="1" bodyfile="src/modules/php_cgi/test.php" bodystart="3" bodyend="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">&lt;?php</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="test_8php_1addaa188915d7eb17af6423eb2c2273c1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">function</highlight><highlight class="normal"><sp/><ref refid="test_8php_1addaa188915d7eb17af6423eb2c2273c1" kindref="member">wow</ref>()</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>print(</highlight><highlight class="stringliteral">&quot;ca<sp/>marche<sp/>wouhouhou&quot;</highlight><highlight class="normal"><sp/>.<sp/>PHP_EOL);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><ref refid="test_8php_1addaa188915d7eb17af6423eb2c2273c1" kindref="member">wow</ref>();</highlight></codeline>
+    </programlisting>
+    <location file="src/modules/php_cgi/test.php"/>
+  </compounddef>
+</doxygen>

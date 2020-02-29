@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_zia_1_1_log" kind="class" language="C++" prot="public">
+    <compoundname>Zia::Log</compoundname>
+    <includes refid="_log_8hpp" local="no">Log.hpp</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_zia_1_1_log_1a3080034dce1aca8c3cc7b85775d30a1b" prot="public" static="yes" mutable="no">
+        <type>long</type>
+        <definition>long Zia::Log::NumbersInfo</definition>
+        <argsstring></argsstring>
+        <name>NumbersInfo</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="28" column="1" bodyfile="src/server/Log.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_log_1a64ce5169f6328628c8074a7664f8445c" prot="public" static="yes" mutable="no">
+        <type>long</type>
+        <definition>long Zia::Log::NumbersWarning</definition>
+        <argsstring></argsstring>
+        <name>NumbersWarning</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="29" column="1" bodyfile="src/server/Log.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_log_1ada4fab060168cbb9504c7ffa4b762868" prot="public" static="yes" mutable="no">
+        <type>long</type>
+        <definition>long Zia::Log::NumbersCritical</definition>
+        <argsstring></argsstring>
+        <name>NumbersCritical</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="30" column="1" bodyfile="src/server/Log.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_zia_1_1_log_1ae2edbb85216200d7da4fc2b062671101" prot="private" static="yes" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Zia::Log::_pathFile</definition>
+        <argsstring></argsstring>
+        <name>_pathFile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="33" column="1" bodyfile="src/server/Log.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_zia_1_1_log_1ae26eb7733ba9cda16a36d2ad25c93bd4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Log::setPathFile</definition>
+        <argsstring>(const std::string &amp;) noexcept</argsstring>
+        <name>setPathFile</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <defname>path</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="22" column="1" bodyfile="src/server/Log.cpp" bodystart="16" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_log_1a7abad30f76aea6c210ae245885f05137" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Log::info</definition>
+        <argsstring>(const std::string &amp;msg, bool writeInFile=false) noexcept</argsstring>
+        <name>info</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>writeInFile</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="24" column="1" bodyfile="src/server/Log.cpp" bodystart="21" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_log_1a4522d6218b4fb537c4291c36c171a855" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Log::warning</definition>
+        <argsstring>(const std::string &amp;msg, bool writeInFile=false) noexcept</argsstring>
+        <name>warning</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>writeInFile</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="25" column="1" bodyfile="src/server/Log.cpp" bodystart="28" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_log_1a5a7899f592f85e1da39e90ba32eef98b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::Log::critical</definition>
+        <argsstring>(const std::string &amp;msg, bool writeInFile=false) noexcept</argsstring>
+        <name>critical</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>writeInFile</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="26" column="1" bodyfile="src/server/Log.cpp" bodystart="35" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_zia_1_1_log_1abc602ae23b0e2388329155518192b3a5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Zia::Log::Log</definition>
+        <argsstring>()=delete</argsstring>
+        <name>Log</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Log.hpp" line="35" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_zia_1_1_log" kindref="compound">Log</ref> class to manage the log. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/server/Log.hpp" line="20" column="1" bodyfile="src/server/Log.hpp" bodystart="20" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_zia_1_1_log_1ae2edbb85216200d7da4fc2b062671101" prot="private" virt="non-virtual"><scope>Zia::Log</scope><name>_pathFile</name></member>
+      <member refid="class_zia_1_1_log_1a5a7899f592f85e1da39e90ba32eef98b" prot="public" virt="non-virtual"><scope>Zia::Log</scope><name>critical</name></member>
+      <member refid="class_zia_1_1_log_1a7abad30f76aea6c210ae245885f05137" prot="public" virt="non-virtual"><scope>Zia::Log</scope><name>info</name></member>
+      <member refid="class_zia_1_1_log_1abc602ae23b0e2388329155518192b3a5" prot="private" virt="non-virtual"><scope>Zia::Log</scope><name>Log</name></member>
+      <member refid="class_zia_1_1_log_1ada4fab060168cbb9504c7ffa4b762868" prot="public" virt="non-virtual"><scope>Zia::Log</scope><name>NumbersCritical</name></member>
+      <member refid="class_zia_1_1_log_1a3080034dce1aca8c3cc7b85775d30a1b" prot="public" virt="non-virtual"><scope>Zia::Log</scope><name>NumbersInfo</name></member>
+      <member refid="class_zia_1_1_log_1a64ce5169f6328628c8074a7664f8445c" prot="public" virt="non-virtual"><scope>Zia::Log</scope><name>NumbersWarning</name></member>
+      <member refid="class_zia_1_1_log_1ae26eb7733ba9cda16a36d2ad25c93bd4" prot="public" virt="non-virtual"><scope>Zia::Log</scope><name>setPathFile</name></member>
+      <member refid="class_zia_1_1_log_1a4522d6218b4fb537c4291c36c171a855" prot="public" virt="non-virtual"><scope>Zia::Log</scope><name>warning</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

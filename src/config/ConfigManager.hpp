@@ -23,7 +23,7 @@ namespace cfg
 	using TimeSleep = std::chrono::milliseconds;
 
 	/**
-	 * @brief Class to manage the configuration files.
+	 * @brief ConfigManager class to manage the configuration files.
 	 */
 	class ConfigManager
 	{

@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="_connection_manager_8hpp" kind="file" language="C++">
+    <compoundname>ConnectionManager.hpp</compoundname>
+    <includes local="no">set</includes>
+    <includes refid="_connection_8hpp" local="yes">Connection.hpp</includes>
+    <includedby refid="_connection_8hpp" local="yes">src/server/Connection.hpp</includedby>
+    <includedby refid="_connection_manager_8cpp" local="yes">src/server/ConnectionManager.cpp</includedby>
+    <includedby refid="_server_8hpp" local="yes">src/server/Server.hpp</includedby>
+    <incdepgraph>
+      <node id="233">
+        <label>openZia/Pipeline.hpp</label>
+      </node>
+      <node id="227">
+        <label>src/server/ConnectionManager.hpp</label>
+        <link refid="_connection_manager_8hpp"/>
+        <childnode refid="228" relation="include">
+        </childnode>
+        <childnode refid="229" relation="include">
+        </childnode>
+      </node>
+      <node id="232">
+        <label>boost/asio.hpp</label>
+      </node>
+      <node id="229">
+        <label>Connection.hpp</label>
+        <link refid="_connection_8hpp"/>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+        <childnode refid="233" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+      </node>
+      <node id="230">
+        <label>array</label>
+      </node>
+      <node id="228">
+        <label>set</label>
+      </node>
+      <node id="231">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="234">
+        <label>src/server/ConnectionManager.hpp</label>
+        <link refid="_connection_manager_8hpp"/>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+      </node>
+      <node id="240">
+        <label>src/server/Server.cpp</label>
+        <link refid="_server_8cpp"/>
+      </node>
+      <node id="237">
+        <label>src/server/ConnectionManager.cpp</label>
+        <link refid="_connection_manager_8cpp"/>
+      </node>
+      <node id="235">
+        <label>src/server/Connection.hpp</label>
+        <link refid="_connection_8hpp"/>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="234" relation="include">
+        </childnode>
+      </node>
+      <node id="239">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="238">
+        <label>src/server/Server.hpp</label>
+        <link refid="_server_8hpp"/>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+      </node>
+      <node id="236">
+        <label>src/server/Connection.cpp</label>
+        <link refid="_connection_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_zia_1_1_connection_manager" prot="public">Zia::ConnectionManager</innerclass>
+    <innernamespace refid="namespace_zia">Zia</innernamespace>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="class_zia_1_1_connection" kindref="compound">Zia::Connection</ref> &gt;</type>
+        <definition>typedef std::shared_ptr&lt;Zia::Connection&gt; ConnectionPtr</definition>
+        <argsstring></argsstring>
+        <name>ConnectionPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ConnectionManager.hpp" line="19" column="1" bodyfile="src/server/ConnectionManager.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">**<sp/>EPITECH<sp/>PROJECT,<sp/>2020</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">**<sp/>CPP_zia_2019</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">**<sp/>File<sp/>description:</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">**<sp/>ConnectionManager</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_connection_8hpp" kindref="compound">Connection.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_zia" kindref="compound">Zia</ref></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ConnectionManager;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Connection;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Zia::Connection&gt;<sp/><ref refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" kindref="member">ConnectionPtr</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="class_zia_1_1_connection_manager" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_zia_1_1_connection_manager" kindref="compound">Zia::ConnectionManager</ref><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_zia_1_1_connection_manager_1a863585668f747d6fb35b15b12f6fb4a4" kindref="member">ConnectionManager</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_zia_1_1_connection_manager_1a556bcbe3969171deba4900c08feb7d93" kindref="member">addClient</ref>(<ref refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" kindref="member">ConnectionPtr</ref><sp/>client);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_zia_1_1_connection_manager_1a61efd54810ec831b994c7ef148bec2ae" kindref="member">eraseClient</ref>(<ref refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" kindref="member">ConnectionPtr</ref><sp/>client);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_zia_1_1_connection_manager_1ac1db00d9a69520616bc20e0ac1ea311f" kindref="member">eraseAll</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>std::set&lt;ConnectionPtr&gt;<sp/>_connections;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="src/server/ConnectionManager.hpp"/>
+  </compounddef>
+</doxygen>

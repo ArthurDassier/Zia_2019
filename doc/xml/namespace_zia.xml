@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="namespace_zia" kind="namespace" language="C++">
+    <compoundname>Zia</compoundname>
+    <innerclass refid="class_zia_1_1_connection" prot="public">Zia::Connection</innerclass>
+    <innerclass refid="class_zia_1_1_connection_manager" prot="public">Zia::ConnectionManager</innerclass>
+    <innerclass refid="class_zia_1_1_log" prot="public">Zia::Log</innerclass>
+    <innerclass refid="class_zia_1_1_module" prot="public">Zia::Module</innerclass>
+    <innerclass refid="class_zia_1_1_server" prot="public">Zia::Server</innerclass>
+    <innerclass refid="class_zia_1_1_server_config" prot="public">Zia::ServerConfig</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_zia_1a26a1cd43d7216ed69ef26b99d8d12093" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="class_zia_1_1_module" kindref="compound">Module</ref> &gt;</type>
+        <definition>using Zia::ModulePtr = typedef std::shared_ptr&lt;Module&gt;</definition>
+        <argsstring></argsstring>
+        <name>ModulePtr</name>
+        <briefdescription>
+<para><ref refid="class_zia_1_1_module" kindref="compound">Module</ref> pointer type, using shared_ptr as backend. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ServerConfig.hpp" line="42" column="1" bodyfile="src/server/ServerConfig.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_zia_1a3076ef33a6c08b068cb8e444848ad33c" prot="public" static="no">
+        <type>std::set&lt; <ref refid="namespace_zia_1a26a1cd43d7216ed69ef26b99d8d12093" kindref="member">ModulePtr</ref> &gt;</type>
+        <definition>using Zia::EnabledList = typedef std::set&lt;ModulePtr&gt;</definition>
+        <argsstring></argsstring>
+        <name>EnabledList</name>
+        <briefdescription>
+<para>Set containing ModulePtr modules. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ServerConfig.hpp" line="47" column="1" bodyfile="src/server/ServerConfig.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_zia_1a7b72c978ae2e795f74ce73291ebe3593" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int Zia::DefaultPort</definition>
+        <argsstring></argsstring>
+        <name>DefaultPort</name>
+        <initializer>= 80</initializer>
+        <briefdescription>
+<para>Default HTTP port. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ServerConfig.hpp" line="27" column="1" bodyfile="src/server/ServerConfig.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_zia_1ae53d6fd6614900bbc59b6912d6a629d4" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int Zia::DefaultPortHTTPS</definition>
+        <argsstring></argsstring>
+        <name>DefaultPortHTTPS</name>
+        <initializer>= 443</initializer>
+        <briefdescription>
+<para>Default HTTPS port. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ServerConfig.hpp" line="32" column="1" bodyfile="src/server/ServerConfig.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_zia_1a40d4cbc794a3ff3df7017ff08173978f" prot="public" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string Zia::DefaultIP</definition>
+        <argsstring></argsstring>
+        <name>DefaultIP</name>
+        <initializer>= &quot;127.0.0.1&quot;</initializer>
+        <briefdescription>
+<para>Default IP address. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ServerConfig.hpp" line="37" column="1" bodyfile="src/server/ServerConfig.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/server/Connection.hpp" line="17" column="1"/>
+  </compounddef>
+</doxygen>

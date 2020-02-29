@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_313caf1132e152dd9b58bea13a4052ca" kind="dir">
+    <compoundname>src/utils</compoundname>
+    <innerfile refid="_env_manager_8cpp">EnvManager.cpp</innerfile>
+    <innerfile refid="_env_manager_8hpp">EnvManager.hpp</innerfile>
+    <innerfile refid="_json_loader_8cpp">JsonLoader.cpp</innerfile>
+    <innerfile refid="_json_loader_8hpp">JsonLoader.hpp</innerfile>
+    <innerfile refid="_shared_memory_8cpp">SharedMemory.cpp</innerfile>
+    <innerfile refid="_shared_memory_8hpp">SharedMemory.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/"/>
+  </compounddef>
+</doxygen>

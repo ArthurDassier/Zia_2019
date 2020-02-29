@@ -1,0 +1,237 @@
+\hypertarget{classcfg_1_1_config}{}\section{cfg\+:\+:Config Class Reference}
+\label{classcfg_1_1_config}\index{cfg\+::\+Config@{cfg\+::\+Config}}
+
+
+\hyperlink{classcfg_1_1_config}{Config} abstracts a configuration from a json file.  
+
+
+
+
+{\ttfamily \#include $<$Config.\+hpp$>$}
+
+
+
+Inheritance diagram for cfg\+:\+:Config\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classcfg_1_1_config__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classcfg_1_1_config_aac0ac15a2f06b8810164441fe08fe490}{Config} (const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{File\+Descriptor} \&file, const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{classcfg_1_1_config}{Config} object. \end{DoxyCompactList}\item 
+virtual \hyperlink{classcfg_1_1_config_a1b74ecb20fb34c56ac3257066e4c065f}{$\sim$\+Config} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \hyperlink{classcfg_1_1_config}{Config} object. \end{DoxyCompactList}\item 
+void \hyperlink{classcfg_1_1_config_a8c2a84783775b02046041628d74be6e7}{load\+Config} (const std\+::filesystem\+::path \&path)
+\begin{DoxyCompactList}\small\item\em Load configuration from a given file. \end{DoxyCompactList}\item 
+void \hyperlink{classcfg_1_1_config_a622ad4331306ae232060ef6e74fe8134}{update} (const \hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795de}{File\+Status} \&status)
+\item 
+void \hyperlink{classcfg_1_1_config_a04f2e4ad0070a73728c4bce7b7dd0c29}{set\+Name} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Set the configuration\textquotesingle{}s name. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{classcfg_1_1_config_ac1fa619b1d5dbd0c3326ac93a4d437bb}{get\+Name} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the configuration\textquotesingle{}s name. \end{DoxyCompactList}\item 
+const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{File\+Descriptor} \hyperlink{classcfg_1_1_config_a76cb1f6d83b6d06eee652c80d32e9084}{get\+File\+Descriptor} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the configuration\textquotesingle{}s file descriptor. \end{DoxyCompactList}\item 
+void \hyperlink{classcfg_1_1_config_a4c237371c0ad09ff75d1db7d31a1f362}{set\+Path} (const std\+::filesystem\+::path \&path)
+\begin{DoxyCompactList}\small\item\em Set the configuration\textquotesingle{}s file path. \end{DoxyCompactList}\item 
+std\+::filesystem\+::path \hyperlink{classcfg_1_1_config_aec545d9dc88130f76bfb6f2a1863b22f}{get\+Path} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the configuration\textquotesingle{}s file path. \end{DoxyCompactList}\item 
+void \hyperlink{classcfg_1_1_config_aae2d7dbb7d3d329f1afffef4b95de204}{set\+Timestamp} (const \hyperlink{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}{Timestamp} \&timestamp)
+\begin{DoxyCompactList}\small\item\em Set the configuration\textquotesingle{}s timestamp. \end{DoxyCompactList}\item 
+\hyperlink{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}{Timestamp} \hyperlink{classcfg_1_1_config_acbd974221e2b58f235b596ec3a52c44c}{get\+Timestamp} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the configuration\textquotesingle{}s timestamp. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classcfg_1_1_config}{Config} abstracts a configuration from a json file. 
+
+Definition at line 83 of file Config.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classcfg_1_1_config_aac0ac15a2f06b8810164441fe08fe490}\label{classcfg_1_1_config_aac0ac15a2f06b8810164441fe08fe490}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!Config@{Config}}
+\index{Config@{Config}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{Config()}{Config()}}
+{\footnotesize\ttfamily Config\+::\+Config (\begin{DoxyParamCaption}\item[{const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{File\+Descriptor} \&}]{file,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{classcfg_1_1_config}{Config} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & File descriptor of the associated json configuration file. \\
+\hline
+{\em name} & Registration name of the \hyperlink{classcfg_1_1_config}{Config} object. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 12 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_a1b74ecb20fb34c56ac3257066e4c065f}\label{classcfg_1_1_config_a1b74ecb20fb34c56ac3257066e4c065f}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!````~Config@{$\sim$\+Config}}
+\index{````~Config@{$\sim$\+Config}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{$\sim$\+Config()}{~Config()}}
+{\footnotesize\ttfamily virtual cfg\+::\+Config\+::$\sim$\+Config (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Destroy the \hyperlink{classcfg_1_1_config}{Config} object. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcfg_1_1_config_a76cb1f6d83b6d06eee652c80d32e9084}\label{classcfg_1_1_config_a76cb1f6d83b6d06eee652c80d32e9084}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!get\+File\+Descriptor@{get\+File\+Descriptor}}
+\index{get\+File\+Descriptor@{get\+File\+Descriptor}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+File\+Descriptor()}{getFileDescriptor()}}
+{\footnotesize\ttfamily const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{File\+Descriptor} Config\+::get\+File\+Descriptor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the configuration\textquotesingle{}s file descriptor. 
+
+
+
+Definition at line 60 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_ac1fa619b1d5dbd0c3326ac93a4d437bb}\label{classcfg_1_1_config_ac1fa619b1d5dbd0c3326ac93a4d437bb}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}}
+{\footnotesize\ttfamily const std\+::string Config\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the configuration\textquotesingle{}s name. 
+
+
+
+Definition at line 55 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_aec545d9dc88130f76bfb6f2a1863b22f}\label{classcfg_1_1_config_aec545d9dc88130f76bfb6f2a1863b22f}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!get\+Path@{get\+Path}}
+\index{get\+Path@{get\+Path}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Path()}{getPath()}}
+{\footnotesize\ttfamily std\+::filesystem\+::path Config\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the configuration\textquotesingle{}s file path. 
+
+
+
+Definition at line 70 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_acbd974221e2b58f235b596ec3a52c44c}\label{classcfg_1_1_config_acbd974221e2b58f235b596ec3a52c44c}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!get\+Timestamp@{get\+Timestamp}}
+\index{get\+Timestamp@{get\+Timestamp}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{get\+Timestamp()}{getTimestamp()}}
+{\footnotesize\ttfamily \hyperlink{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}{Timestamp} Config\+::get\+Timestamp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the configuration\textquotesingle{}s timestamp. 
+
+
+
+Definition at line 80 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_a8c2a84783775b02046041628d74be6e7}\label{classcfg_1_1_config_a8c2a84783775b02046041628d74be6e7}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!load\+Config@{load\+Config}}
+\index{load\+Config@{load\+Config}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{load\+Config()}{loadConfig()}}
+{\footnotesize\ttfamily void Config\+::load\+Config (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Load configuration from a given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to the configuration file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 20 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_a04f2e4ad0070a73728c4bce7b7dd0c29}\label{classcfg_1_1_config_a04f2e4ad0070a73728c4bce7b7dd0c29}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!set\+Name@{set\+Name}}
+\index{set\+Name@{set\+Name}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{set\+Name()}{setName()}}
+{\footnotesize\ttfamily void Config\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Set the configuration\textquotesingle{}s name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 50 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_a4c237371c0ad09ff75d1db7d31a1f362}\label{classcfg_1_1_config_a4c237371c0ad09ff75d1db7d31a1f362}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!set\+Path@{set\+Path}}
+\index{set\+Path@{set\+Path}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{set\+Path()}{setPath()}}
+{\footnotesize\ttfamily void Config\+::set\+Path (\begin{DoxyParamCaption}\item[{const std\+::filesystem\+::path \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Set the configuration\textquotesingle{}s file path. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Path to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 65 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_aae2d7dbb7d3d329f1afffef4b95de204}\label{classcfg_1_1_config_aae2d7dbb7d3d329f1afffef4b95de204}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!set\+Timestamp@{set\+Timestamp}}
+\index{set\+Timestamp@{set\+Timestamp}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{set\+Timestamp()}{setTimestamp()}}
+{\footnotesize\ttfamily void Config\+::set\+Timestamp (\begin{DoxyParamCaption}\item[{const \hyperlink{namespacecfg_aa17d58439174a5af7fb3f37a3cdd6d0b}{Timestamp} \&}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Set the configuration\textquotesingle{}s timestamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & Timestamp to set. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 75 of file Config.\+cpp.
+
+\mbox{\Hypertarget{classcfg_1_1_config_a622ad4331306ae232060ef6e74fe8134}\label{classcfg_1_1_config_a622ad4331306ae232060ef6e74fe8134}} 
+\index{cfg\+::\+Config@{cfg\+::\+Config}!update@{update}}
+\index{update@{update}!cfg\+::\+Config@{cfg\+::\+Config}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Config\+::update (\begin{DoxyParamCaption}\item[{const \hyperlink{namespacecfg_a384f743959a9029f7e1c3d11548795de}{File\+Status} \&}]{status }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file Config.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/config/\hyperlink{_config_8hpp}{Config.\+hpp}\item 
+src/config/\hyperlink{_config_8cpp}{Config.\+cpp}\end{DoxyCompactItemize}

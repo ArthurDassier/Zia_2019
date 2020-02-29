@@ -1,0 +1,535 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classcfg_1_1_config_manager" kind="class" language="C++" prot="public">
+    <compoundname>cfg::ConfigManager</compoundname>
+    <includes refid="_config_manager_8hpp" local="no">ConfigManager.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" prot="public" static="no">
+        <type>std::function&lt; void()&gt;</type>
+        <definition>using cfg::ConfigManager::CallbackHandler =  std::function&lt;void()&gt;</definition>
+        <argsstring></argsstring>
+        <name>CallbackHandler</name>
+        <briefdescription>
+<para>Callback handler that stores something&apos;s callback function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="34" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcfg_1_1_config_manager_1abb7d9a63860843839fa4d8f339f0122b" prot="public" static="no">
+        <type>std::shared_ptr&lt; std::thread &gt;</type>
+        <definition>using cfg::ConfigManager::ThreadPtr =  std::shared_ptr&lt;std::thread&gt;</definition>
+        <argsstring></argsstring>
+        <name>ThreadPtr</name>
+        <briefdescription>
+<para>Thread pointer type, using shared_ptr as backend. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="39" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcfg_1_1_config_manager_1a94ed7fb2c98c2584e0f98326bf65c98f" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="namespacecfg_1af5f3a3fc2010c76e90bc66696485989f" kindref="member">ConfigPtr</ref> &gt;</type>
+        <definition>using cfg::ConfigManager::ConfigList =  std::vector&lt;ConfigPtr&gt;</definition>
+        <argsstring></argsstring>
+        <name>ConfigList</name>
+        <briefdescription>
+<para>Vector containing IConfig modules. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="44" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classcfg_1_1_config_manager_1ac50f6c213e2646aa1c261c431b6fe351" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="namespacecfg_1aa17d58439174a5af7fb3f37a3cdd6d0b" kindref="member">Timestamp</ref> &gt;</type>
+        <definition>using cfg::ConfigManager::ConfigMap =  std::unordered_map&lt;std::string, Timestamp&gt;</definition>
+        <argsstring></argsstring>
+        <name>ConfigMap</name>
+        <briefdescription>
+<para>Unordered_map containing IConfig modules as key and config file timestamp. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="49" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1a79c9e1d6a8435592f52949e8e63c3ad3" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string cfg::ConfigManager::_path</definition>
+        <argsstring></argsstring>
+        <name>_path</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="159" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1af2c3490a47a61473178a085f9bddb8f3" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacecfg_1ab1a8f7060b6dfea6111c4449e81c6f8c" kindref="member">TimeSleep</ref></type>
+        <definition>TimeSleep cfg::ConfigManager::_timeSleep</definition>
+        <argsstring></argsstring>
+        <name>_timeSleep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="160" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1ad27f038dce20817568bd2fedd7cd526a" prot="private" static="no" mutable="no">
+        <type><ref refid="classcfg_1_1_config_manager_1a94ed7fb2c98c2584e0f98326bf65c98f" kindref="member">ConfigList</ref></type>
+        <definition>ConfigList cfg::ConfigManager::_configs</definition>
+        <argsstring></argsstring>
+        <name>_configs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="162" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1a7612f14b22af6314c4fdf157682430df" prot="private" static="no" mutable="no">
+        <type><ref refid="classcfg_1_1_config_manager_1ac50f6c213e2646aa1c261c431b6fe351" kindref="member">ConfigMap</ref></type>
+        <definition>ConfigMap cfg::ConfigManager::_paths</definition>
+        <argsstring></argsstring>
+        <name>_paths</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="163" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1a11fae964ad7a8cec925582871740e51c" prot="private" static="no" mutable="no">
+        <type><ref refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" kindref="member">CallbackHandler</ref></type>
+        <definition>CallbackHandler cfg::ConfigManager::_onChangeCallback</definition>
+        <argsstring></argsstring>
+        <name>_onChangeCallback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="165" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1a86ab7d4a613687ee3e87339f9c707d8b" prot="private" static="no" mutable="no">
+        <type><ref refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" kindref="member">CallbackHandler</ref></type>
+        <definition>CallbackHandler cfg::ConfigManager::_onErasedCallback</definition>
+        <argsstring></argsstring>
+        <name>_onErasedCallback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="166" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1ab8aa30788ddea136b1ff7b649653b416" prot="private" static="no" mutable="no">
+        <type><ref refid="classcfg_1_1_config_manager_1abb7d9a63860843839fa4d8f339f0122b" kindref="member">ThreadPtr</ref></type>
+        <definition>ThreadPtr cfg::ConfigManager::_thread</definition>
+        <argsstring></argsstring>
+        <name>_thread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="168" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classcfg_1_1_config_manager_1aa03d56f3b034a6b60409d0f93a85956e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool cfg::ConfigManager::_watching</definition>
+        <argsstring></argsstring>
+        <name>_watching</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="169" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a5434bffe1b9b3a20026e2526601911f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ConfigManager::ConfigManager</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>ConfigManager</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classcfg_1_1_config_manager" kindref="compound">ConfigManager</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path to the directory containing configurations files to watch. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="56" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="12" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a7d3d7c10423d969f7544509f6fcca32f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ConfigManager::ConfigManager</definition>
+        <argsstring>()</argsstring>
+        <name>ConfigManager</name>
+        <briefdescription>
+<para>Construct a new <ref refid="classcfg_1_1_config_manager" kindref="compound">ConfigManager</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="61" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="23" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a0b0ce1e9ef223cd18360eaaeecc7e1ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual cfg::ConfigManager::~ConfigManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ConfigManager</name>
+        <briefdescription>
+<para>Destroy the <ref refid="classcfg_1_1_config_manager" kindref="compound">ConfigManager</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="66" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1addf0e3547d8e4d7dd023c17e43e8176d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::manage</definition>
+        <argsstring>()</argsstring>
+        <name>manage</name>
+        <briefdescription>
+<para>Set watching variable to true and run watch method in a detached thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="71" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="34" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1ae72f47047d91fa0418391aa99b2383ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::stop</definition>
+        <argsstring>()</argsstring>
+        <name>stop</name>
+        <briefdescription>
+<para>Stop watch method and join the detached thread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="76" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="41" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a31f95938b66f996b8e731dada6b4a880" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::watch</definition>
+        <argsstring>()</argsstring>
+        <name>watch</name>
+        <briefdescription>
+<para>Check every X milliseconds for a modification in the configuration path. </para>        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>If a file is modified, matching config will be reloaded.</para></listitem><listitem><para>If a file is deleted, matching config will be removed from the ConfigList. </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="84" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="47" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::watching</definition>
+        <argsstring>(const bool &amp;watching)</argsstring>
+        <name>watching</name>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>watching</declname>
+        </param>
+        <briefdescription>
+<para>Set watching attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>watching</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Boolean. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="91" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a704e8f6b81715a24199f3579a946cad4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const bool</type>
+        <definition>const bool ConfigManager::isWatching</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>isWatching</name>
+        <briefdescription>
+<para>Get watching attribute. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Watching attribute as a boolean. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="98" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1ad6c55b0413f949cc5002467cbcee3186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::loadConfigDir</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>loadConfigDir</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Load all configuration file from a given path. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path where to load the configuration files. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="105" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="86" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a324ba63493aefb579500f7338bd477db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::onConfigChange</definition>
+        <argsstring>(CallbackHandler &amp;&amp;handler)</argsstring>
+        <name>onConfigChange</name>
+        <param>
+          <type><ref refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" kindref="member">CallbackHandler</ref> &amp;&amp;</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>Callback called when a file has been modified. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="112" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1abee2ba9f508be9604bf91d7f90691bcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::onConfigErased</definition>
+        <argsstring>(CallbackHandler &amp;&amp;handler)</argsstring>
+        <name>onConfigErased</name>
+        <param>
+          <type><ref refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" kindref="member">CallbackHandler</ref> &amp;&amp;</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>Callback called when a file has been erased. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="119" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="121" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1adf39406f57dfd1871ee974dd86d16abc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::setConfigPath</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>setConfigPath</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Set the configuration path. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path where the configuration files are. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="126" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1af80e94a2a93aa7bb16c2fca5249936ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string ConfigManager::getConfigPath</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getConfigPath</name>
+        <briefdescription>
+<para>Get the configuration path. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The configuration path as a std::string. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="133" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="101" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a8a84b0efbaf6446b4c9254386606cda5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConfigManager::setTimeToSleep</definition>
+        <argsstring>(const TimeSleep &amp;timeSleep)</argsstring>
+        <name>setTimeToSleep</name>
+        <param>
+          <type>const <ref refid="namespacecfg_1ab1a8f7060b6dfea6111c4449e81c6f8c" kindref="member">TimeSleep</ref> &amp;</type>
+          <declname>timeSleep</declname>
+        </param>
+        <briefdescription>
+<para>Set the time to sleep between each watch loop. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeSleep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time to sleep in milliseconds. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="140" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a992557430937cec5387d84d44c721f7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespacecfg_1ab1a8f7060b6dfea6111c4449e81c6f8c" kindref="member">TimeSleep</ref></type>
+        <definition>const TimeSleep ConfigManager::getTimeToSleep</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>getTimeToSleep</name>
+        <briefdescription>
+<para>Get the time to sleep between each watch loop. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The time to sleep as a TimeSleep. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="147" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="111" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1aa71c6277d421969606433b77d425d19d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacecfg_1af5f3a3fc2010c76e90bc66696485989f" kindref="member">ConfigPtr</ref></type>
+        <definition>ConfigPtr ConfigManager::getConfig</definition>
+        <argsstring>(const std::string &amp;configName) const</argsstring>
+        <name>getConfig</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>configName</declname>
+        </param>
+        <briefdescription>
+<para>Get <ref refid="classcfg_1_1_config" kindref="compound">Config</ref> object from the loaded configs. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>configName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the <ref refid="classcfg_1_1_config" kindref="compound">Config</ref> object wanted.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Wanted ConfigPtr. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="156" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="126" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classcfg_1_1_config_manager_1a181570594806f344f9dcff1cbc1ba967" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string ConfigManager::getConfigName</definition>
+        <argsstring>(const FileDescriptor &amp;file) const</argsstring>
+        <name>getConfigName</name>
+        <param>
+          <type>const <ref refid="namespacecfg_1af0aed6e47bd26e91ad7d69467f96caaf" kindref="member">FileDescriptor</ref> &amp;</type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+<para>Generate a configuration name from a given file. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Name of the configuration as a std::string. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/config/ConfigManager.hpp" line="176" column="1" bodyfile="src/config/ConfigManager.cpp" bodystart="134" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classcfg_1_1_config_manager" kindref="compound">ConfigManager</ref> class to manage the configuration files. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/config/ConfigManager.hpp" line="29" column="1" bodyfile="src/config/ConfigManager.hpp" bodystart="28" bodyend="177"/>
+    <listofallmembers>
+      <member refid="classcfg_1_1_config_manager_1ad27f038dce20817568bd2fedd7cd526a" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_configs</name></member>
+      <member refid="classcfg_1_1_config_manager_1a11fae964ad7a8cec925582871740e51c" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_onChangeCallback</name></member>
+      <member refid="classcfg_1_1_config_manager_1a86ab7d4a613687ee3e87339f9c707d8b" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_onErasedCallback</name></member>
+      <member refid="classcfg_1_1_config_manager_1a79c9e1d6a8435592f52949e8e63c3ad3" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_path</name></member>
+      <member refid="classcfg_1_1_config_manager_1a7612f14b22af6314c4fdf157682430df" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_paths</name></member>
+      <member refid="classcfg_1_1_config_manager_1ab8aa30788ddea136b1ff7b649653b416" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_thread</name></member>
+      <member refid="classcfg_1_1_config_manager_1af2c3490a47a61473178a085f9bddb8f3" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_timeSleep</name></member>
+      <member refid="classcfg_1_1_config_manager_1aa03d56f3b034a6b60409d0f93a85956e" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>_watching</name></member>
+      <member refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>CallbackHandler</name></member>
+      <member refid="classcfg_1_1_config_manager_1a94ed7fb2c98c2584e0f98326bf65c98f" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>ConfigList</name></member>
+      <member refid="classcfg_1_1_config_manager_1a5434bffe1b9b3a20026e2526601911f2" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>ConfigManager</name></member>
+      <member refid="classcfg_1_1_config_manager_1a7d3d7c10423d969f7544509f6fcca32f" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>ConfigManager</name></member>
+      <member refid="classcfg_1_1_config_manager_1ac50f6c213e2646aa1c261c431b6fe351" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>ConfigMap</name></member>
+      <member refid="classcfg_1_1_config_manager_1aa71c6277d421969606433b77d425d19d" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>getConfig</name></member>
+      <member refid="classcfg_1_1_config_manager_1a181570594806f344f9dcff1cbc1ba967" prot="private" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>getConfigName</name></member>
+      <member refid="classcfg_1_1_config_manager_1af80e94a2a93aa7bb16c2fca5249936ac" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>getConfigPath</name></member>
+      <member refid="classcfg_1_1_config_manager_1a992557430937cec5387d84d44c721f7c" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>getTimeToSleep</name></member>
+      <member refid="classcfg_1_1_config_manager_1a704e8f6b81715a24199f3579a946cad4" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>isWatching</name></member>
+      <member refid="classcfg_1_1_config_manager_1ad6c55b0413f949cc5002467cbcee3186" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>loadConfigDir</name></member>
+      <member refid="classcfg_1_1_config_manager_1addf0e3547d8e4d7dd023c17e43e8176d" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>manage</name></member>
+      <member refid="classcfg_1_1_config_manager_1a324ba63493aefb579500f7338bd477db" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>onConfigChange</name></member>
+      <member refid="classcfg_1_1_config_manager_1abee2ba9f508be9604bf91d7f90691bcf" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>onConfigErased</name></member>
+      <member refid="classcfg_1_1_config_manager_1adf39406f57dfd1871ee974dd86d16abc" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>setConfigPath</name></member>
+      <member refid="classcfg_1_1_config_manager_1a8a84b0efbaf6446b4c9254386606cda5" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>setTimeToSleep</name></member>
+      <member refid="classcfg_1_1_config_manager_1ae72f47047d91fa0418391aa99b2383ef" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>stop</name></member>
+      <member refid="classcfg_1_1_config_manager_1abb7d9a63860843839fa4d8f339f0122b" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>ThreadPtr</name></member>
+      <member refid="classcfg_1_1_config_manager_1a31f95938b66f996b8e731dada6b4a880" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>watch</name></member>
+      <member refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" prot="public" virt="non-virtual"><scope>cfg::ConfigManager</scope><name>watching</name></member>
+      <member refid="classcfg_1_1_config_manager_1a0b0ce1e9ef223cd18360eaaeecc7e1ab" prot="public" virt="virtual"><scope>cfg::ConfigManager</scope><name>~ConfigManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

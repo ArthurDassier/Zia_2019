@@ -1,0 +1,123 @@
+\hypertarget{class_zia_1_1_module}{}\section{Zia\+:\+:Module Class Reference}
+\label{class_zia_1_1_module}\index{Zia\+::\+Module@{Zia\+::\+Module}}
+
+
+\hyperlink{class_zia_1_1_module}{Module} class to manage the modules.  
+
+
+
+
+{\ttfamily \#include $<$Module.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_zia_1_1_module_a4e5330e20703c939d940afe737bd4d1b}{Module} (const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{cfg\+::\+File\+Descriptor} \&path)
+\begin{DoxyCompactList}\small\item\em Construct a new \hyperlink{class_zia_1_1_module}{Module} object. \end{DoxyCompactList}\item 
+\hyperlink{class_zia_1_1_module_a91f712e682b2b949656b90796879d8b1}{$\sim$\+Module} ()=default
+\begin{DoxyCompactList}\small\item\em Destroy the \hyperlink{class_zia_1_1_module}{Module} object. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{class_zia_1_1_module_ac0eaf9796e9cb65c279743f3c6377b1b}{get\+Name} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the module\textquotesingle{}s name. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{class_zia_1_1_module_a93f4a37a5e91739c2584292e540d6dff}{get\+Name} (const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{cfg\+::\+File\+Descriptor} \&file) const
+\begin{DoxyCompactList}\small\item\em Generate the module\textquotesingle{}s name from a file descriptor. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{class_zia_1_1_module_ae9e284d2b324100926271ca383704552}{get\+Path} () const noexcept
+\begin{DoxyCompactList}\small\item\em Get the module\textquotesingle{}s library path. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_zia_1_1_module}{Module} class to manage the modules. 
+
+Definition at line 17 of file Module.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_zia_1_1_module_a4e5330e20703c939d940afe737bd4d1b}\label{class_zia_1_1_module_a4e5330e20703c939d940afe737bd4d1b}} 
+\index{Zia\+::\+Module@{Zia\+::\+Module}!Module@{Module}}
+\index{Module@{Module}!Zia\+::\+Module@{Zia\+::\+Module}}
+\subsubsection{\texorpdfstring{Module()}{Module()}}
+{\footnotesize\ttfamily Module\+::\+Module (\begin{DoxyParamCaption}\item[{const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{cfg\+::\+File\+Descriptor} \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Construct a new \hyperlink{class_zia_1_1_module}{Module} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File descriptor of the module library. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 12 of file Module.\+cpp.
+
+\mbox{\Hypertarget{class_zia_1_1_module_a91f712e682b2b949656b90796879d8b1}\label{class_zia_1_1_module_a91f712e682b2b949656b90796879d8b1}} 
+\index{Zia\+::\+Module@{Zia\+::\+Module}!````~Module@{$\sim$\+Module}}
+\index{````~Module@{$\sim$\+Module}!Zia\+::\+Module@{Zia\+::\+Module}}
+\subsubsection{\texorpdfstring{$\sim$\+Module()}{~Module()}}
+{\footnotesize\ttfamily Zia\+::\+Module\+::$\sim$\+Module (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Destroy the \hyperlink{class_zia_1_1_module}{Module} object. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_zia_1_1_module_ac0eaf9796e9cb65c279743f3c6377b1b}\label{class_zia_1_1_module_ac0eaf9796e9cb65c279743f3c6377b1b}} 
+\index{Zia\+::\+Module@{Zia\+::\+Module}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Zia\+::\+Module@{Zia\+::\+Module}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const std\+::string Module\+::get\+Name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the module\textquotesingle{}s name. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_zia_1_1_module}{Module}\textquotesingle{}s name. 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file Module.\+cpp.
+
+\mbox{\Hypertarget{class_zia_1_1_module_a93f4a37a5e91739c2584292e540d6dff}\label{class_zia_1_1_module_a93f4a37a5e91739c2584292e540d6dff}} 
+\index{Zia\+::\+Module@{Zia\+::\+Module}!get\+Name@{get\+Name}}
+\index{get\+Name@{get\+Name}!Zia\+::\+Module@{Zia\+::\+Module}}
+\subsubsection{\texorpdfstring{get\+Name()}{getName()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const std\+::string Module\+::get\+Name (\begin{DoxyParamCaption}\item[{const \hyperlink{namespacecfg_af0aed6e47bd26e91ad7d69467f96caaf}{cfg\+::\+File\+Descriptor} \&}]{file }\end{DoxyParamCaption}) const}
+
+
+
+Generate the module\textquotesingle{}s name from a file descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Generated module name. 
+\end{DoxyReturn}
+
+
+Definition at line 23 of file Module.\+cpp.
+
+\mbox{\Hypertarget{class_zia_1_1_module_ae9e284d2b324100926271ca383704552}\label{class_zia_1_1_module_ae9e284d2b324100926271ca383704552}} 
+\index{Zia\+::\+Module@{Zia\+::\+Module}!get\+Path@{get\+Path}}
+\index{get\+Path@{get\+Path}!Zia\+::\+Module@{Zia\+::\+Module}}
+\subsubsection{\texorpdfstring{get\+Path()}{getPath()}}
+{\footnotesize\ttfamily const std\+::string Module\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Get the module\textquotesingle{}s library path. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{class_zia_1_1_module}{Module}\textquotesingle{}s library path. 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file Module.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/server/\hyperlink{_module_8hpp}{Module.\+hpp}\item 
+src/server/\hyperlink{_module_8cpp}{Module.\+cpp}\end{DoxyCompactItemize}

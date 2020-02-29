@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_0961b4da15e38d9f03abe3a79db3576d" kind="dir">
+    <compoundname>src/modules/php_cgi</compoundname>
+    <innerfile refid="modules_2php__cgi_2main_8cpp">main.cpp</innerfile>
+    <innerfile refid="php__module_8cpp">php_module.cpp</innerfile>
+    <innerfile refid="php__module_8hpp">php_module.hpp</innerfile>
+    <innerfile refid="test_8php">test.php</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/modules/php_cgi/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_fill" kind="class" language="C++" prot="public">
+    <compoundname>Fill</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IModule</basecompoundref>
+    <includes refid="_fill_page_8hpp" local="no">FillPage.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_fill_1a686b6c06d79a3e7272cc400f29aa7e44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Fill::Fill</definition>
+        <argsstring>()=default</argsstring>
+        <name>Fill</name>
+        <briefdescription>
+<para>Default constructor for the fill module. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="25" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_fill_1a5116eca7a853356f420f6474ade0983b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>virtual const char* Fill::getName</definition>
+        <argsstring>(void) const</argsstring>
+        <name>getName</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get the name of the module. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The name of the module </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="32" column="1" bodyfile="src/modules/fillPage/FillPage.hpp" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_fill_1a440901ea6a6270194ca7e0e19c9bd88e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Fill::onRegisterCallbacks</definition>
+        <argsstring>(oZ::Pipeline &amp;pipeline)</argsstring>
+        <name>onRegisterCallbacks</name>
+        <param>
+          <type>oZ::Pipeline &amp;</type>
+          <declname>pipeline</declname>
+        </param>
+        <briefdescription>
+<para>Fct for the pipeline (load in the right place in the right position) </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pipeline</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference on the pipeline where the module is load </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="39" column="1" bodyfile="src/modules/fillPage/FillPage.cpp" bodystart="17" bodyend="25"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_fill_1abe7ba075ce4478e09439927057696521" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Fill::takeContent</definition>
+        <argsstring>(oZ::Context &amp;context)</argsstring>
+        <name>takeContent</name>
+        <param>
+          <type>oZ::Context &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Complete the response header in the context given. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Context given by the pipeline</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Bool to know if nothing wrong happened </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="49" column="1" bodyfile="src/modules/fillPage/FillPage.cpp" bodystart="27" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_fill_1a38a89d3bc29bd371911ebaa89c789f00" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Fill::checkRequestType</definition>
+        <argsstring>(const oZ::Context &amp;context)</argsstring>
+        <name>checkRequestType</name>
+        <param>
+          <type>const oZ::Context &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Chef the method in the request by the browser. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Context given by the pipeline</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Bool to know if nothing wrong happened </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="58" column="1" bodyfile="src/modules/fillPage/FillPage.cpp" bodystart="59" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_fill_1a13eed61b97f6b469156b85271caf72a6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Fill::fillBody</definition>
+        <argsstring>(oZ::Context &amp;context, const std::string &amp;path, oZ::HTTP::Code code)</argsstring>
+        <name>fillBody</name>
+        <param>
+          <type>oZ::Context &amp;</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>oZ::HTTP::Code</type>
+          <declname>code</declname>
+        </param>
+        <briefdescription>
+<para>Complete the body of the response after find the good index. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Context given by the pipeline </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path of the index depends on the request </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>code</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Code for the response</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Bool to know if nothing wrong happened </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="69" column="1" bodyfile="src/modules/fillPage/FillPage.cpp" bodystart="71" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_fill" kindref="compound">Fill</ref> class to manage the <ref refid="class_fill" kindref="compound">Fill</ref> module. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14">
+        <label>IModule</label>
+      </node>
+      <node id="13">
+        <label>Fill</label>
+        <link refid="class_fill"/>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="16">
+        <label>IModule</label>
+      </node>
+      <node id="15">
+        <label>Fill</label>
+        <link refid="class_fill"/>
+        <childnode refid="16" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/fillPage/FillPage.hpp" line="20" column="1" bodyfile="src/modules/fillPage/FillPage.hpp" bodystart="20" bodyend="71"/>
+    <listofallmembers>
+      <member refid="class_fill_1a38a89d3bc29bd371911ebaa89c789f00" prot="private" virt="non-virtual"><scope>Fill</scope><name>checkRequestType</name></member>
+      <member refid="class_fill_1a686b6c06d79a3e7272cc400f29aa7e44" prot="public" virt="non-virtual"><scope>Fill</scope><name>Fill</name></member>
+      <member refid="class_fill_1a13eed61b97f6b469156b85271caf72a6" prot="private" virt="non-virtual"><scope>Fill</scope><name>fillBody</name></member>
+      <member refid="class_fill_1a5116eca7a853356f420f6474ade0983b" prot="public" virt="virtual"><scope>Fill</scope><name>getName</name></member>
+      <member refid="class_fill_1a440901ea6a6270194ca7e0e19c9bd88e" prot="public" virt="virtual"><scope>Fill</scope><name>onRegisterCallbacks</name></member>
+      <member refid="class_fill_1abe7ba075ce4478e09439927057696521" prot="private" virt="non-virtual"><scope>Fill</scope><name>takeContent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

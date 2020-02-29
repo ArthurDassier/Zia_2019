@@ -11,6 +11,9 @@
 
 namespace Zia
 {
+    /**
+ * @brief Module class to manage the modules.
+ */
     class Module
     {
         public:

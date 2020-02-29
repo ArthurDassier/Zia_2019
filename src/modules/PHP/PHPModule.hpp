@@ -34,6 +34,9 @@ namespace PHPModule
     };
 }
 
+/**
+ * @brief PHP_CGI class to manage the PHP module.
+ */
 class PHP_CGI : public oZ::IModule 
 {
     public:

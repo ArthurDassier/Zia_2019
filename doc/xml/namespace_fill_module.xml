@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="namespace_fill_module" kind="namespace" language="C++">
+    <compoundname>FillModule</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_fill_module_1a3b04872509f930e4a6282619253fb420" prot="public" static="no" mutable="no">
+        <type>std::map&lt; std::string, std::string &gt;</type>
+        <definition>std::map&lt;std::string, std::string&gt; FillModule::routes_enums</definition>
+        <argsstring></argsstring>
+        <name>routes_enums</name>
+        <initializer>= {
+        {&quot;/&quot;,       &quot;index.html&quot;},
+        {&quot;/test&quot;,   &quot;index_test.html&quot;},
+        {&quot;/php&quot;,    &quot;index_php.html&quot;},
+        {&quot;/form&quot;,   &quot;index_form.html&quot;},
+        {&quot;/carlos&quot;, &quot;carlos.gif&quot;},
+        {&quot;/cat&quot;,    &quot;cat_choc.jpg&quot;},
+        {&quot;/theo&quot;,   &quot;theoWick.jpg&quot;},
+        {&quot;/arthur&quot;, &quot;arthurWick.jpg&quot;}
+    }</initializer>
+        <briefdescription>
+<para>Enum for the routes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="78" column="1" bodyfile="src/modules/fillPage/FillPage.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_fill_module_1abd8ea40bf0589d3fe6cf7e816164985a" prot="public" static="no" mutable="no">
+        <type>std::map&lt; std::string, std::string &gt;</type>
+        <definition>std::map&lt;std::string, std::string&gt; FillModule::formats</definition>
+        <argsstring></argsstring>
+        <name>formats</name>
+        <briefdescription>
+<para>Enum for the formats. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/fillPage/FillPage.hpp" line="92" column="1" bodyfile="src/modules/fillPage/FillPage.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/modules/fillPage/FillPage.hpp" line="74" column="1"/>
+  </compounddef>
+</doxygen>

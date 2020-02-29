@@ -1,0 +1,153 @@
+.TH "tls::JsonLoader" 3 "Sat Feb 29 2020" "Version 1.0" "Zia" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+tls::JsonLoader \- \fBJsonLoader\fP class to manage a json file\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <JsonLoader\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBJsonLoader\fP ()"
+.br
+.RI "Construct a new \fBJsonLoader\fP object\&. "
+.ti -1c
+.RI "\fBJsonLoader\fP (const std::filesystem::path &path)"
+.br
+.RI "Construct a new \fBJsonLoader\fP object\&. "
+.ti -1c
+.RI "\fBJsonLoader\fP (const \fBjson\fP &object)"
+.br
+.RI "Construct a new \fBJsonLoader\fP object\&. "
+.ti -1c
+.RI "\fB~JsonLoader\fP ()=default"
+.br
+.RI "Destroy the \fBJsonLoader\fP object\&. "
+.ti -1c
+.RI "void \fBload\fP (const std::filesystem::path &path)"
+.br
+.RI "Load a json from a given json file\&. "
+.ti -1c
+.RI "const \fBjson\fP \fBget\fP (const std::string &to_get) const"
+.br
+.RI "Get data from the json previously loaded\&. "
+.ti -1c
+.RI "const \fBjson\fP \fBgetJson\fP () const noexcept"
+.br
+.RI "Get all json file content deserialized\&. "
+.ti -1c
+.RI "const bool \fBhasLoaded\fP () const noexcept"
+.br
+.RI "Check if a json file has already been loaded\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBJsonLoader\fP class to manage a json file\&. 
+.PP
+Definition at line 25 of file JsonLoader\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "JsonLoader::JsonLoader ()"
+
+.PP
+Construct a new \fBJsonLoader\fP object\&. 
+.PP
+Definition at line 12 of file JsonLoader\&.cpp\&.
+.SS "JsonLoader::JsonLoader (const std::filesystem::path & path)"
+
+.PP
+Construct a new \fBJsonLoader\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP Path of the json file to load\&. 
+.RE
+.PP
+
+.PP
+Definition at line 17 of file JsonLoader\&.cpp\&.
+.SS "JsonLoader::JsonLoader (const \fBjson\fP & object)"
+
+.PP
+Construct a new \fBJsonLoader\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIobject\fP Json object to load\&. 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file JsonLoader\&.cpp\&.
+.SS "tls::JsonLoader::~JsonLoader ()\fC [default]\fP"
+
+.PP
+Destroy the \fBJsonLoader\fP object\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBjson\fP JsonLoader::get (const std::string & to_get) const"
+
+.PP
+Get data from the json previously loaded\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIto_get\fP Data key in the json\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Data if found otherwise null json object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 37 of file JsonLoader\&.cpp\&.
+.SS "const \fBjson\fP JsonLoader::getJson () const\fC [noexcept]\fP"
+
+.PP
+Get all json file content deserialized\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Json object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file JsonLoader\&.cpp\&.
+.SS "const bool JsonLoader::hasLoaded () const\fC [noexcept]\fP"
+
+.PP
+Check if a json file has already been loaded\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True if a file has been loaded otherwise false\&. 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file JsonLoader\&.cpp\&.
+.SS "void JsonLoader::load (const std::filesystem::path & path)"
+
+.PP
+Load a json from a given json file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP Path of the json file to load\&. 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file JsonLoader\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Zia from the source code\&.

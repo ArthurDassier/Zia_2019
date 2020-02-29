@@ -5,10 +5,30 @@
 ** main
 */
 
+/*!
+ * \file main.c
+ * \brief Main fonction
+ * \author Arthur.D
+ * \version 1.0
+ * \date 29 fevrier 2020
+ *
+ * \mainpage Zia Program
+ * \ Main page
+ * 
+ */
+
 #include <iostream>
 #include <exception>
 #include <server/Server.hpp>
 #include <utils/EnvManager.hpp>
+
+/*!
+ * \fn int main(int ac, char **av)
+ * \brief Briefly checks for errors and launch the core
+ *
+ * \param int ac, char **av and the char **env variables
+ * \return 0 if everything went ok or 84 is case of errors
+ */
 
 int main(int argc, char *argv[])
 {

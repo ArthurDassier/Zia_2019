@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_dd5387579e0ca0269955c6f0b8c070ca" kind="dir">
+    <compoundname>src/modules/SSL</compoundname>
+    <innerfile refid="_s_s_l_module_8cpp">SSLModule.cpp</innerfile>
+    <innerfile refid="_s_s_l_module_8hpp">SSLModule.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/modules/SSL/"/>
+  </compounddef>
+</doxygen>

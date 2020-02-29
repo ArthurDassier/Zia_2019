@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_zia_1_1_connection_manager" kind="class" language="C++" prot="public">
+    <compoundname>Zia::ConnectionManager</compoundname>
+    <includes refid="_connection_manager_8hpp" local="no">ConnectionManager.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_zia_1_1_connection_manager_1a1c27e67b69393a82f5d00e7a7a82c3f7" prot="private" static="no" mutable="no">
+        <type>std::set&lt; <ref refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" kindref="member">ConnectionPtr</ref> &gt;</type>
+        <definition>std::set&lt;ConnectionPtr&gt; Zia::ConnectionManager::_connections</definition>
+        <argsstring></argsstring>
+        <name>_connections</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ConnectionManager.hpp" line="53" column="1" bodyfile="src/server/ConnectionManager.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_zia_1_1_connection_manager_1a863585668f747d6fb35b15b12f6fb4a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Zia::ConnectionManager::ConnectionManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>ConnectionManager</name>
+        <briefdescription>
+<para>Cronstructor for the connection manager. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ConnectionManager.hpp" line="30" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_manager_1a556bcbe3969171deba4900c08feb7d93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::ConnectionManager::addClient</definition>
+        <argsstring>(ConnectionPtr client)</argsstring>
+        <name>addClient</name>
+        <param>
+          <type><ref refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" kindref="member">ConnectionPtr</ref></type>
+          <declname>client</declname>
+        </param>
+        <briefdescription>
+<para>Add a client give to the manager in the list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>client</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer on the client </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ConnectionManager.hpp" line="37" column="1" bodyfile="src/server/ConnectionManager.cpp" bodystart="11" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_manager_1a61efd54810ec831b994c7ef148bec2ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::ConnectionManager::eraseClient</definition>
+        <argsstring>(ConnectionPtr client)</argsstring>
+        <name>eraseClient</name>
+        <param>
+          <type><ref refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" kindref="member">ConnectionPtr</ref></type>
+          <declname>client</declname>
+        </param>
+        <briefdescription>
+<para>Remove a client give to the manager to the list. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>client</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer on the client </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ConnectionManager.hpp" line="44" column="1" bodyfile="src/server/ConnectionManager.cpp" bodystart="17" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_connection_manager_1ac1db00d9a69520616bc20e0ac1ea311f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Zia::ConnectionManager::eraseAll</definition>
+        <argsstring>(void)</argsstring>
+        <name>eraseAll</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Add a client give to the manager in the list. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/ConnectionManager.hpp" line="50" column="1" bodyfile="src/server/ConnectionManager.cpp" bodystart="23" bodyend="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_zia_1_1_connection_manager" kindref="compound">ConnectionManager</ref> class to manage the connection. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/server/ConnectionManager.hpp" line="24" column="1" bodyfile="src/server/ConnectionManager.hpp" bodystart="24" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_zia_1_1_connection_manager_1a1c27e67b69393a82f5d00e7a7a82c3f7" prot="private" virt="non-virtual"><scope>Zia::ConnectionManager</scope><name>_connections</name></member>
+      <member refid="class_zia_1_1_connection_manager_1a556bcbe3969171deba4900c08feb7d93" prot="public" virt="non-virtual"><scope>Zia::ConnectionManager</scope><name>addClient</name></member>
+      <member refid="class_zia_1_1_connection_manager_1a863585668f747d6fb35b15b12f6fb4a4" prot="public" virt="non-virtual"><scope>Zia::ConnectionManager</scope><name>ConnectionManager</name></member>
+      <member refid="class_zia_1_1_connection_manager_1ac1db00d9a69520616bc20e0ac1ea311f" prot="public" virt="non-virtual"><scope>Zia::ConnectionManager</scope><name>eraseAll</name></member>
+      <member refid="class_zia_1_1_connection_manager_1a61efd54810ec831b994c7ef148bec2ae" prot="public" virt="non-virtual"><scope>Zia::ConnectionManager</scope><name>eraseClient</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

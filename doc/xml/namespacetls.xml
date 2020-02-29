@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="namespacetls" kind="namespace" language="C++">
+    <compoundname>tls</compoundname>
+    <innerclass refid="classtls_1_1_env_manager" prot="public">tls::EnvManager</innerclass>
+    <innerclass refid="classtls_1_1_json_loader" prot="public">tls::JsonLoader</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacetls_1a4e8d32383e204ee25990db65651ea712" prot="public" static="no">
+        <type>nlohmann::json</type>
+        <definition>using tls::json = typedef nlohmann::json</definition>
+        <argsstring></argsstring>
+        <name>json</name>
+        <briefdescription>
+<para>Json library object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/utils/JsonLoader.hpp" line="20" column="1" bodyfile="src/utils/JsonLoader.hpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/utils/EnvManager.hpp" line="15" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classcfg_1_1_config.html" title="Config abstracts a configuration from a json file. " alt="" coords="5,5,92,32"/>
+<area shape="rect" id="node2" href="$class_zia_1_1_server_config.html" title="ServerConfig class to manage configuration files of the server. " alt="" coords="140,5,264,32"/>
+</map>

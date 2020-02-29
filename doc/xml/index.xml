@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.13">
+  <compound refid="classcfg_1_1_config" kind="class"><name>cfg::Config</name>
+    <member refid="classcfg_1_1_config_1a526fad6e7ffea15da9816a79412e09ee" kind="variable"><name>_name</name></member>
+    <member refid="classcfg_1_1_config_1a55d9d076bd03d92e481cae0735ebbf92" kind="variable"><name>_fd</name></member>
+    <member refid="classcfg_1_1_config_1a0ef0ccfaf361fecdce5dc96db938e18b" kind="variable"><name>_path</name></member>
+    <member refid="classcfg_1_1_config_1a1b4b05148f3ea2149610ac793d96d420" kind="variable"><name>_timestamp</name></member>
+    <member refid="classcfg_1_1_config_1aac0ac15a2f06b8810164441fe08fe490" kind="function"><name>Config</name></member>
+    <member refid="classcfg_1_1_config_1a1b74ecb20fb34c56ac3257066e4c065f" kind="function"><name>~Config</name></member>
+    <member refid="classcfg_1_1_config_1a8c2a84783775b02046041628d74be6e7" kind="function"><name>loadConfig</name></member>
+    <member refid="classcfg_1_1_config_1a622ad4331306ae232060ef6e74fe8134" kind="function"><name>update</name></member>
+    <member refid="classcfg_1_1_config_1a04f2e4ad0070a73728c4bce7b7dd0c29" kind="function"><name>setName</name></member>
+    <member refid="classcfg_1_1_config_1ac1fa619b1d5dbd0c3326ac93a4d437bb" kind="function"><name>getName</name></member>
+    <member refid="classcfg_1_1_config_1a76cb1f6d83b6d06eee652c80d32e9084" kind="function"><name>getFileDescriptor</name></member>
+    <member refid="classcfg_1_1_config_1a4c237371c0ad09ff75d1db7d31a1f362" kind="function"><name>setPath</name></member>
+    <member refid="classcfg_1_1_config_1aec545d9dc88130f76bfb6f2a1863b22f" kind="function"><name>getPath</name></member>
+    <member refid="classcfg_1_1_config_1aae2d7dbb7d3d329f1afffef4b95de204" kind="function"><name>setTimestamp</name></member>
+    <member refid="classcfg_1_1_config_1acbd974221e2b58f235b596ec3a52c44c" kind="function"><name>getTimestamp</name></member>
+  </compound>
+  <compound refid="classcfg_1_1_config_manager" kind="class"><name>cfg::ConfigManager</name>
+    <member refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" kind="typedef"><name>CallbackHandler</name></member>
+    <member refid="classcfg_1_1_config_manager_1abb7d9a63860843839fa4d8f339f0122b" kind="typedef"><name>ThreadPtr</name></member>
+    <member refid="classcfg_1_1_config_manager_1a94ed7fb2c98c2584e0f98326bf65c98f" kind="typedef"><name>ConfigList</name></member>
+    <member refid="classcfg_1_1_config_manager_1ac50f6c213e2646aa1c261c431b6fe351" kind="typedef"><name>ConfigMap</name></member>
+    <member refid="classcfg_1_1_config_manager_1a79c9e1d6a8435592f52949e8e63c3ad3" kind="variable"><name>_path</name></member>
+    <member refid="classcfg_1_1_config_manager_1af2c3490a47a61473178a085f9bddb8f3" kind="variable"><name>_timeSleep</name></member>
+    <member refid="classcfg_1_1_config_manager_1ad27f038dce20817568bd2fedd7cd526a" kind="variable"><name>_configs</name></member>
+    <member refid="classcfg_1_1_config_manager_1a7612f14b22af6314c4fdf157682430df" kind="variable"><name>_paths</name></member>
+    <member refid="classcfg_1_1_config_manager_1a11fae964ad7a8cec925582871740e51c" kind="variable"><name>_onChangeCallback</name></member>
+    <member refid="classcfg_1_1_config_manager_1a86ab7d4a613687ee3e87339f9c707d8b" kind="variable"><name>_onErasedCallback</name></member>
+    <member refid="classcfg_1_1_config_manager_1ab8aa30788ddea136b1ff7b649653b416" kind="variable"><name>_thread</name></member>
+    <member refid="classcfg_1_1_config_manager_1aa03d56f3b034a6b60409d0f93a85956e" kind="variable"><name>_watching</name></member>
+    <member refid="classcfg_1_1_config_manager_1a5434bffe1b9b3a20026e2526601911f2" kind="function"><name>ConfigManager</name></member>
+    <member refid="classcfg_1_1_config_manager_1a7d3d7c10423d969f7544509f6fcca32f" kind="function"><name>ConfigManager</name></member>
+    <member refid="classcfg_1_1_config_manager_1a0b0ce1e9ef223cd18360eaaeecc7e1ab" kind="function"><name>~ConfigManager</name></member>
+    <member refid="classcfg_1_1_config_manager_1addf0e3547d8e4d7dd023c17e43e8176d" kind="function"><name>manage</name></member>
+    <member refid="classcfg_1_1_config_manager_1ae72f47047d91fa0418391aa99b2383ef" kind="function"><name>stop</name></member>
+    <member refid="classcfg_1_1_config_manager_1a31f95938b66f996b8e731dada6b4a880" kind="function"><name>watch</name></member>
+    <member refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" kind="function"><name>watching</name></member>
+    <member refid="classcfg_1_1_config_manager_1a704e8f6b81715a24199f3579a946cad4" kind="function"><name>isWatching</name></member>
+    <member refid="classcfg_1_1_config_manager_1ad6c55b0413f949cc5002467cbcee3186" kind="function"><name>loadConfigDir</name></member>
+    <member refid="classcfg_1_1_config_manager_1a324ba63493aefb579500f7338bd477db" kind="function"><name>onConfigChange</name></member>
+    <member refid="classcfg_1_1_config_manager_1abee2ba9f508be9604bf91d7f90691bcf" kind="function"><name>onConfigErased</name></member>
+    <member refid="classcfg_1_1_config_manager_1adf39406f57dfd1871ee974dd86d16abc" kind="function"><name>setConfigPath</name></member>
+    <member refid="classcfg_1_1_config_manager_1af80e94a2a93aa7bb16c2fca5249936ac" kind="function"><name>getConfigPath</name></member>
+    <member refid="classcfg_1_1_config_manager_1a8a84b0efbaf6446b4c9254386606cda5" kind="function"><name>setTimeToSleep</name></member>
+    <member refid="classcfg_1_1_config_manager_1a992557430937cec5387d84d44c721f7c" kind="function"><name>getTimeToSleep</name></member>
+    <member refid="classcfg_1_1_config_manager_1aa71c6277d421969606433b77d425d19d" kind="function"><name>getConfig</name></member>
+    <member refid="classcfg_1_1_config_manager_1a181570594806f344f9dcff1cbc1ba967" kind="function"><name>getConfigName</name></member>
+  </compound>
+  <compound refid="class_zia_1_1_connection" kind="class"><name>Zia::Connection</name>
+    <member refid="class_zia_1_1_connection_1a1b74e276e0f3aa8dbabdaed80a0936e6" kind="typedef"><name>socket</name></member>
+    <member refid="class_zia_1_1_connection_1a24be5d0e53e3b8d2f5edb49f60861ebf" kind="variable"><name>_socket</name></member>
+    <member refid="class_zia_1_1_connection_1a0bf80eb508104a9282cd7a7fb41a4fd1" kind="variable"><name>_connectionManager</name></member>
+    <member refid="class_zia_1_1_connection_1a8c2193d0d912ac8afcd478cbb972731f" kind="variable"><name>_pipeline</name></member>
+    <member refid="class_zia_1_1_connection_1aa572ece24b00ab40373b05e5d23db99b" kind="variable"><name>_crypt</name></member>
+    <member refid="class_zia_1_1_connection_1a4326597f48e073d3e84dee8f60503d05" kind="variable"><name>_buffer</name></member>
+    <member refid="class_zia_1_1_connection_1a06a6c69bf205afa9868169a1435129c1" kind="function"><name>Connection</name></member>
+    <member refid="class_zia_1_1_connection_1a61438cdd01805cd466d1382eafcb1576" kind="function"><name>Connection</name></member>
+    <member refid="class_zia_1_1_connection_1af7bae27ea5870ef9efc6775d38012aa4" kind="function"><name>start</name></member>
+    <member refid="class_zia_1_1_connection_1ac9704053c3b7f919d71255b1ce30cc63" kind="function"><name>stop</name></member>
+    <member refid="class_zia_1_1_connection_1a271d42459c363043634670b403db6efe" kind="function"><name>read</name></member>
+    <member refid="class_zia_1_1_connection_1a8dcb0e37c688930d74eb000a168128c0" kind="function"><name>runPipeline</name></member>
+    <member refid="class_zia_1_1_connection_1a4a882f2d899d733852e757eb8b143cf2" kind="function"><name>send</name></member>
+    <member refid="class_zia_1_1_connection_1a4b29e213541c7b1911df851294805d7b" kind="function"><name>buildResponse</name></member>
+  </compound>
+  <compound refid="class_zia_1_1_connection_manager" kind="class"><name>Zia::ConnectionManager</name>
+    <member refid="class_zia_1_1_connection_manager_1a1c27e67b69393a82f5d00e7a7a82c3f7" kind="variable"><name>_connections</name></member>
+    <member refid="class_zia_1_1_connection_manager_1a863585668f747d6fb35b15b12f6fb4a4" kind="function"><name>ConnectionManager</name></member>
+    <member refid="class_zia_1_1_connection_manager_1a556bcbe3969171deba4900c08feb7d93" kind="function"><name>addClient</name></member>
+    <member refid="class_zia_1_1_connection_manager_1a61efd54810ec831b994c7ef148bec2ae" kind="function"><name>eraseClient</name></member>
+    <member refid="class_zia_1_1_connection_manager_1ac1db00d9a69520616bc20e0ac1ea311f" kind="function"><name>eraseAll</name></member>
+  </compound>
+  <compound refid="classtls_1_1_env_manager" kind="class"><name>tls::EnvManager</name>
+    <member refid="classtls_1_1_env_manager_1a3c0915eae50109e172790b47a100f53b" kind="variable"><name>_config</name></member>
+    <member refid="classtls_1_1_env_manager_1ae139973576ff0addac7cc5f876e085ca" kind="variable"><name>_cwd</name></member>
+    <member refid="classtls_1_1_env_manager_1ae683e94c1206cec92b2775f765525f15" kind="variable"><name>_loader</name></member>
+    <member refid="classtls_1_1_env_manager_1a7263f67578810770eafbebb5b71f7b6b" kind="variable"><name>_config_path</name></member>
+    <member refid="classtls_1_1_env_manager_1a73654081360600e2dd650eea02f82a23" kind="function"><name>EnvManager</name></member>
+    <member refid="classtls_1_1_env_manager_1ad603a242e488ddbda5a54b23aefe2013" kind="function"><name>EnvManager</name></member>
+    <member refid="classtls_1_1_env_manager_1aaff18dcf5a41cefdaa1a5b2123a456a0" kind="function"><name>~EnvManager</name></member>
+    <member refid="classtls_1_1_env_manager_1ad48562c6efa024230850b73d9d6361fb" kind="function"><name>loadEnv</name></member>
+    <member refid="classtls_1_1_env_manager_1a560e9c9885ae4e656eb7121adc4cbc9a" kind="function"><name>setEnv</name></member>
+    <member refid="classtls_1_1_env_manager_1a505529a47f05f2450594da617d627936" kind="function"><name>getEnv</name></member>
+  </compound>
+  <compound refid="class_fill" kind="class"><name>Fill</name>
+    <member refid="class_fill_1a686b6c06d79a3e7272cc400f29aa7e44" kind="function"><name>Fill</name></member>
+    <member refid="class_fill_1a5116eca7a853356f420f6474ade0983b" kind="function"><name>getName</name></member>
+    <member refid="class_fill_1a440901ea6a6270194ca7e0e19c9bd88e" kind="function"><name>onRegisterCallbacks</name></member>
+    <member refid="class_fill_1abe7ba075ce4478e09439927057696521" kind="function"><name>takeContent</name></member>
+    <member refid="class_fill_1a38a89d3bc29bd371911ebaa89c789f00" kind="function"><name>checkRequestType</name></member>
+    <member refid="class_fill_1a13eed61b97f6b469156b85271caf72a6" kind="function"><name>fillBody</name></member>
+  </compound>
+  <compound refid="classtls_1_1_json_loader" kind="class"><name>tls::JsonLoader</name>
+    <member refid="classtls_1_1_json_loader_1afd9a33b3305da0b155772e171884f1e0" kind="variable"><name>_json</name></member>
+    <member refid="classtls_1_1_json_loader_1adbbbb94f7588404b34b36542d30f3e67" kind="variable"><name>_hasLoaded</name></member>
+    <member refid="classtls_1_1_json_loader_1a9f9fc1f46e82b4f377b22c8acf0f3b9d" kind="function"><name>JsonLoader</name></member>
+    <member refid="classtls_1_1_json_loader_1ad6ec799a31fbae8ea01a9d6c278ad6e3" kind="function"><name>JsonLoader</name></member>
+    <member refid="classtls_1_1_json_loader_1a0826d5c9480c38d010fe580101d916e0" kind="function"><name>JsonLoader</name></member>
+    <member refid="classtls_1_1_json_loader_1a2d493a7049c70e6974a3daf2ef2e71f9" kind="function"><name>~JsonLoader</name></member>
+    <member refid="classtls_1_1_json_loader_1ad587735dbb8e8cfc5cd002a0aa9a7d7f" kind="function"><name>load</name></member>
+    <member refid="classtls_1_1_json_loader_1a0174b44e635a44811616c394d89b73e5" kind="function"><name>get</name></member>
+    <member refid="classtls_1_1_json_loader_1aef4c88eb0589673f806e7fedf7b3b6b9" kind="function"><name>getJson</name></member>
+    <member refid="classtls_1_1_json_loader_1ac7fa5168de0714b4ab4cf3f7f366dbdf" kind="function"><name>hasLoaded</name></member>
+  </compound>
+  <compound refid="class_zia_1_1_log" kind="class"><name>Zia::Log</name>
+    <member refid="class_zia_1_1_log_1a3080034dce1aca8c3cc7b85775d30a1b" kind="variable"><name>NumbersInfo</name></member>
+    <member refid="class_zia_1_1_log_1a64ce5169f6328628c8074a7664f8445c" kind="variable"><name>NumbersWarning</name></member>
+    <member refid="class_zia_1_1_log_1ada4fab060168cbb9504c7ffa4b762868" kind="variable"><name>NumbersCritical</name></member>
+    <member refid="class_zia_1_1_log_1ae2edbb85216200d7da4fc2b062671101" kind="variable"><name>_pathFile</name></member>
+    <member refid="class_zia_1_1_log_1ae26eb7733ba9cda16a36d2ad25c93bd4" kind="function"><name>setPathFile</name></member>
+    <member refid="class_zia_1_1_log_1a7abad30f76aea6c210ae245885f05137" kind="function"><name>info</name></member>
+    <member refid="class_zia_1_1_log_1a4522d6218b4fb537c4291c36c171a855" kind="function"><name>warning</name></member>
+    <member refid="class_zia_1_1_log_1a5a7899f592f85e1da39e90ba32eef98b" kind="function"><name>critical</name></member>
+    <member refid="class_zia_1_1_log_1abc602ae23b0e2388329155518192b3a5" kind="function"><name>Log</name></member>
+  </compound>
+  <compound refid="class_zia_1_1_module" kind="class"><name>Zia::Module</name>
+    <member refid="class_zia_1_1_module_1aa33983005d647a67707863c50828e5ad" kind="variable"><name>_name</name></member>
+    <member refid="class_zia_1_1_module_1a7b68752109213ffbe3ddcb556adb7763" kind="variable"><name>_path</name></member>
+    <member refid="class_zia_1_1_module_1a4e5330e20703c939d940afe737bd4d1b" kind="function"><name>Module</name></member>
+    <member refid="class_zia_1_1_module_1a91f712e682b2b949656b90796879d8b1" kind="function"><name>~Module</name></member>
+    <member refid="class_zia_1_1_module_1ac0eaf9796e9cb65c279743f3c6377b1b" kind="function"><name>getName</name></member>
+    <member refid="class_zia_1_1_module_1a93f4a37a5e91739c2584292e540d6dff" kind="function"><name>getName</name></member>
+    <member refid="class_zia_1_1_module_1ae9e284d2b324100926271ca383704552" kind="function"><name>getPath</name></member>
+  </compound>
+  <compound refid="class_parser" kind="class"><name>Parser</name>
+    <member refid="class_parser_1a5208129b497bfdf7c8ecceeb70e4bba8" kind="function"><name>Parser</name></member>
+    <member refid="class_parser_1a655ca8534272a48ee94113695f6494fc" kind="function"><name>getName</name></member>
+    <member refid="class_parser_1a0e8278ef45fabe33144c78c51fbfcf7d" kind="function"><name>onRegisterCallbacks</name></member>
+    <member refid="class_parser_1ae11d2df7f63331db5a8fa6bc7b6bc7e3" kind="function"><name>parsing</name></member>
+  </compound>
+  <compound refid="class_p_h_p___c_g_i" kind="class"><name>PHP_CGI</name>
+    <member refid="class_p_h_p___c_g_i_1a4ce89837013dbd5836475cbded08dee7" kind="function"><name>PHP_CGI</name></member>
+    <member refid="class_p_h_p___c_g_i_1a6446691803801b4100f18bcd53899237" kind="function"><name>getName</name></member>
+    <member refid="class_p_h_p___c_g_i_1a5f85735822d4cb288b34182d43b2d059" kind="function"><name>onRegisterCallbacks</name></member>
+    <member refid="class_p_h_p___c_g_i_1ae4572902e2258f41f38719f6666bd00e" kind="function"><name>execPHP</name></member>
+    <member refid="class_p_h_p___c_g_i_1ad4677c3d93be722dc7d4d9ed5470837c" kind="function"><name>findPHP</name></member>
+    <member refid="class_p_h_p___c_g_i_1aeaa445eb27eeab2c2112ac3e6055eee5" kind="function"><name>makeEnvironment</name></member>
+  </compound>
+  <compound refid="class_zia_1_1_server" kind="class"><name>Zia::Server</name>
+    <member refid="class_zia_1_1_server_1a10861064c5ac1dc97cc537023d67471d" kind="typedef"><name>ConfigPtr</name></member>
+    <member refid="class_zia_1_1_server_1a624c715504f8bbf6b858081dabe26f9c" kind="typedef"><name>io_service</name></member>
+    <member refid="class_zia_1_1_server_1a0119259e0eaa12e4f688c6c64dbf6ac0" kind="typedef"><name>Acceptor</name></member>
+    <member refid="class_zia_1_1_server_1ae3a52a854f930c1daa7c8e510f7e37bd" kind="typedef"><name>Socket</name></member>
+    <member refid="class_zia_1_1_server_1a4764ec255c11f5b7fb87f5ab1d44e952" kind="typedef"><name>Endpoint</name></member>
+    <member refid="class_zia_1_1_server_1a81eab82df95d92dc3b53b6a6dc863b5b" kind="variable"><name>_pipeline</name></member>
+    <member refid="class_zia_1_1_server_1a3776d2b1f0b3249ac910f1e1369a2d95" kind="variable"><name>_configManager</name></member>
+    <member refid="class_zia_1_1_server_1a6558f136ae5c15c7fd52441e201d8438" kind="variable"><name>_connectionManager</name></member>
+    <member refid="class_zia_1_1_server_1ac0137a64e1f0a40b148ed25f441dcf22" kind="variable"><name>_serverConfig</name></member>
+    <member refid="class_zia_1_1_server_1af470c51dd8910286dafa4ebb0e67e94b" kind="variable"><name>_io_service</name></member>
+    <member refid="class_zia_1_1_server_1a29265cd35a544333fca1d7b18110bd58" kind="variable"><name>_acceptor</name></member>
+    <member refid="class_zia_1_1_server_1ab6f6c7f66df1218b5eb1e09b5b3f2166" kind="variable"><name>_acceptorHTTPS</name></member>
+    <member refid="class_zia_1_1_server_1ace199baa010f41ec2358a5cdf8e8046e" kind="variable"><name>_socket</name></member>
+    <member refid="class_zia_1_1_server_1ab7063d4c337b569486fe65ab0adad548" kind="variable"><name>_signals</name></member>
+    <member refid="class_zia_1_1_server_1a43502832d5c276e8ee198ad6199fcf0c" kind="variable"><name>_ip</name></member>
+    <member refid="class_zia_1_1_server_1ac949f4a6b20f94de80724c4269e31647" kind="variable"><name>_port</name></member>
+    <member refid="class_zia_1_1_server_1a3f1591f28c6755b353d61e3a44d56b39" kind="function"><name>Server</name></member>
+    <member refid="class_zia_1_1_server_1abb27d30b40a94326e3fd629d3b30b7d5" kind="function"><name>run</name></member>
+    <member refid="class_zia_1_1_server_1ad1a4b1650214d156491a98ff6b96d787" kind="function"><name>close</name></member>
+    <member refid="class_zia_1_1_server_1abc0def55f6e2ec8d94886b8210138a63" kind="function"><name>WaitingClient</name></member>
+    <member refid="class_zia_1_1_server_1a6f00b7e21c8f8454d87393a14db5544c" kind="function"><name>ManagingSignals</name></member>
+    <member refid="class_zia_1_1_server_1a173956952b25c63438439c035d02a89e" kind="function"><name>setAcceptor</name></member>
+    <member refid="class_zia_1_1_server_1a00f96eb34107e9a504be7af5ba2a3fb2" kind="function"><name>addEnabledModules</name></member>
+  </compound>
+  <compound refid="class_zia_1_1_server_config" kind="class"><name>Zia::ServerConfig</name>
+    <member refid="class_zia_1_1_server_config_1a0c708dbcd0202d9efb1d853f8a3d5ecf" kind="variable"><name>_address</name></member>
+    <member refid="class_zia_1_1_server_config_1a8e635424fe8381de808aa76a3a5bcd2e" kind="variable"><name>_port</name></member>
+    <member refid="class_zia_1_1_server_config_1ad790860b2c34bdd8209e6586f3471ee8" kind="variable"><name>_configPath</name></member>
+    <member refid="class_zia_1_1_server_config_1ab2857bf9c0d90bd6f9fd05bc0516b9e9" kind="variable"><name>_modulesPath</name></member>
+    <member refid="class_zia_1_1_server_config_1af8ac976d27d5a2d3792a96b8b6c38a1a" kind="variable"><name>_enabledModules</name></member>
+    <member refid="class_zia_1_1_server_config_1a1a98af732891f93c29f588b5377d4cb2" kind="function"><name>ServerConfig</name></member>
+    <member refid="class_zia_1_1_server_config_1aed6f704e1b0c3fa4b7abe44d7dcc3d06" kind="function"><name>~ServerConfig</name></member>
+    <member refid="class_zia_1_1_server_config_1ad50ff700e0dd38f66017ce229f89717e" kind="function"><name>loadConfig</name></member>
+    <member refid="class_zia_1_1_server_config_1a4467dc6237876b82ad5970b2f6ee1966" kind="function"><name>updateEnabledModulesList</name></member>
+    <member refid="class_zia_1_1_server_config_1a0df081f26973e1a5182adf8f3d6495ae" kind="function"><name>getAddress</name></member>
+    <member refid="class_zia_1_1_server_config_1ad8095c8981f48e9fa4112de41d4e6657" kind="function"><name>getPort</name></member>
+    <member refid="class_zia_1_1_server_config_1aaa1d6beade9709ef602149c669641da9" kind="function"><name>getConfigPath</name></member>
+    <member refid="class_zia_1_1_server_config_1ae55e57b14d9efafcbecc23bf5b8d3957" kind="function"><name>getModulesPath</name></member>
+    <member refid="class_zia_1_1_server_config_1a3ee30a0d396ff60fc7d06110005654f3" kind="function"><name>getEnabledModulesList</name></member>
+    <member refid="class_zia_1_1_server_config_1a931a626c641223c2136979ef4c1aafe9" kind="function"><name>getModuleName</name></member>
+    <member refid="class_zia_1_1_server_config_1a090ae222eeed278436a1fba19f5dcd6c" kind="function"><name>getModuleName</name></member>
+    <member refid="class_zia_1_1_server_config_1a58f9be65f0688574d154e0a9bac71441" kind="function"><name>loadModules</name></member>
+    <member refid="class_zia_1_1_server_config_1a01ed5caf904e8b241b388964f27a0084" kind="function"><name>loadWebServices</name></member>
+  </compound>
+  <compound refid="class_shared_memory" kind="class"><name>SharedMemory</name>
+    <member refid="class_shared_memory_1a851a8d425f9c1e6f49237efd97628df5" kind="function"><name>SharedMemory</name></member>
+    <member refid="class_shared_memory_1a7467ee9b4149f66e660b0af3f0706a51" kind="function"><name>~SharedMemory</name></member>
+    <member refid="class_shared_memory_1a49a12f61b3b8bd4811a1351c434dd121" kind="function"><name>write_data</name></member>
+    <member refid="class_shared_memory_1a35b6a9038b69b6abd3128cd028670cf6" kind="function"><name>get_data</name></member>
+    <member refid="class_shared_memory_1a209fcce32c646bd4ad4e2492004b32c5" kind="function"><name>get_data_by_id</name></member>
+    <member refid="class_shared_memory_1af5531b0b30d05f359719e406886aa61e" kind="function"><name>detach_from</name></member>
+    <member refid="class_shared_memory_1a747779f81bac44bdf42172160199cfe2" kind="function"><name>destroy</name></member>
+    <member refid="class_shared_memory_1a05547eb8707ee646607334893b4196c3" kind="function"><name>key_gen</name></member>
+    <member refid="class_shared_memory_1af171de2b17ae37c2e19a0980000d2f60" kind="function"><name>id_gen</name></member>
+  </compound>
+  <compound refid="class_s_s_l_module" kind="class"><name>SSLModule</name>
+    <member refid="class_s_s_l_module_1aa077cfb27bdb559c0e1de3acca61d5f1" kind="variable"><name>_sslMap</name></member>
+    <member refid="class_s_s_l_module_1a39b2fc61e3fcffddc79c90a7ea780445" kind="variable"><name>_client</name></member>
+    <member refid="class_s_s_l_module_1adaaca1d40afbb22604cce3b203800d9e" kind="variable"><name>_ctx</name></member>
+    <member refid="class_s_s_l_module_1af2db885e29b559df2abb84d33329b218" kind="variable"><name>_ssl</name></member>
+    <member refid="class_s_s_l_module_1aff377c899776ca1e5ec94bb4b37e01db" kind="function"><name>SSLModule</name></member>
+    <member refid="class_s_s_l_module_1a9d8061dd774544fb6eee57803b17f83d" kind="function"><name>~SSLModule</name></member>
+    <member refid="class_s_s_l_module_1a811d3b0f9f932791abbc89f1ecf2a1c3" kind="function"><name>getName</name></member>
+    <member refid="class_s_s_l_module_1ad2bcf5908355b434e45ea156a49f7d39" kind="function"><name>onRegisterCallbacks</name></member>
+    <member refid="class_s_s_l_module_1ac4592260a1fff11950ea1a20d2dd9729" kind="function"><name>onLoadConfigurationFile</name></member>
+    <member refid="class_s_s_l_module_1a514e3d618be55df6f5fc2f489e70d915" kind="function"><name>onConnection</name></member>
+    <member refid="class_s_s_l_module_1a54cda727b3f282b0be43f132411edcd2" kind="function"><name>onDisconnection</name></member>
+    <member refid="class_s_s_l_module_1a27afb8c21da141578c7716153bed3d33" kind="function"><name>WriteSSL</name></member>
+    <member refid="class_s_s_l_module_1a9c86ae50d0d2a3625355fa3416b5bcb6" kind="function"><name>ReadSSL</name></member>
+    <member refid="class_s_s_l_module_1a738d4bde5c9f21739d52085bb058f419" kind="function"><name>configure_context</name></member>
+    <member refid="class_s_s_l_module_1a3698e7393422a592d3fac63e075f21fa" kind="function"><name>create_context</name></member>
+    <member refid="class_s_s_l_module_1aa58d2a4c588c433c03c6a388b1829d0e" kind="function"><name>Init</name></member>
+    <member refid="class_s_s_l_module_1a684a11de772257f4046e0d7d0452691a" kind="function"><name>createResponse</name></member>
+  </compound>
+  <compound refid="namespacecfg" kind="namespace"><name>cfg</name>
+    <member refid="namespacecfg_1a384f743959a9029f7e1c3d11548795de" kind="enum"><name>FileStatus</name></member>
+    <member refid="namespacecfg_1a384f743959a9029f7e1c3d11548795deae2fa538867c3830a859a5b17ab24644b" kind="enumvalue"><name>created</name></member>
+    <member refid="namespacecfg_1a384f743959a9029f7e1c3d11548795dea9ae73c65f418e6f79ceb4f0e4a4b98d5" kind="enumvalue"><name>modified</name></member>
+    <member refid="namespacecfg_1a384f743959a9029f7e1c3d11548795deaf4adee3fff79c6ddad5b2e45f730006a" kind="enumvalue"><name>erased</name></member>
+    <member refid="namespacecfg_1a384f743959a9029f7e1c3d11548795dea334c4a4c42fdb79d7ebc3e73b517e6f8" kind="enumvalue"><name>none</name></member>
+    <member refid="namespacecfg_1af5f3a3fc2010c76e90bc66696485989f" kind="typedef"><name>ConfigPtr</name></member>
+    <member refid="namespacecfg_1af0aed6e47bd26e91ad7d69467f96caaf" kind="typedef"><name>FileDescriptor</name></member>
+    <member refid="namespacecfg_1aa17d58439174a5af7fb3f37a3cdd6d0b" kind="typedef"><name>Timestamp</name></member>
+    <member refid="namespacecfg_1a4b03b67363586260311e07e8b27bd5ac" kind="typedef"><name>json</name></member>
+    <member refid="namespacecfg_1ab1a8f7060b6dfea6111c4449e81c6f8c" kind="typedef"><name>TimeSleep</name></member>
+    <member refid="namespacecfg_1a40daad5d07df66decfe80122729992ea" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="namespacecfg_1a3c18d93d242b2fbca750f5173a6ed4cd" kind="function"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="namespace_fill_module" kind="namespace"><name>FillModule</name>
+    <member refid="namespace_fill_module_1a3b04872509f930e4a6282619253fb420" kind="variable"><name>routes_enums</name></member>
+    <member refid="namespace_fill_module_1abd8ea40bf0589d3fe6cf7e816164985a" kind="variable"><name>formats</name></member>
+  </compound>
+  <compound refid="namespace_parser_module" kind="namespace"><name>ParserModule</name>
+    <member refid="namespace_parser_module_1a937e2668b9b022b39ae69bf8169ef491" kind="variable"><name>methods</name></member>
+    <member refid="namespace_parser_module_1a4a564d139a12507911cf117e50ca1633" kind="variable"><name>methods_enums</name></member>
+  </compound>
+  <compound refid="namespace_p_h_p_module" kind="namespace"><name>PHPModule</name>
+    <member refid="namespace_p_h_p_module_1a8b51dfcb9114f032151ac407675938b1" kind="variable"><name>routes_enums</name></member>
+  </compound>
+  <compound refid="namespacetls" kind="namespace"><name>tls</name>
+    <member refid="namespacetls_1a4e8d32383e204ee25990db65651ea712" kind="typedef"><name>json</name></member>
+  </compound>
+  <compound refid="namespace_zia" kind="namespace"><name>Zia</name>
+    <member refid="namespace_zia_1a26a1cd43d7216ed69ef26b99d8d12093" kind="typedef"><name>ModulePtr</name></member>
+    <member refid="namespace_zia_1a3076ef33a6c08b068cb8e444848ad33c" kind="typedef"><name>EnabledList</name></member>
+    <member refid="namespace_zia_1a7b72c978ae2e795f74ce73291ebe3593" kind="variable"><name>DefaultPort</name></member>
+    <member refid="namespace_zia_1ae53d6fd6614900bbc59b6912d6a629d4" kind="variable"><name>DefaultPortHTTPS</name></member>
+    <member refid="namespace_zia_1a40d4cbc794a3ff3df7017ff08173978f" kind="variable"><name>DefaultIP</name></member>
+  </compound>
+  <compound refid="_config_8cpp" kind="file"><name>Config.cpp</name>
+  </compound>
+  <compound refid="_config_8hpp" kind="file"><name>Config.hpp</name>
+  </compound>
+  <compound refid="_config_manager_8cpp" kind="file"><name>ConfigManager.cpp</name>
+  </compound>
+  <compound refid="_config_manager_8hpp" kind="file"><name>ConfigManager.hpp</name>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="_fill_page_8cpp" kind="file"><name>FillPage.cpp</name>
+  </compound>
+  <compound refid="_fill_page_8hpp" kind="file"><name>FillPage.hpp</name>
+    <member refid="_fill_page_8hpp_1a0eb713c1f5b334a2a612e17a481f09b4" kind="define"><name>HTML_FILES_POSI</name></member>
+    <member refid="_fill_page_8hpp_1abaabb39c497a381da85215fc1ccbdb1a" kind="define"><name>HTML_FILE_ERROR</name></member>
+  </compound>
+  <compound refid="_parser_module_8cpp" kind="file"><name>ParserModule.cpp</name>
+  </compound>
+  <compound refid="_parser_module_8hpp" kind="file"><name>ParserModule.hpp</name>
+  </compound>
+  <compound refid="_p_h_p_module_8cpp" kind="file"><name>PHPModule.cpp</name>
+  </compound>
+  <compound refid="_p_h_p_module_8hpp" kind="file"><name>PHPModule.hpp</name>
+    <member refid="_p_h_p_module_8hpp_1a0eb713c1f5b334a2a612e17a481f09b4" kind="define"><name>HTML_FILES_POSI</name></member>
+  </compound>
+  <compound refid="_s_s_l_module_8cpp" kind="file"><name>SSLModule.cpp</name>
+  </compound>
+  <compound refid="_s_s_l_module_8hpp" kind="file"><name>SSLModule.hpp</name>
+  </compound>
+  <compound refid="_connection_8cpp" kind="file"><name>Connection.cpp</name>
+  </compound>
+  <compound refid="_connection_8hpp" kind="file"><name>Connection.hpp</name>
+  </compound>
+  <compound refid="_connection_manager_8cpp" kind="file"><name>ConnectionManager.cpp</name>
+  </compound>
+  <compound refid="_connection_manager_8hpp" kind="file"><name>ConnectionManager.hpp</name>
+    <member refid="_connection_manager_8hpp_1a0e374529952c927bd9f59c9acbccf624" kind="typedef"><name>ConnectionPtr</name></member>
+  </compound>
+  <compound refid="_log_8cpp" kind="file"><name>Log.cpp</name>
+  </compound>
+  <compound refid="_log_8hpp" kind="file"><name>Log.hpp</name>
+  </compound>
+  <compound refid="_module_8cpp" kind="file"><name>Module.cpp</name>
+  </compound>
+  <compound refid="_module_8hpp" kind="file"><name>Module.hpp</name>
+  </compound>
+  <compound refid="_server_8cpp" kind="file"><name>Server.cpp</name>
+  </compound>
+  <compound refid="_server_8hpp" kind="file"><name>Server.hpp</name>
+  </compound>
+  <compound refid="_server_config_8cpp" kind="file"><name>ServerConfig.cpp</name>
+  </compound>
+  <compound refid="_server_config_8hpp" kind="file"><name>ServerConfig.hpp</name>
+  </compound>
+  <compound refid="_env_manager_8cpp" kind="file"><name>EnvManager.cpp</name>
+  </compound>
+  <compound refid="_env_manager_8hpp" kind="file"><name>EnvManager.hpp</name>
+  </compound>
+  <compound refid="_json_loader_8cpp" kind="file"><name>JsonLoader.cpp</name>
+  </compound>
+  <compound refid="_json_loader_8hpp" kind="file"><name>JsonLoader.hpp</name>
+  </compound>
+  <compound refid="_shared_memory_8cpp" kind="file"><name>SharedMemory.cpp</name>
+  </compound>
+  <compound refid="_shared_memory_8hpp" kind="file"><name>SharedMemory.hpp</name>
+  </compound>
+  <compound refid="dir_7e83d1792d529f4aa7126ac7e0b3b699" kind="dir"><name>src/config</name>
+  </compound>
+  <compound refid="dir_61118d4a60280ff916d2d85233492aee" kind="dir"><name>src/modules/fillPage</name>
+  </compound>
+  <compound refid="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d" kind="dir"><name>src/modules</name>
+  </compound>
+  <compound refid="dir_7f1b245933060fd9f785289e602b2b37" kind="dir"><name>src/modules/parser</name>
+  </compound>
+  <compound refid="dir_04bb494e9a6dc0ff623f86f87619ed94" kind="dir"><name>src/modules/PHP</name>
+  </compound>
+  <compound refid="dir_075bb3ff235063c77951cd176d15a741" kind="dir"><name>src/server</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="dir_dd5387579e0ca0269955c6f0b8c070ca" kind="dir"><name>src/modules/SSL</name>
+  </compound>
+  <compound refid="dir_313caf1132e152dd9b58bea13a4052ca" kind="dir"><name>src/utils</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
+  </compound>
+</doxygenindex>

@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="_config_manager_8cpp" kind="file" language="C++">
+    <compoundname>ConfigManager.cpp</compoundname>
+    <includes refid="_config_manager_8hpp" local="yes">ConfigManager.hpp</includes>
+    <incdepgraph>
+      <node id="30">
+        <label>functional</label>
+      </node>
+      <node id="35">
+        <label>filesystem</label>
+      </node>
+      <node id="34">
+        <label>Config.hpp</label>
+        <link refid="_config_8hpp"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>string</label>
+      </node>
+      <node id="36">
+        <label>fstream</label>
+      </node>
+      <node id="27">
+        <label>src/config/ConfigManager.cpp</label>
+        <link refid="_config_manager_8cpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>vector</label>
+      </node>
+      <node id="28">
+        <label>ConfigManager.hpp</label>
+        <link refid="_config_manager_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>cstdlib</label>
+      </node>
+      <node id="37">
+        <label>iostream</label>
+      </node>
+      <node id="32">
+        <label>unordered_map</label>
+      </node>
+      <node id="40">
+        <label>thread</label>
+      </node>
+      <node id="38">
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="31">
+        <label>memory</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">**<sp/>EPITECH<sp/>PROJECT,<sp/>2020</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">**<sp/>CPP_zia_2019</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">**<sp/>File<sp/>description:</highlight></codeline>
+<codeline lineno="5"><highlight class="comment">**<sp/>ConfigManager</highlight></codeline>
+<codeline lineno="6"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_config_manager_8hpp" kindref="compound">ConfigManager.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacecfg" kindref="compound">cfg</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="classcfg_1_1_config_manager_1a5434bffe1b9b3a20026e2526601911f2" refkind="member"><highlight class="normal"><ref refid="classcfg_1_1_config_manager_1a7d3d7c10423d969f7544509f6fcca32f" kindref="member">ConfigManager::ConfigManager</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;path):</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>_path(path),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>_timeSleep(5000),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>_onChangeCallback([]()<sp/>{}),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>_onErasedCallback([]()<sp/>{}),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>_thread(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>_watching(</highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcfg_1_1_config_manager_1ad6c55b0413f949cc5002467cbcee3186" kindref="member">loadConfigDir</ref>(_path);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classcfg_1_1_config_manager_1a7d3d7c10423d969f7544509f6fcca32f" refkind="member"><highlight class="normal"><ref refid="classcfg_1_1_config_manager_1a7d3d7c10423d969f7544509f6fcca32f" kindref="member">ConfigManager::ConfigManager</ref>():</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>_path(std::getenv(</highlight><highlight class="stringliteral">&quot;CONFIG_PATH&quot;</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>_timeSleep(5000),</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>_onChangeCallback([]()<sp/>{}),</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>_onErasedCallback([]()<sp/>{}),</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>_thread(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>_watching(</highlight><highlight class="keyword">false</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcfg_1_1_config_manager_1ad6c55b0413f949cc5002467cbcee3186" kindref="member">loadConfigDir</ref>(_path);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classcfg_1_1_config_manager_1addf0e3547d8e4d7dd023c17e43e8176d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1addf0e3547d8e4d7dd023c17e43e8176d" kindref="member">ConfigManager::manage</ref>()</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" kindref="member">watching</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>_thread<sp/>=<sp/><ref refid="classcfg_1_1_config_manager_1abb7d9a63860843839fa4d8f339f0122b" kindref="member">ThreadPtr</ref>(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>std::thread(&amp;<ref refid="classcfg_1_1_config_manager_1a31f95938b66f996b8e731dada6b4a880" kindref="member">ConfigManager::watch</ref>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>_thread-&gt;detach();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classcfg_1_1_config_manager_1ae72f47047d91fa0418391aa99b2383ef" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1ae72f47047d91fa0418391aa99b2383ef" kindref="member">ConfigManager::stop</ref>()</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" kindref="member">watching</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>_thread-&gt;join();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="classcfg_1_1_config_manager_1a31f95938b66f996b8e731dada6b4a880" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1a31f95938b66f996b8e731dada6b4a880" kindref="member">ConfigManager::watch</ref>()</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="classcfg_1_1_config_manager_1a704e8f6b81715a24199f3579a946cad4" kindref="member">isWatching</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::this_thread::sleep_for(std::chrono::milliseconds(5000));</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecfg_1a384f743959a9029f7e1c3d11548795de" kindref="member">FileStatus</ref><sp/>status<sp/>=<sp/><ref refid="namespacecfg_1a384f743959a9029f7e1c3d11548795dea334c4a4c42fdb79d7ebc3e73b517e6f8" kindref="member">FileStatus::none</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;it<sp/>:<sp/>_configs)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!std::filesystem::exists(it-&gt;getPath()))<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="namespacecfg_1a384f743959a9029f7e1c3d11548795deaf4adee3fff79c6ddad5b2e45f730006a" kindref="member">FileStatus::erased</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it-&gt;update(status);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_onErasedCallback();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;file<sp/>:<sp/>std::filesystem::recursive_directory_iterator(_path))<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>current_timestamp<sp/>=<sp/>std::filesystem::last_write_time(file);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>name<sp/>=<sp/>getConfigName(file);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecfg_1af5f3a3fc2010c76e90bc66696485989f" kindref="member">ConfigPtr</ref><sp/>config<sp/>=<sp/><ref refid="classcfg_1_1_config_manager_1aa71c6277d421969606433b77d425d19d" kindref="member">getConfig</ref>(name);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_paths[name]<sp/>!=<sp/>current_timestamp)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_paths[name]<sp/>=<sp/>current_timestamp;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>config-&gt;setTimestamp(current_timestamp);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Config<sp/>file<sp/>&apos;&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>name<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>has<sp/>been<sp/>modified&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/><ref refid="namespacecfg_1a384f743959a9029f7e1c3d11548795dea9ae73c65f418e6f79ceb4f0e4a4b98d5" kindref="member">FileStatus::modified</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>config-&gt;update(status);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_onChangeCallback();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" kindref="member">ConfigManager::watching</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;<ref refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" kindref="member">watching</ref>)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>_watching<sp/>=<sp/><ref refid="classcfg_1_1_config_manager_1a5c6d63489274c7ddeb88891caea5ca48" kindref="member">watching</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classcfg_1_1_config_manager_1a704e8f6b81715a24199f3579a946cad4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1a704e8f6b81715a24199f3579a946cad4" kindref="member">ConfigManager::isWatching</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_watching;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classcfg_1_1_config_manager_1ad6c55b0413f949cc5002467cbcee3186" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1ad6c55b0413f949cc5002467cbcee3186" kindref="member">ConfigManager::loadConfigDir</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;path)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;file<sp/>:<sp/>std::filesystem::recursive_directory_iterator(path))<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>name<sp/>=<sp/>getConfigName(file);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacecfg_1af5f3a3fc2010c76e90bc66696485989f" kindref="member">ConfigPtr</ref><sp/>config<sp/>=<sp/><ref refid="namespacecfg_1af5f3a3fc2010c76e90bc66696485989f" kindref="member">ConfigPtr</ref>(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config" kindref="compound">Config</ref>(file,<sp/>name));</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_configs.push_back(std::move(config));</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_paths[name]<sp/>=<sp/>std::filesystem::last_write_time(file);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classcfg_1_1_config_manager_1adf39406f57dfd1871ee974dd86d16abc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1adf39406f57dfd1871ee974dd86d16abc" kindref="member">ConfigManager::setConfigPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;path)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>_path<sp/>=<sp/>path;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classcfg_1_1_config_manager_1af80e94a2a93aa7bb16c2fca5249936ac" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classcfg_1_1_config_manager_1af80e94a2a93aa7bb16c2fca5249936ac" kindref="member">ConfigManager::getConfigPath</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_path;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="classcfg_1_1_config_manager_1a8a84b0efbaf6446b4c9254386606cda5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1a8a84b0efbaf6446b4c9254386606cda5" kindref="member">ConfigManager::setTimeToSleep</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacecfg_1ab1a8f7060b6dfea6111c4449e81c6f8c" kindref="member">TimeSleep</ref><sp/>&amp;timeSleep)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>_timeSleep<sp/>=<sp/>timeSleep;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="classcfg_1_1_config_manager_1a992557430937cec5387d84d44c721f7c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacecfg_1ab1a8f7060b6dfea6111c4449e81c6f8c" kindref="member">TimeSleep</ref><sp/><ref refid="classcfg_1_1_config_manager_1a992557430937cec5387d84d44c721f7c" kindref="member">ConfigManager::getTimeToSleep</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_timeSleep;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classcfg_1_1_config_manager_1a324ba63493aefb579500f7338bd477db" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1a324ba63493aefb579500f7338bd477db" kindref="member">ConfigManager::onConfigChange</ref>(<ref refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" kindref="member">CallbackHandler</ref><sp/>&amp;&amp;handler)</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>_onChangeCallback<sp/>=<sp/>std::move(handler);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classcfg_1_1_config_manager_1abee2ba9f508be9604bf91d7f90691bcf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classcfg_1_1_config_manager_1abee2ba9f508be9604bf91d7f90691bcf" kindref="member">ConfigManager::onConfigErased</ref>(<ref refid="classcfg_1_1_config_manager_1a6614f22d32db38ce6d6ed5b351d4f628" kindref="member">CallbackHandler</ref><sp/>&amp;&amp;handler)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>_onErasedCallback<sp/>=<sp/>std::move(handler);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classcfg_1_1_config_manager_1aa71c6277d421969606433b77d425d19d" refkind="member"><highlight class="normal"><ref refid="namespacecfg_1af5f3a3fc2010c76e90bc66696485989f" kindref="member">ConfigPtr</ref><sp/><ref refid="classcfg_1_1_config_manager_1aa71c6277d421969606433b77d425d19d" kindref="member">ConfigManager::getConfig</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;config_name)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="127"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;config<sp/>:<sp/>_configs)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!config-&gt;getName().compare(config_name))</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>config;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>ConfigManager::getConfigName(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacecfg_1af0aed6e47bd26e91ad7d69467f96caaf" kindref="member">FileDescriptor</ref><sp/>&amp;file)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="135"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>filename<sp/>=<sp/>std::filesystem::path(</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file.path().string()).filename();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/>last_index<sp/>=<sp/>filename.find_last_of(</highlight><highlight class="stringliteral">&quot;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>name<sp/>=<sp/>filename.substr(0,<sp/>last_index);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/config/ConfigManager.cpp"/>
+  </compounddef>
+</doxygen>

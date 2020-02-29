@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_parser" kind="class" language="C++" prot="public">
+    <compoundname>Parser</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">IModule</basecompoundref>
+    <includes refid="_parser_module_8hpp" local="no">ParserModule.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_parser_1a5208129b497bfdf7c8ecceeb70e4bba8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Parser::Parser</definition>
+        <argsstring>()=default</argsstring>
+        <name>Parser</name>
+        <briefdescription>
+<para>Default constructor for the parset module. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/parser/ParserModule.hpp" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_parser_1a655ca8534272a48ee94113695f6494fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>virtual const char* Parser::getName</definition>
+        <argsstring>(void) const</argsstring>
+        <name>getName</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get the name of the module. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The name of the module </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/parser/ParserModule.hpp" line="60" column="1" bodyfile="src/modules/parser/ParserModule.hpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_parser_1a0e8278ef45fabe33144c78c51fbfcf7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Parser::onRegisterCallbacks</definition>
+        <argsstring>(oZ::Pipeline &amp;pipeline)</argsstring>
+        <name>onRegisterCallbacks</name>
+        <param>
+          <type>oZ::Pipeline &amp;</type>
+          <declname>pipeline</declname>
+        </param>
+        <briefdescription>
+<para>Fct for the pipeline (load in the right place in the right position) </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pipeline</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference on the pipeline where the module is load </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/parser/ParserModule.hpp" line="67" column="1" bodyfile="src/modules/parser/ParserModule.cpp" bodystart="15" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_parser_1ae11d2df7f63331db5a8fa6bc7b6bc7e3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Parser::parsing</definition>
+        <argsstring>(oZ::Context &amp;context)</argsstring>
+        <name>parsing</name>
+        <param>
+          <type>oZ::Context &amp;</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+<para>Parse the browser&apos;s request and modify the context. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>context</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Context given by the pipeline</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Bool to know if nothing wrong happened </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/modules/parser/ParserModule.hpp" line="77" column="1" bodyfile="src/modules/parser/ParserModule.cpp" bodystart="25" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_parser" kindref="compound">Parser</ref> class to manage the parser module. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="24">
+        <label>IModule</label>
+      </node>
+      <node id="23">
+        <label>Parser</label>
+        <link refid="class_parser"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="26">
+        <label>IModule</label>
+      </node>
+      <node id="25">
+        <label>Parser</label>
+        <link refid="class_parser"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/modules/parser/ParserModule.hpp" line="48" column="1" bodyfile="src/modules/parser/ParserModule.hpp" bodystart="48" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_parser_1a655ca8534272a48ee94113695f6494fc" prot="public" virt="virtual"><scope>Parser</scope><name>getName</name></member>
+      <member refid="class_parser_1a0e8278ef45fabe33144c78c51fbfcf7d" prot="public" virt="virtual"><scope>Parser</scope><name>onRegisterCallbacks</name></member>
+      <member refid="class_parser_1a5208129b497bfdf7c8ecceeb70e4bba8" prot="public" virt="non-virtual"><scope>Parser</scope><name>Parser</name></member>
+      <member refid="class_parser_1ae11d2df7f63331db5a8fa6bc7b6bc7e3" prot="private" virt="non-virtual"><scope>Parser</scope><name>parsing</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

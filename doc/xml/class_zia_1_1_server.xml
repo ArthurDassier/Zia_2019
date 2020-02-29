@@ -1,0 +1,389 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="class_zia_1_1_server" kind="class" language="C++" prot="public">
+    <compoundname>Zia::Server</compoundname>
+    <basecompoundref prot="protected" virt="non-virtual">Pipeline</basecompoundref>
+    <includes refid="_server_8hpp" local="no">Server.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_zia_1_1_server_1a10861064c5ac1dc97cc537023d67471d" prot="public" static="no">
+        <type>std::shared_ptr&lt; <ref refid="class_zia_1_1_server_config" kindref="compound">ServerConfig</ref> &gt;</type>
+        <definition>using Zia::Server::ConfigPtr =  std::shared_ptr&lt;ServerConfig&gt;</definition>
+        <argsstring></argsstring>
+        <name>ConfigPtr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="25" column="1" bodyfile="src/server/Server.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_zia_1_1_server_1a624c715504f8bbf6b858081dabe26f9c" prot="public" static="no">
+        <type>boost::asio::io_service</type>
+        <definition>using Zia::Server::io_service =  boost::asio::io_service</definition>
+        <argsstring></argsstring>
+        <name>io_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="27" column="1" bodyfile="src/server/Server.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_zia_1_1_server_1a0119259e0eaa12e4f688c6c64dbf6ac0" prot="public" static="no">
+        <type>boost::asio::ip::tcp::acceptor</type>
+        <definition>using Zia::Server::Acceptor =  boost::asio::ip::tcp::acceptor</definition>
+        <argsstring></argsstring>
+        <name>Acceptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="29" column="1" bodyfile="src/server/Server.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_zia_1_1_server_1ae3a52a854f930c1daa7c8e510f7e37bd" prot="public" static="no">
+        <type>boost::asio::ip::tcp::socket</type>
+        <definition>using Zia::Server::Socket =  boost::asio::ip::tcp::socket</definition>
+        <argsstring></argsstring>
+        <name>Socket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="31" column="1" bodyfile="src/server/Server.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_zia_1_1_server_1a4764ec255c11f5b7fb87f5ab1d44e952" prot="public" static="no">
+        <type>boost::asio::ip::tcp::endpoint</type>
+        <definition>using Zia::Server::Endpoint =  boost::asio::ip::tcp::endpoint</definition>
+        <argsstring></argsstring>
+        <name>Endpoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="33" column="1" bodyfile="src/server/Server.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_zia_1_1_server_1a81eab82df95d92dc3b53b6a6dc863b5b" prot="private" static="no" mutable="no">
+        <type>oZ::Pipeline</type>
+        <definition>oZ::Pipeline Zia::Server::_pipeline</definition>
+        <argsstring></argsstring>
+        <name>_pipeline</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="68" column="1" bodyfile="src/server/Server.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1a3776d2b1f0b3249ac910f1e1369a2d95" prot="private" static="no" mutable="no">
+        <type><ref refid="classcfg_1_1_config_manager" kindref="compound">cfg::ConfigManager</ref></type>
+        <definition>cfg::ConfigManager Zia::Server::_configManager</definition>
+        <argsstring></argsstring>
+        <name>_configManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="69" column="1" bodyfile="src/server/Server.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1a6558f136ae5c15c7fd52441e201d8438" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_connection_manager" kindref="compound">ConnectionManager</ref></type>
+        <definition>ConnectionManager Zia::Server::_connectionManager</definition>
+        <argsstring></argsstring>
+        <name>_connectionManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="70" column="1" bodyfile="src/server/Server.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1ac0137a64e1f0a40b148ed25f441dcf22" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_server_1a10861064c5ac1dc97cc537023d67471d" kindref="member">ConfigPtr</ref></type>
+        <definition>ConfigPtr Zia::Server::_serverConfig</definition>
+        <argsstring></argsstring>
+        <name>_serverConfig</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="71" column="1" bodyfile="src/server/Server.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1af470c51dd8910286dafa4ebb0e67e94b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_server_1a624c715504f8bbf6b858081dabe26f9c" kindref="member">io_service</ref></type>
+        <definition>io_service Zia::Server::_io_service</definition>
+        <argsstring></argsstring>
+        <name>_io_service</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="73" column="1" bodyfile="src/server/Server.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1a29265cd35a544333fca1d7b18110bd58" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_server_1a0119259e0eaa12e4f688c6c64dbf6ac0" kindref="member">Acceptor</ref></type>
+        <definition>Acceptor Zia::Server::_acceptor</definition>
+        <argsstring></argsstring>
+        <name>_acceptor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="74" column="1" bodyfile="src/server/Server.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1ab6f6c7f66df1218b5eb1e09b5b3f2166" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_server_1a0119259e0eaa12e4f688c6c64dbf6ac0" kindref="member">Acceptor</ref></type>
+        <definition>Acceptor Zia::Server::_acceptorHTTPS</definition>
+        <argsstring></argsstring>
+        <name>_acceptorHTTPS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="75" column="1" bodyfile="src/server/Server.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1ace199baa010f41ec2358a5cdf8e8046e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_zia_1_1_server_1ae3a52a854f930c1daa7c8e510f7e37bd" kindref="member">Socket</ref></type>
+        <definition>Socket Zia::Server::_socket</definition>
+        <argsstring></argsstring>
+        <name>_socket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="76" column="1" bodyfile="src/server/Server.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1ab7063d4c337b569486fe65ab0adad548" prot="private" static="no" mutable="no">
+        <type>boost::asio::signal_set</type>
+        <definition>boost::asio::signal_set Zia::Server::_signals</definition>
+        <argsstring></argsstring>
+        <name>_signals</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="77" column="1" bodyfile="src/server/Server.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1a43502832d5c276e8ee198ad6199fcf0c" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string Zia::Server::_ip</definition>
+        <argsstring></argsstring>
+        <name>_ip</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="79" column="1" bodyfile="src/server/Server.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_zia_1_1_server_1ac949f4a6b20f94de80724c4269e31647" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Zia::Server::_port</definition>
+        <argsstring></argsstring>
+        <name>_port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="80" column="1" bodyfile="src/server/Server.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_zia_1_1_server_1a3f1591f28c6755b353d61e3a44d56b39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Server::Server</definition>
+        <argsstring>(const ConfigPtr &amp;config)</argsstring>
+        <name>Server</name>
+        <param>
+          <type>const <ref refid="class_zia_1_1_server_1a10861064c5ac1dc97cc537023d67471d" kindref="member">ConfigPtr</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="35" column="1" bodyfile="src/server/Server.cpp" bodystart="17" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_server_1abb27d30b40a94326e3fd629d3b30b7d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Server::run</definition>
+        <argsstring>()</argsstring>
+        <name>run</name>
+        <briefdescription>
+<para>Run <ref refid="class_zia_1_1_server" kindref="compound">Server</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="41" column="1" bodyfile="src/server/Server.cpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_server_1ad1a4b1650214d156491a98ff6b96d787" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Server::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <briefdescription>
+<para>Close <ref refid="class_zia_1_1_server" kindref="compound">Server</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="47" column="1" bodyfile="src/server/Server.cpp" bodystart="61" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_zia_1_1_server_1abc0def55f6e2ec8d94886b8210138a63" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Server::WaitingClient</definition>
+        <argsstring>(void)</argsstring>
+        <name>WaitingClient</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Waiting async client method. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="55" column="1" bodyfile="src/server/Server.cpp" bodystart="67" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_server_1a6f00b7e21c8f8454d87393a14db5544c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Server::ManagingSignals</definition>
+        <argsstring>(void)</argsstring>
+        <name>ManagingSignals</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Get signals of server and execute them. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="61" column="1" bodyfile="src/server/Server.cpp" bodystart="94" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_server_1a173956952b25c63438439c035d02a89e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Server::setAcceptor</definition>
+        <argsstring>(Acceptor &amp;acceptor, Endpoint &amp;endpoint)</argsstring>
+        <name>setAcceptor</name>
+        <param>
+          <type><ref refid="class_zia_1_1_server_1a0119259e0eaa12e4f688c6c64dbf6ac0" kindref="member">Acceptor</ref> &amp;</type>
+          <declname>acceptor</declname>
+        </param>
+        <param>
+          <type><ref refid="class_zia_1_1_server_1a4764ec255c11f5b7fb87f5ab1d44e952" kindref="member">Endpoint</ref> &amp;</type>
+          <declname>endpoint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="63" column="1" bodyfile="src/server/Server.cpp" bodystart="104" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_zia_1_1_server_1a00f96eb34107e9a504be7af5ba2a3fb2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Server::addEnabledModules</definition>
+        <argsstring>(const EnabledList &amp;modulesList)</argsstring>
+        <name>addEnabledModules</name>
+        <param>
+          <type>const <ref refid="namespace_zia_1a3076ef33a6c08b068cb8e444848ad33c" kindref="member">EnabledList</ref> &amp;</type>
+          <declname>modulesList</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/server/Server.hpp" line="65" column="1" bodyfile="src/server/Server.cpp" bodystart="112" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_zia_1_1_server" kindref="compound">Server</ref> class to manage the server. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="32">
+        <label>oZ::Pipeline</label>
+      </node>
+      <node id="31">
+        <label>Zia::Server</label>
+        <link refid="class_zia_1_1_server"/>
+        <childnode refid="32" relation="protected-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="34">
+        <label>oZ::Pipeline</label>
+      </node>
+      <node id="33">
+        <label>Zia::Server</label>
+        <link refid="class_zia_1_1_server"/>
+        <childnode refid="34" relation="protected-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/server/Server.hpp" line="23" column="1" bodyfile="src/server/Server.hpp" bodystart="22" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_zia_1_1_server_1a29265cd35a544333fca1d7b18110bd58" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_acceptor</name></member>
+      <member refid="class_zia_1_1_server_1ab6f6c7f66df1218b5eb1e09b5b3f2166" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_acceptorHTTPS</name></member>
+      <member refid="class_zia_1_1_server_1a3776d2b1f0b3249ac910f1e1369a2d95" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_configManager</name></member>
+      <member refid="class_zia_1_1_server_1a6558f136ae5c15c7fd52441e201d8438" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_connectionManager</name></member>
+      <member refid="class_zia_1_1_server_1af470c51dd8910286dafa4ebb0e67e94b" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_io_service</name></member>
+      <member refid="class_zia_1_1_server_1a43502832d5c276e8ee198ad6199fcf0c" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_ip</name></member>
+      <member refid="class_zia_1_1_server_1a81eab82df95d92dc3b53b6a6dc863b5b" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_pipeline</name></member>
+      <member refid="class_zia_1_1_server_1ac949f4a6b20f94de80724c4269e31647" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_port</name></member>
+      <member refid="class_zia_1_1_server_1ac0137a64e1f0a40b148ed25f441dcf22" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_serverConfig</name></member>
+      <member refid="class_zia_1_1_server_1ab7063d4c337b569486fe65ab0adad548" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_signals</name></member>
+      <member refid="class_zia_1_1_server_1ace199baa010f41ec2358a5cdf8e8046e" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>_socket</name></member>
+      <member refid="class_zia_1_1_server_1a0119259e0eaa12e4f688c6c64dbf6ac0" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>Acceptor</name></member>
+      <member refid="class_zia_1_1_server_1a00f96eb34107e9a504be7af5ba2a3fb2" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>addEnabledModules</name></member>
+      <member refid="class_zia_1_1_server_1ad1a4b1650214d156491a98ff6b96d787" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>close</name></member>
+      <member refid="class_zia_1_1_server_1a10861064c5ac1dc97cc537023d67471d" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>ConfigPtr</name></member>
+      <member refid="class_zia_1_1_server_1a4764ec255c11f5b7fb87f5ab1d44e952" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>Endpoint</name></member>
+      <member refid="class_zia_1_1_server_1a624c715504f8bbf6b858081dabe26f9c" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>io_service</name></member>
+      <member refid="class_zia_1_1_server_1a6f00b7e21c8f8454d87393a14db5544c" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>ManagingSignals</name></member>
+      <member refid="class_zia_1_1_server_1abb27d30b40a94326e3fd629d3b30b7d5" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>run</name></member>
+      <member refid="class_zia_1_1_server_1a3f1591f28c6755b353d61e3a44d56b39" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>Server</name></member>
+      <member refid="class_zia_1_1_server_1a173956952b25c63438439c035d02a89e" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>setAcceptor</name></member>
+      <member refid="class_zia_1_1_server_1ae3a52a854f930c1daa7c8e510f7e37bd" prot="public" virt="non-virtual"><scope>Zia::Server</scope><name>Socket</name></member>
+      <member refid="class_zia_1_1_server_1abc0def55f6e2ec8d94886b8210138a63" prot="private" virt="non-virtual"><scope>Zia::Server</scope><name>WaitingClient</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,109 @@
+\hypertarget{namespace_zia}{}\section{Zia Namespace Reference}
+\label{namespace_zia}\index{Zia@{Zia}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_zia_1_1_connection}{Connection}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_zia_1_1_connection}{Connection} class to manage the connection. \end{DoxyCompactList}\item 
+class \hyperlink{class_zia_1_1_connection_manager}{Connection\+Manager}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_zia_1_1_connection_manager}{Connection\+Manager} class to manage the connection. \end{DoxyCompactList}\item 
+class \hyperlink{class_zia_1_1_log}{Log}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_zia_1_1_log}{Log} class to manage the log. \end{DoxyCompactList}\item 
+class \hyperlink{class_zia_1_1_module}{Module}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_zia_1_1_module}{Module} class to manage the modules. \end{DoxyCompactList}\item 
+class \hyperlink{class_zia_1_1_server}{Server}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_zia_1_1_server}{Server} class to manage the server. \end{DoxyCompactList}\item 
+class \hyperlink{class_zia_1_1_server_config}{Server\+Config}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_zia_1_1_server_config}{Server\+Config} class to manage configuration files of the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{namespace_zia_a26a1cd43d7216ed69ef26b99d8d12093}{Module\+Ptr} = std\+::shared\+\_\+ptr$<$ \hyperlink{class_zia_1_1_module}{Module} $>$
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_zia_1_1_module}{Module} pointer type, using shared\+\_\+ptr as backend. \end{DoxyCompactList}\item 
+using \hyperlink{namespace_zia_a3076ef33a6c08b068cb8e444848ad33c}{Enabled\+List} = std\+::set$<$ \hyperlink{namespace_zia_a26a1cd43d7216ed69ef26b99d8d12093}{Module\+Ptr} $>$
+\begin{DoxyCompactList}\small\item\em Set containing Module\+Ptr modules. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{namespace_zia_a7b72c978ae2e795f74ce73291ebe3593}{Default\+Port} = 80
+\begin{DoxyCompactList}\small\item\em Default H\+T\+TP port. \end{DoxyCompactList}\item 
+const int \hyperlink{namespace_zia_ae53d6fd6614900bbc59b6912d6a629d4}{Default\+Port\+H\+T\+T\+PS} = 443
+\begin{DoxyCompactList}\small\item\em Default H\+T\+T\+PS port. \end{DoxyCompactList}\item 
+const std\+::string \hyperlink{namespace_zia_a40d4cbc794a3ff3df7017ff08173978f}{Default\+IP} = \char`\"{}127.\+0.\+0.\+1\char`\"{}
+\begin{DoxyCompactList}\small\item\em Default IP address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\mbox{\Hypertarget{namespace_zia_a3076ef33a6c08b068cb8e444848ad33c}\label{namespace_zia_a3076ef33a6c08b068cb8e444848ad33c}} 
+\index{Zia@{Zia}!Enabled\+List@{Enabled\+List}}
+\index{Enabled\+List@{Enabled\+List}!Zia@{Zia}}
+\subsubsection{\texorpdfstring{Enabled\+List}{EnabledList}}
+{\footnotesize\ttfamily using \hyperlink{namespace_zia_a3076ef33a6c08b068cb8e444848ad33c}{Zia\+::\+Enabled\+List} = typedef std\+::set$<$\hyperlink{namespace_zia_a26a1cd43d7216ed69ef26b99d8d12093}{Module\+Ptr}$>$}
+
+
+
+Set containing Module\+Ptr modules. 
+
+
+
+Definition at line 47 of file Server\+Config.\+hpp.
+
+\mbox{\Hypertarget{namespace_zia_a26a1cd43d7216ed69ef26b99d8d12093}\label{namespace_zia_a26a1cd43d7216ed69ef26b99d8d12093}} 
+\index{Zia@{Zia}!Module\+Ptr@{Module\+Ptr}}
+\index{Module\+Ptr@{Module\+Ptr}!Zia@{Zia}}
+\subsubsection{\texorpdfstring{Module\+Ptr}{ModulePtr}}
+{\footnotesize\ttfamily using \hyperlink{namespace_zia_a26a1cd43d7216ed69ef26b99d8d12093}{Zia\+::\+Module\+Ptr} = typedef std\+::shared\+\_\+ptr$<$\hyperlink{class_zia_1_1_module}{Module}$>$}
+
+
+
+\hyperlink{class_zia_1_1_module}{Module} pointer type, using shared\+\_\+ptr as backend. 
+
+
+
+Definition at line 42 of file Server\+Config.\+hpp.
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespace_zia_a40d4cbc794a3ff3df7017ff08173978f}\label{namespace_zia_a40d4cbc794a3ff3df7017ff08173978f}} 
+\index{Zia@{Zia}!Default\+IP@{Default\+IP}}
+\index{Default\+IP@{Default\+IP}!Zia@{Zia}}
+\subsubsection{\texorpdfstring{Default\+IP}{DefaultIP}}
+{\footnotesize\ttfamily const std\+::string Zia\+::\+Default\+IP = \char`\"{}127.\+0.\+0.\+1\char`\"{}}
+
+
+
+Default IP address. 
+
+
+
+Definition at line 37 of file Server\+Config.\+hpp.
+
+\mbox{\Hypertarget{namespace_zia_a7b72c978ae2e795f74ce73291ebe3593}\label{namespace_zia_a7b72c978ae2e795f74ce73291ebe3593}} 
+\index{Zia@{Zia}!Default\+Port@{Default\+Port}}
+\index{Default\+Port@{Default\+Port}!Zia@{Zia}}
+\subsubsection{\texorpdfstring{Default\+Port}{DefaultPort}}
+{\footnotesize\ttfamily const int Zia\+::\+Default\+Port = 80}
+
+
+
+Default H\+T\+TP port. 
+
+
+
+Definition at line 27 of file Server\+Config.\+hpp.
+
+\mbox{\Hypertarget{namespace_zia_ae53d6fd6614900bbc59b6912d6a629d4}\label{namespace_zia_ae53d6fd6614900bbc59b6912d6a629d4}} 
+\index{Zia@{Zia}!Default\+Port\+H\+T\+T\+PS@{Default\+Port\+H\+T\+T\+PS}}
+\index{Default\+Port\+H\+T\+T\+PS@{Default\+Port\+H\+T\+T\+PS}!Zia@{Zia}}
+\subsubsection{\texorpdfstring{Default\+Port\+H\+T\+T\+PS}{DefaultPortHTTPS}}
+{\footnotesize\ttfamily const int Zia\+::\+Default\+Port\+H\+T\+T\+PS = 443}
+
+
+
+Default H\+T\+T\+PS port. 
+
+
+
+Definition at line 32 of file Server\+Config.\+hpp.
+

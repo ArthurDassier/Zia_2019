@@ -1,0 +1,140 @@
+\hypertarget{class_zia_1_1_connection}{}\section{Zia\+:\+:Connection Class Reference}
+\label{class_zia_1_1_connection}\index{Zia\+::\+Connection@{Zia\+::\+Connection}}
+
+
+\hyperlink{class_zia_1_1_connection}{Connection} class to manage the connection.  
+
+
+
+
+{\ttfamily \#include $<$Connection.\+hpp$>$}
+
+
+
+Inheritance diagram for Zia\+:\+:Connection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{class_zia_1_1_connection__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Zia\+:\+:Connection\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{class_zia_1_1_connection__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{class_zia_1_1_connection_a1b74e276e0f3aa8dbabdaed80a0936e6}{socket} = boost\+::asio\+::ip\+::tcp\+::socket
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_zia_1_1_connection_a06a6c69bf205afa9868169a1435129c1}{Connection} (void)=delete
+\begin{DoxyCompactList}\small\item\em Contructor of the \hyperlink{class_zia_1_1_connection}{Connection} class. \end{DoxyCompactList}\item 
+\hyperlink{class_zia_1_1_connection_a61438cdd01805cd466d1382eafcb1576}{Connection} (\hyperlink{class_zia_1_1_connection_a1b74e276e0f3aa8dbabdaed80a0936e6}{socket} sock, \hyperlink{class_zia_1_1_connection_manager}{Connection\+Manager} \&connection\+Manager, o\+Z\+::\+Pipeline \&pipeline, bool encryption=false)
+\begin{DoxyCompactList}\small\item\em Contructor of the \hyperlink{class_zia_1_1_connection}{Connection} class. \end{DoxyCompactList}\item 
+void \hyperlink{class_zia_1_1_connection_af7bae27ea5870ef9efc6775d38012aa4}{start} (void)
+\begin{DoxyCompactList}\small\item\em Start the connection between browser and serv (client) \end{DoxyCompactList}\item 
+void \hyperlink{class_zia_1_1_connection_ac9704053c3b7f919d71255b1ce30cc63}{stop} (void)
+\begin{DoxyCompactList}\small\item\em Stop the connection between browser and serv (client) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_zia_1_1_connection}{Connection} class to manage the connection. 
+
+Definition at line 25 of file Connection.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{class_zia_1_1_connection_a1b74e276e0f3aa8dbabdaed80a0936e6}\label{class_zia_1_1_connection_a1b74e276e0f3aa8dbabdaed80a0936e6}} 
+\index{Zia\+::\+Connection@{Zia\+::\+Connection}!socket@{socket}}
+\index{socket@{socket}!Zia\+::\+Connection@{Zia\+::\+Connection}}
+\subsubsection{\texorpdfstring{socket}{socket}}
+{\footnotesize\ttfamily using \hyperlink{class_zia_1_1_connection_a1b74e276e0f3aa8dbabdaed80a0936e6}{Zia\+::\+Connection\+::socket} =  boost\+::asio\+::ip\+::tcp\+::socket}
+
+
+
+Definition at line 28 of file Connection.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_zia_1_1_connection_a06a6c69bf205afa9868169a1435129c1}\label{class_zia_1_1_connection_a06a6c69bf205afa9868169a1435129c1}} 
+\index{Zia\+::\+Connection@{Zia\+::\+Connection}!Connection@{Connection}}
+\index{Connection@{Connection}!Zia\+::\+Connection@{Zia\+::\+Connection}}
+\subsubsection{\texorpdfstring{Connection()}{Connection()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Zia\+::\+Connection\+::\+Connection (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Contructor of the \hyperlink{class_zia_1_1_connection}{Connection} class. 
+
+\mbox{\Hypertarget{class_zia_1_1_connection_a61438cdd01805cd466d1382eafcb1576}\label{class_zia_1_1_connection_a61438cdd01805cd466d1382eafcb1576}} 
+\index{Zia\+::\+Connection@{Zia\+::\+Connection}!Connection@{Connection}}
+\index{Connection@{Connection}!Zia\+::\+Connection@{Zia\+::\+Connection}}
+\subsubsection{\texorpdfstring{Connection()}{Connection()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Zia\+::\+Connection\+::\+Connection (\begin{DoxyParamCaption}\item[{\hyperlink{class_zia_1_1_connection_a1b74e276e0f3aa8dbabdaed80a0936e6}{socket}}]{sock,  }\item[{\hyperlink{class_zia_1_1_connection_manager}{Connection\+Manager} \&}]{connection\+Manager,  }\item[{o\+Z\+::\+Pipeline \&}]{pipeline,  }\item[{bool}]{encryption = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Contructor of the \hyperlink{class_zia_1_1_connection}{Connection} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sock} & Socket accepted by the serveur \\
+\hline
+{\em connection\+Manager} & \hyperlink{class_zia_1_1_connection}{Connection} manager of the server \\
+\hline
+{\em pipeline} & \hyperlink{class_zia_1_1_server}{Server}\textquotesingle{}s pipeline use for modif the context \\
+\hline
+{\em encryption} & Bool use to know if this will be in https or not \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 17 of file Connection.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_zia_1_1_connection_af7bae27ea5870ef9efc6775d38012aa4}\label{class_zia_1_1_connection_af7bae27ea5870ef9efc6775d38012aa4}} 
+\index{Zia\+::\+Connection@{Zia\+::\+Connection}!start@{start}}
+\index{start@{start}!Zia\+::\+Connection@{Zia\+::\+Connection}}
+\subsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Zia\+::\+Connection\+::start (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Start the connection between browser and serv (client) 
+
+
+
+Definition at line 26 of file Connection.\+cpp.
+
+\mbox{\Hypertarget{class_zia_1_1_connection_ac9704053c3b7f919d71255b1ce30cc63}\label{class_zia_1_1_connection_ac9704053c3b7f919d71255b1ce30cc63}} 
+\index{Zia\+::\+Connection@{Zia\+::\+Connection}!stop@{stop}}
+\index{stop@{stop}!Zia\+::\+Connection@{Zia\+::\+Connection}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Zia\+::\+Connection\+::stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Stop the connection between browser and serv (client) 
+
+
+
+Definition at line 139 of file Connection.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/server/\hyperlink{_connection_8hpp}{Connection.\+hpp}\item 
+src/server/\hyperlink{_connection_8cpp}{Connection.\+cpp}\end{DoxyCompactItemize}
