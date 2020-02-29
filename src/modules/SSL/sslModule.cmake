@@ -4,9 +4,11 @@ message("Generating project ${PROJECT_NAME}...")
 
 get_filename_component(SSLModuleSourcesDir ${CMAKE_CURRENT_LIST_FILE}  PATH)
 
+set(SSLModuleLibs ${PROJECT_NAME})
+set(SSLModuleIncludes ${SSLModuleSourcesDir})
+
 set(SSLModuleSources
 	${SSLModuleSourcesDir}/SSLModule.cpp
-	${SSLModuleSourcesDir}/SSLModule.hpp
 )
 
 # Create SSLmodules library

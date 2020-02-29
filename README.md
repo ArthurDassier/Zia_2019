@@ -11,3 +11,12 @@ This server is able to serve typical HTTP documents and page requests, as well a
 ```
 git submodule update --init --recursive
 ```
+
+# Compile Zia
+```
+mkdir build && cd build && cmake .. -G "Unix Makefiles" && cmake --build . && - 
+```
+# Compile Zia Unit Tests
+```
+mkdir build && cd build && cmake ../.. -DZIA_TESTS=TRUE -DZIA_COVERAGE=TRUE && cmake --build . 
+```
