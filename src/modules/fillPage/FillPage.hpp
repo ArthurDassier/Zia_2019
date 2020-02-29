@@ -16,21 +16,62 @@
 
 class Fill : public oZ::IModule {
     public:
+        /**
+         * @brief Default constructor for the fill module
+         */
         Fill() = default;
 
+        /**
+         * @brief Get the name of the module
+         * 
+         * @return The name of the module
+         */
         virtual const char *getName(void) const { return "FillPageModule"; }
 
+        /**
+         * @brief Fct for the pipeline (load in the right place in the right position)
+         * 
+         * @param pipeline Reference on the pipeline where the module is load
+         */
         virtual void onRegisterCallbacks(oZ::Pipeline &pipeline);
 
     private:
+        /**
+         * @brief Complete the response header in the context given
+         * 
+         * @param context Context given by the pipeline
+         * 
+         * @return Bool to know if nothing wrong happened
+         */
         bool takeContent(oZ::Context &context);
+
+        /**
+         * @brief Chef the method in the request by the browser
+         * 
+         * @param context Context given by the pipeline
+         * 
+         * @return Bool to know if nothing wrong happened
+         */
         bool checkRequestType(const oZ::Context &context);
+
+        /**
+         * @brief Complete the body of the response after find the good index
+         * 
+         * @param context Context given by the pipeline
+         * @param path Path of the index depends on the request
+         * @param code Code for the response
+         * 
+         * @return Bool to know if nothing wrong happened
+         */
         bool fillBody(oZ::Context &context, const std::string &path, oZ::HTTP::Code code);
 
 };
 
 namespace FillModule
 {
+    /**
+     * @brief Enum for the routes
+     */
     std::map<std::string, std::string> routes_enums = {
         {"/",       "index.html"},
         {"/test",   "index_test.html"},
@@ -42,6 +83,9 @@ namespace FillModule
         {"/arthur", "arthurWick.jpg"}
     };
 
+    /**
+     * @brief Enum for the formats
+     */
     std::map<std::string, std::string> formats = {
         {"123", "application/vnd.lotus-1-2-3"},
         {"3dml", "text/vnd.in3d.3dml"},

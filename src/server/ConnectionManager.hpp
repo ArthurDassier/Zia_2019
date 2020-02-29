@@ -20,14 +20,32 @@ typedef std::shared_ptr<Zia::Connection> ConnectionPtr;
 
 class Zia::ConnectionManager {
 public:
-	ConnectionManager() = default;
 
-    void addClient(ConnectionPtr);
+    /**
+     * @brief Cronstructor for the connection manager
+     */
+    ConnectionManager() = default;
 
-    void eraseClient(ConnectionPtr);
+    /**
+     * @brief Add a client give to the manager in the list
+     * 
+     * @param client Pointer on the client
+     */
+    void addClient(ConnectionPtr client);
 
+    /**
+     * @brief Remove a client give to the manager to the list
+     * 
+     * @param client Pointer on the client
+     */
+    void eraseClient(ConnectionPtr client);
+
+    /**
+     * @brief Add a client give to the manager in the list
+     * 
+     */
     void eraseAll(void);
-private:
 
+private:
     std::set<ConnectionPtr> _connections;
 };
