@@ -12,6 +12,7 @@ set(PHPModuleTestDir ${ZiaSourcesTestDir}/testPHPModule/modules)
 set(TestSources
     # ${ZiaSourcesTestDir}/{...}.cpp
     ${ZiaSourcesTestDir}/testParserModule/parserModuleTest.cpp
+    ${ZiaSourcesTestDir}/testFillModule/fillModuleTest.cpp
 )
 
 set(TMP)
